@@ -1,0 +1,6243 @@
+Enemies-0.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Darkness Titan Ilnoct
+  rotate: false
+  xy: 1270, 489
+  size: 762, 800
+  orig: 763, 800
+  offset: 0, 0
+  index: -1
+Boss Sea Calamity Urmica
+  rotate: true
+  xy: 1, 1291
+  size: 754, 670
+  orig: 754, 672
+  offset: 0, 0
+  index: -1
+Cave Dweller Rock Mimic
+  rotate: true
+  xy: 673, 1514
+  size: 90, 52
+  orig: 90, 52
+  offset: 0, 0
+  index: -1
+Clockwork Slime
+  rotate: true
+  xy: 673, 1783
+  size: 105, 46
+  orig: 105, 46
+  offset: 0, 0
+  index: -1
+Cybermancer
+  rotate: true
+  xy: 1794, 1291
+  size: 236, 253
+  orig: 242, 262
+  offset: 3, 0
+  index: -1
+Dragons Sea Dragon
+  rotate: false
+  xy: 727, 1544
+  size: 470, 503
+  orig: 470, 503
+  offset: 0, 0
+  index: -1
+Egypt Sphinx Small
+  rotate: false
+  xy: 1267, 1291
+  size: 525, 251
+  orig: 525, 251
+  offset: 0, 0
+  index: -1
+Eldritch Fire Slimei
+  rotate: true
+  xy: 375, 1187
+  size: 102, 126
+  orig: 102, 126
+  offset: 0, 0
+  index: -1
+Forest Fangrot
+  rotate: false
+  xy: 673, 1291
+  size: 52, 120
+  orig: 52, 120
+  offset: 0, 0
+  index: -1
+Halloween Pumpkin Chariot Minion A
+  rotate: true
+  xy: 673, 1711
+  size: 70, 49
+  orig: 70, 49
+  offset: 0, 0
+  index: -1
+Megapack II Shadow Knight
+  rotate: true
+  xy: 1199, 1544
+  size: 503, 392
+  orig: 503, 392
+  offset: 0, 0
+  index: -1
+Mountain Bunny
+  rotate: false
+  xy: 630, 1187
+  size: 95, 102
+  orig: 97, 102
+  offset: 2, 0
+  index: -1
+Mountain Nanjo
+  rotate: false
+  xy: 673, 1890
+  size: 37, 85
+  orig: 37, 85
+  offset: 0, 0
+  index: -1
+Mountain Snail
+  rotate: true
+  xy: 1962, 1802
+  size: 104, 85
+  orig: 104, 85
+  offset: 0, 0
+  index: -1
+Sea Octi
+  rotate: true
+  xy: 503, 1187
+  size: 102, 125
+  orig: 102, 125
+  offset: 0, 0
+  index: -1
+Skeleton Archer Sisbon
+  rotate: true
+  xy: 1, 1187
+  size: 102, 216
+  orig: 102, 216
+  offset: 0, 0
+  index: -1
+Slime Blue
+  rotate: true
+  xy: 673, 1413
+  size: 99, 52
+  orig: 229, 101
+  offset: 74, 23
+  index: -1
+Slime RPG Basic
+  rotate: true
+  xy: 1962, 1670
+  size: 130, 85
+  orig: 130, 85
+  offset: 0, 0
+  index: -1
+Slimeii
+  rotate: true
+  xy: 1962, 1908
+  size: 139, 83
+  orig: 139, 83
+  offset: 0, 0
+  index: -1
+Summon Odin
+  rotate: false
+  xy: 727, 1187
+  size: 538, 355
+  orig: 538, 355
+  offset: 0, 0
+  index: -1
+Toxic Shroom A
+  rotate: false
+  xy: 219, 1187
+  size: 154, 102
+  orig: 158, 113
+  offset: 0, 2
+  index: -1
+Undead Slime
+  rotate: true
+  xy: 673, 1606
+  size: 103, 51
+  orig: 113, 54
+  offset: 3, 1
+  index: -1
+Xmas Penguin
+  rotate: true
+  xy: 1962, 1529
+  size: 139, 85
+  orig: 139, 85
+  offset: 0, 0
+  index: -1
+Zodiac Creatures Scorpion
+  rotate: false
+  xy: 1270, 1
+  size: 776, 486
+  orig: 776, 486
+  offset: 0, 0
+  index: -1
+Zodiac Taurus
+  rotate: true
+  xy: 1593, 1544
+  size: 503, 367
+  orig: 503, 367
+  offset: 0, 0
+  index: -1
+Zodiac Virgo B
+  rotate: false
+  xy: 1, 1
+  size: 1267, 592
+  orig: 1267, 592
+  offset: 0, 0
+  index: -1
+Zodiac Virgo
+  rotate: false
+  xy: 1, 595
+  size: 1264, 590
+  orig: 1264, 590
+  offset: 0, 0
+  index: -1
+
+Enemies-1.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Life Titan Aphylia
+  rotate: false
+  xy: 925, 1
+  size: 916, 827
+  orig: 950, 865
+  offset: 0, 0
+  index: -1
+Boss Nature Titan Tellia
+  rotate: false
+  xy: 1, 527
+  size: 900, 716
+  orig: 934, 733
+  offset: 10, 5
+  index: -1
+Boss Tantalus
+  rotate: true
+  xy: 1, 1245
+  size: 795, 629
+  orig: 795, 629
+  offset: 0, 0
+  index: -1
+Boss The Originator
+  rotate: false
+  xy: 1, 1
+  size: 922, 524
+  orig: 922, 524
+  offset: 0, 0
+  index: -1
+Darkness Gargoyle Atrox
+  rotate: false
+  xy: 1348, 1557
+  size: 584, 490
+  orig: 584, 490
+  offset: 0, 0
+  index: -1
+Dragon Egg E
+  rotate: false
+  xy: 1934, 1982
+  size: 77, 65
+  orig: 77, 65
+  offset: 0, 0
+  index: -1
+Dragon King Brown
+  rotate: false
+  xy: 1208, 830
+  size: 633, 647
+  orig: 644, 668
+  offset: 4, 11
+  index: -1
+Earth Leaf Imp
+  rotate: true
+  xy: 1843, 1392
+  size: 163, 204
+  orig: 195, 229
+  offset: 20, 7
+  index: -1
+Eldritch Slime Spawn C
+  rotate: true
+  xy: 1024, 1527
+  size: 520, 322
+  orig: 528, 334
+  offset: 4, 7
+  index: -1
+Elemental Titan Aphylia
+  rotate: false
+  xy: 925, 1
+  size: 916, 827
+  orig: 950, 865
+  offset: 0, 0
+  index: -1
+Elemental Titan Tellia
+  rotate: false
+  xy: 1, 527
+  size: 900, 716
+  orig: 934, 733
+  offset: 10, 5
+  index: -1
+Elves Rogue Elf
+  rotate: true
+  xy: 1843, 1221
+  size: 169, 204
+  orig: 169, 204
+  offset: 0, 0
+  index: -1
+Halloween Pumpkin Chariot Minion B
+  rotate: false
+  xy: 1665, 1479
+  size: 114, 76
+  orig: 114, 76
+  offset: 0, 0
+  index: -1
+Insects Black Ant Protector
+  rotate: true
+  xy: 903, 830
+  size: 413, 303
+  orig: 413, 303
+  offset: 0, 0
+  index: -1
+Insects Giant Bug Centipede
+  rotate: true
+  xy: 632, 1245
+  size: 790, 390
+  orig: 812, 512
+  offset: 10, 0
+  index: -1
+Lamia
+  rotate: true
+  xy: 1843, 782
+  size: 240, 204
+  orig: 314, 251
+  offset: 31, 13
+  index: -1
+Machines Cannon
+  rotate: true
+  xy: 1024, 1245
+  size: 280, 182
+  orig: 288, 195
+  offset: 3, 8
+  index: -1
+Mountain Owl
+  rotate: true
+  xy: 1513, 1479
+  size: 76, 150
+  orig: 78, 150
+  offset: 2, 0
+  index: -1
+Mountain Werebear Martz
+  rotate: true
+  xy: 1843, 533
+  size: 247, 204
+  orig: 247, 204
+  offset: 0, 0
+  index: -1
+Pirate Monkey
+  rotate: false
+  xy: 1843, 1024
+  size: 204, 195
+  orig: 204, 195
+  offset: 0, 0
+  index: -1
+Sea Beach Spikestar 
+  rotate: false
+  xy: 1348, 1479
+  size: 163, 76
+  orig: 163, 76
+  offset: 0, 0
+  index: -1
+Sea Beach Turtle
+  rotate: true
+  xy: 1934, 1557
+  size: 237, 112
+  orig: 237, 112
+  offset: 0, 0
+  index: -1
+Sea Shark
+  rotate: false
+  xy: 1843, 1
+  size: 204, 278
+  orig: 204, 278
+  offset: 0, 0
+  index: -1
+Toxic Frog C2
+  rotate: true
+  xy: 1934, 1796
+  size: 184, 112
+  orig: 184, 112
+  offset: 0, 0
+  index: -1
+Werewolf Rigel
+  rotate: true
+  xy: 1843, 281
+  size: 250, 204
+  orig: 250, 204
+  offset: 0, 0
+  index: -1
+
+Enemies-2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Astral Lich
+  rotate: false
+  xy: 1759, 903
+  size: 288, 281
+  orig: 288, 281
+  offset: 0, 0
+  index: -1
+Boss Dragon Emperor
+  rotate: false
+  xy: 898, 436
+  size: 859, 783
+  orig: 859, 783
+  offset: 0, 0
+  index: -1
+Boss Son Of Valhalla
+  rotate: true
+  xy: 440, 662
+  size: 557, 335
+  orig: 559, 336
+  offset: 2, 0
+  index: -1
+Corrupted Fire Wolf
+  rotate: false
+  xy: 534, 1221
+  size: 241, 182
+  orig: 241, 182
+  offset: 0, 0
+  index: -1
+Cyber Hawk
+  rotate: false
+  xy: 777, 662
+  size: 119, 203
+  orig: 143, 218
+  offset: 17, 4
+  index: -1
+Darkness Knight Magellan
+  rotate: false
+  xy: 1759, 1186
+  size: 288, 226
+  orig: 289, 227
+  offset: 0, 1
+  index: -1
+Darkness Lord Knight
+  rotate: false
+  xy: 898, 1
+  size: 869, 433
+  orig: 869, 433
+  offset: 0, 0
+  index: -1
+Darkness Oculus
+  rotate: true
+  xy: 1114, 1221
+  size: 191, 192
+  orig: 191, 192
+  offset: 0, 0
+  index: -1
+Dragon King Blue
+  rotate: true
+  xy: 1297, 1414
+  size: 632, 648
+  orig: 649, 653
+  offset: 6, 1
+  index: -1
+Dragon King Green
+  rotate: true
+  xy: 1, 1414
+  size: 633, 646
+  orig: 645, 671
+  offset: 6, 19
+  index: -1
+Dragon King Red
+  rotate: true
+  xy: 649, 1414
+  size: 633, 646
+  orig: 643, 665
+  offset: 4, 12
+  index: -1
+Dwarf Axe Warrior
+  rotate: false
+  xy: 1769, 1
+  size: 278, 310
+  orig: 278, 310
+  offset: 0, 0
+  index: -1
+Eldritch Ice Slimei
+  rotate: false
+  xy: 1947, 1781
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+Eldritch Ice Slimeii
+  rotate: false
+  xy: 1502, 1221
+  size: 163, 191
+  orig: 163, 191
+  offset: 0, 0
+  index: -1
+Forest Shroom
+  rotate: true
+  xy: 1947, 1414
+  size: 139, 100
+  orig: 139, 100
+  offset: 0, 0
+  index: -1
+Forest Shroomy
+  rotate: false
+  xy: 1947, 1872
+  size: 100, 85
+  orig: 100, 85
+  offset: 0, 0
+  index: -1
+Legendary Knights Blacksmith Remment
+  rotate: false
+  xy: 1759, 596
+  size: 288, 305
+  orig: 288, 305
+  offset: 0, 0
+  index: -1
+Light Angel Maiden
+  rotate: true
+  xy: 1769, 313
+  size: 281, 278
+  orig: 281, 278
+  offset: 0, 0
+  index: -1
+Megapack II Flame Monkey
+  rotate: true
+  xy: 1308, 1221
+  size: 191, 192
+  orig: 191, 192
+  offset: 0, 0
+  index: -1
+Megapack II Void Demon B
+  rotate: true
+  xy: 1, 662
+  size: 557, 437
+  orig: 557, 437
+  offset: 0, 0
+  index: -1
+Megapack III Axe Warrior Dwarf
+  rotate: true
+  xy: 898, 1221
+  size: 191, 214
+  orig: 191, 214
+  offset: 0, 0
+  index: -1
+Mimic Cloak
+  rotate: false
+  xy: 297, 1221
+  size: 235, 191
+  orig: 334, 249
+  offset: 40, 35
+  index: -1
+Objects Ace Spade
+  rotate: true
+  xy: 777, 867
+  size: 173, 119
+  orig: 178, 130
+  offset: 5, 11
+  index: -1
+Objects bPawnA
+  rotate: false
+  xy: 1947, 1555
+  size: 100, 111
+  orig: 100, 111
+  offset: 0, 0
+  index: -1
+Objects wPawnA
+  rotate: false
+  xy: 1947, 1668
+  size: 100, 111
+  orig: 100, 111
+  offset: 0, 0
+  index: -1
+Pirate Bandit
+  rotate: false
+  xy: 1, 1221
+  size: 294, 191
+  orig: 294, 191
+  offset: 0, 0
+  index: -1
+Sea Beach Hermit Crab
+  rotate: true
+  xy: 1667, 1221
+  size: 142, 90
+  orig: 142, 90
+  offset: 0, 0
+  index: -1
+Sea Lurker
+  rotate: false
+  xy: 777, 1298
+  size: 119, 80
+  orig: 119, 80
+  offset: 0, 0
+  index: -1
+Sea Piranos
+  rotate: false
+  xy: 1947, 1959
+  size: 84, 88
+  orig: 84, 88
+  offset: 0, 0
+  index: -1
+Slime Holyi
+  rotate: false
+  xy: 777, 1189
+  size: 119, 107
+  orig: 119, 107
+  offset: 0, 0
+  index: -1
+Special Spiders Dragon Spider
+  rotate: false
+  xy: 1, 1
+  size: 895, 659
+  orig: 895, 659
+  offset: 0, 0
+  index: -1
+Toxic Cactus A
+  rotate: true
+  xy: 777, 1042
+  size: 145, 119
+  orig: 150, 125
+  offset: 4, 1
+  index: -1
+
+Enemies-3.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Assembling Automatons Automaton B
+  rotate: true
+  xy: 1702, 1419
+  size: 369, 345
+  orig: 369, 345
+  offset: 0, 0
+  index: -1
+Assembling Automatons Automaton C
+  rotate: false
+  xy: 554, 608
+  size: 306, 320
+  orig: 306, 320
+  offset: 0, 0
+  index: -1
+Boss Crab King Karkinos
+  rotate: false
+  xy: 862, 565
+  size: 838, 492
+  orig: 839, 492
+  offset: 0, 0
+  index: -1
+Boss Eldritch God Shaccad'Yoggoth
+  rotate: false
+  xy: 862, 1
+  size: 859, 562
+  orig: 859, 562
+  offset: 0, 0
+  index: -1
+Boss Hellhound Garm
+  rotate: true
+  xy: 1723, 562
+  size: 353, 324
+  orig: 353, 324
+  offset: 0, 0
+  index: -1
+Boss Insect Queen
+  rotate: true
+  xy: 838, 1419
+  size: 625, 424
+  orig: 625, 424
+  offset: 0, 0
+  index: -1
+Boss Jubokko
+  rotate: true
+  xy: 862, 1059
+  size: 358, 423
+  orig: 358, 423
+  offset: 0, 0
+  index: -1
+Boss Skull Knight Xoer
+  rotate: true
+  xy: 1, 1419
+  size: 627, 551
+  orig: 627, 551
+  offset: 0, 0
+  index: -1
+Boss Twin Gods
+  rotate: true
+  xy: 1723, 1
+  size: 559, 324
+  orig: 559, 324
+  offset: 0, 0
+  index: -1
+Colossal Dark Crow
+  rotate: true
+  xy: 1, 608
+  size: 481, 551
+  orig: 507, 564
+  offset: 14, 3
+  index: -1
+Colossal Hydra 1
+  rotate: true
+  xy: 1264, 1575
+  size: 453, 436
+  orig: 453, 436
+  offset: 0, 0
+  index: -1
+Desert Sand Tentacle
+  rotate: false
+  xy: 1, 1229
+  size: 356, 188
+  orig: 356, 188
+  offset: 0, 0
+  index: -1
+Eldritch Fire Slimeiii
+  rotate: false
+  xy: 1287, 1322
+  size: 413, 251
+  orig: 413, 251
+  offset: 0, 0
+  index: -1
+Insect Red Ant Knight
+  rotate: true
+  xy: 1, 1091
+  size: 136, 207
+  orig: 136, 207
+  offset: 0, 0
+  index: -1
+Insects Fire Ant
+  rotate: true
+  xy: 316, 1091
+  size: 136, 80
+  orig: 136, 80
+  offset: 0, 0
+  index: -1
+Insects Hell Mantis
+  rotate: true
+  xy: 398, 1091
+  size: 275, 154
+  orig: 275, 154
+  offset: 0, 0
+  index: -1
+Megapack II Wingless Dragon
+  rotate: false
+  xy: 1287, 1059
+  size: 413, 261
+  orig: 413, 261
+  offset: 0, 0
+  index: -1
+Sea Beach Dark Star
+  rotate: false
+  xy: 210, 1091
+  size: 104, 136
+  orig: 104, 136
+  offset: 0, 0
+  index: -1
+Sea Mermaid Warrior Sasha
+  rotate: true
+  xy: 554, 930
+  size: 297, 306
+  orig: 297, 306
+  offset: 0, 0
+  index: -1
+Seven Sins Gluttony
+  rotate: true
+  xy: 1702, 917
+  size: 500, 345
+  orig: 500, 345
+  offset: 0, 0
+  index: -1
+Slime Earthi
+  rotate: true
+  xy: 1968, 1945
+  size: 102, 56
+  orig: 102, 56
+  offset: 0, 0
+  index: -1
+Slime RPG Defender
+  rotate: true
+  xy: 1968, 1790
+  size: 153, 79
+  orig: 153, 79
+  offset: 0, 0
+  index: -1
+Special Spiders Ghost Spider
+  rotate: false
+  xy: 554, 1419
+  size: 282, 626
+  orig: 282, 626
+  offset: 0, 0
+  index: -1
+Toxic Carnivorous Plant A
+  rotate: true
+  xy: 1702, 1790
+  size: 257, 264
+  orig: 265, 265
+  offset: 1, 0
+  index: -1
+Xmas Bear
+  rotate: false
+  xy: 554, 1229
+  size: 286, 188
+  orig: 286, 188
+  offset: 0, 0
+  index: -1
+Zodiac Creatures Ophichus
+  rotate: false
+  xy: 1, 1
+  size: 859, 605
+  orig: 859, 605
+  offset: 0, 0
+  index: -1
+
+Enemies-4.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arcane Golem
+  rotate: false
+  xy: 283, 1480
+  size: 640, 565
+  orig: 640, 565
+  offset: 0, 0
+  index: -1
+Boss Continental Turtle Rukkha
+  rotate: false
+  xy: 791, 1
+  size: 787, 512
+  orig: 787, 512
+  offset: 0, 0
+  index: -1
+Boss Thanatos
+  rotate: false
+  xy: 1, 380
+  size: 747, 553
+  orig: 748, 636
+  offset: 0, 0
+  index: -1
+Boss Tiamat Unleashed
+  rotate: true
+  xy: 1580, 1
+  size: 410, 466
+  orig: 410, 466
+  offset: 0, 0
+  index: -1
+Dragon Red
+  rotate: false
+  xy: 1524, 1106
+  size: 523, 275
+  orig: 523, 275
+  offset: 0, 0
+  index: -1
+Earth Wisp
+  rotate: true
+  xy: 925, 1965
+  size: 82, 122
+  orig: 128, 146
+  offset: 23, 8
+  index: -1
+Egypt Sphinx Big
+  rotate: false
+  xy: 1, 1
+  size: 788, 377
+  orig: 788, 377
+  offset: 0, 0
+  index: -1
+Eldritch Abomination Tyrant
+  rotate: true
+  xy: 1089, 1026
+  size: 523, 405
+  orig: 523, 405
+  offset: 0, 0
+  index: -1
+Elemental Titan Ignis
+  rotate: false
+  xy: 1, 935
+  size: 742, 543
+  orig: 742, 543
+  offset: 0, 0
+  index: -1
+Goblin Grunt
+  rotate: true
+  xy: 1524, 1551
+  size: 128, 160
+  orig: 161, 166
+  offset: 9, 1
+  index: -1
+Halloween Pumpkin Chariot No Minion
+  rotate: false
+  xy: 1496, 749
+  size: 551, 355
+  orig: 551, 355
+  offset: 0, 0
+  index: -1
+Insects Black Ant Knight
+  rotate: true
+  xy: 1496, 1383
+  size: 166, 214
+  orig: 166, 214
+  offset: 0, 0
+  index: -1
+Machines Airship
+  rotate: false
+  xy: 1580, 413
+  size: 466, 334
+  orig: 472, 337
+  offset: 6, 1
+  index: -1
+Megapack II Black Lance Knight
+  rotate: true
+  xy: 1, 1480
+  size: 567, 280
+  orig: 567, 280
+  offset: 0, 0
+  index: -1
+Megapack II Forest Six-Wing Fairy
+  rotate: false
+  xy: 925, 1789
+  size: 162, 174
+  orig: 162, 174
+  offset: 0, 0
+  index: -1
+Megapack III Elemental Lords Fire Lord
+  rotate: false
+  xy: 750, 515
+  size: 744, 509
+  orig: 744, 509
+  offset: 0, 0
+  index: -1
+Mountain Griffon
+  rotate: true
+  xy: 1712, 1383
+  size: 296, 335
+  orig: 296, 336
+  offset: 0, 1
+  index: -1
+Skeleton Dragon
+  rotate: true
+  xy: 1089, 1551
+  size: 496, 433
+  orig: 501, 433
+  offset: 2, 0
+  index: -1
+Slime RPG Caster
+  rotate: true
+  xy: 1496, 515
+  size: 134, 82
+  orig: 134, 82
+  offset: 0, 0
+  index: -1
+Slime Windi
+  rotate: true
+  xy: 1496, 651
+  size: 96, 74
+  orig: 96, 74
+  offset: 0, 0
+  index: -1
+Slime Windiii
+  rotate: true
+  xy: 925, 1480
+  size: 307, 162
+  orig: 307, 162
+  offset: 0, 0
+  index: -1
+Special Spiders Fire Spider
+  rotate: false
+  xy: 1524, 1681
+  size: 486, 366
+  orig: 486, 366
+  offset: 0, 0
+  index: -1
+Wind Feathered Golem
+  rotate: true
+  xy: 745, 1026
+  size: 452, 342
+  orig: 452, 342
+  offset: 0, 0
+  index: -1
+
+Enemies-5.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Dark Queen Shaccad Yoggoth
+  rotate: false
+  xy: 303, 1698
+  size: 494, 349
+  orig: 494, 349
+  offset: 0, 0
+  index: -1
+Boss God Warrior Dagon
+  rotate: true
+  xy: 1420, 941
+  size: 261, 163
+  orig: 262, 163
+  offset: 0, 0
+  index: -1
+Boss Goddess Aphrodite
+  rotate: false
+  xy: 1686, 1698
+  size: 350, 349
+  orig: 350, 351
+  offset: 0, 0
+  index: -1
+Boss Grand Sorceress Duessa
+  rotate: false
+  xy: 1, 1
+  size: 735, 545
+  orig: 736, 545
+  offset: 0, 0
+  index: -1
+Boss Sea Dragon Leviathan
+  rotate: true
+  xy: 1468, 1
+  size: 526, 578
+  orig: 527, 578
+  offset: 0, 0
+  index: -1
+Boss Sea Mermaid Warrior Undeen
+  rotate: false
+  xy: 1310, 1402
+  size: 273, 294
+  orig: 291, 302
+  offset: 5, 1
+  index: -1
+Boss Zeograth
+  rotate: false
+  xy: 713, 876
+  size: 705, 524
+  orig: 706, 524
+  offset: 0, 0
+  index: -1
+Colossal Snake Red
+  rotate: false
+  xy: 303, 1065
+  size: 408, 318
+  orig: 408, 318
+  offset: 0, 0
+  index: -1
+Desert Cactus Triple
+  rotate: false
+  xy: 1585, 1487
+  size: 362, 209
+  orig: 362, 209
+  offset: 0, 0
+  index: -1
+Dragon Egg D
+  rotate: false
+  xy: 1, 1333
+  size: 81, 67
+  orig: 81, 67
+  offset: 0, 0
+  index: -1
+Earth Lion
+  rotate: true
+  xy: 1032, 1402
+  size: 294, 276
+  orig: 371, 290
+  offset: 20, 4
+  index: -1
+Eldritch God ShacadYoggoth
+  rotate: false
+  xy: 738, 1
+  size: 728, 421
+  orig: 728, 421
+  offset: 0, 0
+  index: -1
+Elemental Titan Terran
+  rotate: false
+  xy: 738, 424
+  size: 719, 450
+  orig: 719, 450
+  offset: 0, 0
+  index: -1
+Fire Ogre
+  rotate: false
+  xy: 713, 1402
+  size: 317, 294
+  orig: 351, 317
+  offset: 13, 4
+  index: -1
+Forest Golem
+  rotate: false
+  xy: 1279, 1698
+  size: 405, 349
+  orig: 405, 349
+  offset: 0, 0
+  index: -1
+Gunblin Jackson
+  rotate: true
+  xy: 1420, 1204
+  size: 196, 163
+  orig: 196, 163
+  offset: 0, 0
+  index: -1
+Legendary Knight Pizarro B
+  rotate: false
+  xy: 799, 1698
+  size: 478, 349
+  orig: 480, 349
+  offset: 0, 0
+  index: -1
+Legendary Knight Pizarro
+  rotate: false
+  xy: 303, 1385
+  size: 408, 311
+  orig: 408, 311
+  offset: 0, 0
+  index: -1
+Legendary Knight Sen
+  rotate: false
+  xy: 1, 1065
+  size: 300, 266
+  orig: 300, 266
+  offset: 0, 0
+  index: -1
+Megapack III Cerberus Ptolemaios
+  rotate: false
+  xy: 1459, 529
+  size: 588, 410
+  orig: 588, 410
+  offset: 0, 0
+  index: -1
+Objects Madpill
+  rotate: true
+  xy: 211, 1333
+  size: 58, 78
+  orig: 58, 78
+  offset: 0, 0
+  index: -1
+Objects Medibros
+  rotate: false
+  xy: 1949, 1638
+  size: 96, 58
+  orig: 96, 58
+  offset: 0, 0
+  index: -1
+Sea Beach Dark Shell
+  rotate: true
+  xy: 1949, 1487
+  size: 149, 98
+  orig: 149, 98
+  offset: 0, 0
+  index: -1
+Sea Horse
+  rotate: true
+  xy: 84, 1333
+  size: 66, 125
+  orig: 66, 125
+  offset: 0, 0
+  index: -1
+Seven Sins Sloth
+  rotate: false
+  xy: 1585, 941
+  size: 462, 544
+  orig: 462, 544
+  offset: 0, 0
+  index: -1
+Zodiac Creatures Cancer
+  rotate: true
+  xy: 1, 1402
+  size: 644, 300
+  orig: 644, 300
+  offset: 0, 0
+  index: -1
+Zodiac Leo
+  rotate: false
+  xy: 1, 548
+  size: 710, 515
+  orig: 710, 515
+  offset: 0, 0
+  index: -1
+
+Enemies-6.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Light Titan Alfadriel
+  rotate: true
+  xy: 1413, 299
+  size: 603, 615
+  orig: 603, 616
+  offset: 0, 0
+  index: -1
+Boss Wind Titan Ventoss
+  rotate: false
+  xy: 706, 659
+  size: 699, 598
+  orig: 734, 640
+  offset: 17, 18
+  index: -1
+Boss Zodiac Cancer
+  rotate: false
+  xy: 1413, 1
+  size: 616, 296
+  orig: 617, 296
+  offset: 0, 0
+  index: -1
+Dragon Emperor Zalaras
+  rotate: true
+  xy: 1, 1413
+  size: 613, 470
+  orig: 663, 489
+  offset: 29, 7
+  index: -1
+Dragon White King
+  rotate: false
+  xy: 1, 514
+  size: 703, 511
+  orig: 721, 526
+  offset: 12, 7
+  index: -1
+Earth Bush Wisp
+  rotate: false
+  xy: 1647, 1588
+  size: 79, 111
+  orig: 84, 116
+  offset: 2, 4
+  index: -1
+Eldritch Fire Slimeii
+  rotate: true
+  xy: 1255, 1259
+  size: 228, 150
+  orig: 228, 150
+  offset: 0, 0
+  index: -1
+Elemental Titan Aquos
+  rotate: false
+  xy: 708, 1
+  size: 703, 656
+  orig: 703, 656
+  offset: 0, 0
+  index: -1
+Elemental Titan Ventoss
+  rotate: false
+  xy: 706, 659
+  size: 699, 598
+  orig: 734, 640
+  offset: 17, 18
+  index: -1
+Ice Spike
+  rotate: true
+  xy: 913, 1259
+  size: 152, 187
+  orig: 170, 194
+  offset: 12, 1
+  index: -1
+Knight Blunderbuss Elite
+  rotate: false
+  xy: 687, 1259
+  size: 224, 152
+  orig: 246, 162
+  offset: 17, 0
+  index: -1
+Legendary Knights Disciple Moonblade
+  rotate: true
+  xy: 1728, 1334
+  size: 420, 319
+  orig: 420, 319
+  offset: 0, 0
+  index: -1
+Megapack II Horn Willow
+  rotate: true
+  xy: 1124, 1413
+  size: 173, 129
+  orig: 173, 129
+  offset: 0, 0
+  index: -1
+Megapack II Roaming Salamander
+  rotate: false
+  xy: 1647, 1756
+  size: 363, 291
+  orig: 363, 291
+  offset: 0, 0
+  index: -1
+Megapack II Spike Hopper
+  rotate: false
+  xy: 1102, 1259
+  size: 151, 152
+  orig: 151, 152
+  offset: 0, 0
+  index: -1
+Objects Madsule
+  rotate: false
+  xy: 1255, 1489
+  size: 122, 97
+  orig: 122, 97
+  offset: 0, 0
+  index: -1
+Orc War Drummer Weak
+  rotate: true
+  xy: 473, 1413
+  size: 611, 649
+  orig: 611, 649
+  offset: 0, 0
+  index: -1
+Pre-Legendary Knights Cursed Swordsman Michael
+  rotate: false
+  xy: 1407, 904
+  size: 638, 428
+  orig: 673, 428
+  offset: 35, 0
+  index: -1
+Secondary Elementals War Elemental
+  rotate: false
+  xy: 1, 1027
+  size: 684, 384
+  orig: 684, 384
+  offset: 0, 0
+  index: -1
+Titan Fire Ignis
+  rotate: false
+  xy: 1407, 1334
+  size: 319, 252
+  orig: 319, 252
+  offset: 0, 0
+  index: -1
+Zodiac Creatures Saggitarius
+  rotate: false
+  xy: 1124, 1588
+  size: 521, 458
+  orig: 521, 458
+  offset: 0, 0
+  index: -1
+Zodiac Leo B
+  rotate: false
+  xy: 1, 1
+  size: 705, 511
+  orig: 705, 511
+  offset: 0, 0
+  index: -1
+
+Enemies-7.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arcane Orb Thunder
+  rotate: true
+  xy: 1959, 1542
+  size: 94, 86
+  orig: 94, 86
+  offset: 0, 0
+  index: -1
+Boss Abomination Red
+  rotate: false
+  xy: 611, 1181
+  size: 504, 311
+  orig: 504, 311
+  offset: 0, 0
+  index: -1
+Boss Hades
+  rotate: true
+  xy: 1015, 1494
+  size: 547, 402
+  orig: 569, 420
+  offset: 0, 10
+  index: -1
+Boss Parrot King
+  rotate: false
+  xy: 433, 1494
+  size: 580, 547
+  orig: 580, 547
+  offset: 0, 0
+  index: -1
+Boss Radulac The Voidvod
+  rotate: false
+  xy: 678, 1
+  size: 673, 444
+  orig: 673, 445
+  offset: 0, 0
+  index: -1
+Boss Runic Stone Golem Goliath
+  rotate: true
+  xy: 1, 1022
+  size: 470, 608
+  orig: 470, 614
+  offset: 0, 0
+  index: -1
+Clockwork Knight B
+  rotate: true
+  xy: 1693, 1639
+  size: 408, 203
+  orig: 408, 203
+  offset: 0, 0
+  index: -1
+Darkness Slime
+  rotate: true
+  xy: 1959, 841
+  size: 101, 88
+  orig: 101, 88
+  offset: 0, 0
+  index: -1
+Desert Rock Lizard
+  rotate: true
+  xy: 1959, 944
+  size: 192, 87
+  orig: 192, 87
+  offset: 0, 0
+  index: -1
+Dragon Lord A
+  rotate: false
+  xy: 1281, 1138
+  size: 410, 354
+  orig: 410, 354
+  offset: 0, 0
+  index: -1
+Earth Mandrake
+  rotate: false
+  xy: 1898, 1639
+  size: 149, 203
+  orig: 152, 203
+  offset: 0, 0
+  index: -1
+Forest Fairy Filia
+  rotate: false
+  xy: 1898, 1844
+  size: 149, 180
+  orig: 149, 180
+  offset: 0, 0
+  index: -1
+Ghost Knight Galpha
+  rotate: true
+  xy: 1117, 1181
+  size: 164, 162
+  orig: 164, 162
+  offset: 0, 0
+  index: -1
+Ice Snake
+  rotate: true
+  xy: 1959, 731
+  size: 108, 88
+  orig: 123, 98
+  offset: 8, 3
+  index: -1
+Insects Roach
+  rotate: true
+  xy: 1959, 1247
+  size: 163, 86
+  orig: 175, 86
+  offset: 0, 0
+  index: -1
+Library Book Golem
+  rotate: false
+  xy: 678, 447
+  size: 642, 465
+  orig: 642, 465
+  offset: 0, 0
+  index: -1
+Megapack II Colossal Mummy
+  rotate: false
+  xy: 644, 914
+  size: 635, 265
+  orig: 635, 265
+  offset: 0, 0
+  index: -1
+Megapack II Diamond Dog
+  rotate: true
+  xy: 1419, 1780
+  size: 267, 245
+  orig: 267, 245
+  offset: 0, 0
+  index: -1
+Megapack III Behemoth
+  rotate: false
+  xy: 1, 1
+  size: 675, 532
+  orig: 675, 532
+  offset: 0, 0
+  index: -1
+Megapack III Fallen Kings King Of Giants Goken
+  rotate: false
+  xy: 1322, 614
+  size: 635, 506
+  orig: 635, 506
+  offset: 0, 0
+  index: -1
+Minotaur Beef
+  rotate: true
+  xy: 1693, 1122
+  size: 515, 264
+  orig: 607, 319
+  offset: 39, 14
+  index: -1
+Objects bBishop
+  rotate: true
+  xy: 1117, 1347
+  size: 122, 162
+  orig: 122, 162
+  offset: 0, 0
+  index: -1
+Objects bKing
+  rotate: false
+  xy: 1419, 1494
+  size: 272, 284
+  orig: 272, 284
+  offset: 0, 0
+  index: -1
+Orc War Drummer
+  rotate: true
+  xy: 1353, 1
+  size: 611, 649
+  orig: 611, 649
+  offset: 0, 0
+  index: -1
+Slime Firei
+  rotate: true
+  xy: 1959, 614
+  size: 115, 88
+  orig: 115, 88
+  offset: 0, 0
+  index: -1
+Slime RPG Debuffer
+  rotate: true
+  xy: 1959, 1412
+  size: 128, 86
+  orig: 128, 86
+  offset: 0, 0
+  index: -1
+Summon Ifrit
+  rotate: true
+  xy: 1, 1494
+  size: 550, 430
+  orig: 550, 430
+  offset: 0, 0
+  index: -1
+Wind Bunny
+  rotate: true
+  xy: 1959, 1138
+  size: 107, 87
+  orig: 107, 87
+  offset: 0, 0
+  index: -1
+Zodiac Creatures Pisces
+  rotate: false
+  xy: 1, 535
+  size: 641, 485
+  orig: 641, 485
+  offset: 0, 0
+  index: -1
+
+Enemies-8.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Assembling Automatons Automaton D
+  rotate: true
+  xy: 1, 608
+  size: 604, 474
+  orig: 604, 474
+  offset: 0, 0
+  index: -1
+Boss Dragon Huanglong
+  rotate: false
+  xy: 1, 1
+  size: 435, 605
+  orig: 435, 605
+  offset: 0, 0
+  index: -1
+Boss Dryad Queen Rafflesia
+  rotate: true
+  xy: 803, 1
+  size: 587, 431
+  orig: 587, 431
+  offset: 0, 0
+  index: -1
+Boss Feral Kitsune
+  rotate: true
+  xy: 477, 606
+  size: 591, 401
+  orig: 592, 402
+  offset: 0, 0
+  index: -1
+Boss God Novus
+  rotate: false
+  xy: 1668, 1685
+  size: 379, 318
+  orig: 379, 318
+  offset: 0, 0
+  index: -1
+Boss Mecha-Scorpion
+  rotate: true
+  xy: 1, 1214
+  size: 600, 355
+  orig: 600, 355
+  offset: 0, 0
+  index: -1
+Colossal Hydra 2
+  rotate: false
+  xy: 1594, 903
+  size: 453, 436
+  orig: 453, 436
+  offset: 0, 0
+  index: -1
+Colossal Hydra 3
+  rotate: false
+  xy: 1594, 1
+  size: 453, 451
+  orig: 453, 451
+  offset: 0, 0
+  index: -1
+Colossal Scorpion
+  rotate: false
+  xy: 865, 1787
+  size: 468, 260
+  orig: 468, 260
+  offset: 0, 0
+  index: -1
+Colossal T-Rex Orange
+  rotate: false
+  xy: 1255, 586
+  size: 337, 322
+  orig: 337, 322
+  offset: 0, 0
+  index: -1
+Crocodile Warriors Paladin
+  rotate: true
+  xy: 358, 1214
+  size: 596, 309
+  orig: 596, 309
+  offset: 0, 0
+  index: -1
+Dragon Lord B
+  rotate: true
+  xy: 880, 590
+  size: 583, 373
+  orig: 583, 373
+  offset: 0, 0
+  index: -1
+Dragons Scarlet Wyrm
+  rotate: true
+  xy: 1594, 454
+  size: 447, 453
+  orig: 447, 453
+  offset: 0, 0
+  index: -1
+Egypt Cobra
+  rotate: false
+  xy: 1068, 1175
+  size: 185, 157
+  orig: 185, 157
+  offset: 0, 0
+  index: -1
+Eldritch Abominations Ultimate
+  rotate: true
+  xy: 438, 1
+  size: 603, 363
+  orig: 603, 363
+  offset: 0, 0
+  index: -1
+Fire Lava Spawn
+  rotate: false
+  xy: 1, 1816
+  size: 307, 231
+  orig: 347, 252
+  offset: 24, 11
+  index: -1
+Fire Vulture
+  rotate: true
+  xy: 1255, 910
+  size: 429, 283
+  orig: 493, 326
+  offset: 28, 17
+  index: -1
+Forest Sprout
+  rotate: true
+  xy: 1516, 1567
+  size: 154, 149
+  orig: 154, 149
+  offset: 0, 0
+  index: -1
+Halloween Pumpkin Chariot
+  rotate: true
+  xy: 1236, 1
+  size: 583, 356
+  orig: 583, 356
+  offset: 0, 0
+  index: -1
+Halloween Vampire
+  rotate: false
+  xy: 1335, 1787
+  size: 331, 260
+  orig: 331, 260
+  offset: 0, 0
+  index: -1
+Legendary Knight Remment
+  rotate: false
+  xy: 465, 1812
+  size: 398, 235
+  orig: 398, 235
+  offset: 0, 0
+  index: -1
+Megapack III Zodiac Aries
+  rotate: true
+  xy: 669, 1199
+  size: 586, 397
+  orig: 586, 397
+  offset: 0, 0
+  index: -1
+Mountain Rock Mimic
+  rotate: false
+  xy: 1516, 1723
+  size: 131, 62
+  orig: 131, 62
+  offset: 0, 0
+  index: -1
+Rabbit Warriors Knight
+  rotate: false
+  xy: 310, 1816
+  size: 153, 231
+  orig: 153, 231
+  offset: 0, 0
+  index: -1
+Secondary Elementals Time Elemental
+  rotate: false
+  xy: 1668, 1341
+  size: 379, 342
+  orig: 379, 342
+  offset: 0, 0
+  index: -1
+Slime Wateriii
+  rotate: true
+  xy: 1516, 1341
+  size: 224, 150
+  orig: 224, 150
+  offset: 0, 0
+  index: -1
+Zodiac Aries B
+  rotate: true
+  xy: 669, 1199
+  size: 586, 397
+  orig: 586, 397
+  offset: 0, 0
+  index: -1
+Zodiac Creatures Libra
+  rotate: false
+  xy: 1068, 1341
+  size: 446, 444
+  orig: 446, 444
+  offset: 0, 0
+  index: -1
+
+Enemies-9.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Legendary Knight Remment
+  rotate: false
+  xy: 1, 323
+  size: 581, 341
+  orig: 581, 341
+  offset: 0, 0
+  index: -1
+Boss Mecha Rattlesnake
+  rotate: false
+  xy: 1, 1
+  size: 583, 320
+  orig: 583, 321
+  offset: 0, 0
+  index: -1
+Boss Void Gargoyle Sabre
+  rotate: true
+  xy: 1169, 328
+  size: 506, 577
+  orig: 506, 577
+  offset: 0, 0
+  index: -1
+Clockwork Iron Maiden
+  rotate: false
+  xy: 1752, 313
+  size: 295, 233
+  orig: 295, 233
+  offset: 0, 0
+  index: -1
+Colossal Snake
+  rotate: false
+  xy: 1237, 1724
+  size: 414, 323
+  orig: 414, 323
+  offset: 0, 0
+  index: -1
+Dragon Triple Head Darkness
+  rotate: false
+  xy: 1, 666
+  size: 577, 393
+  orig: 577, 393
+  offset: 0, 0
+  index: -1
+Dragons Hydra
+  rotate: true
+  xy: 1, 1061
+  size: 498, 439
+  orig: 498, 439
+  offset: 0, 0
+  index: -1
+Eldritch Slime Spawn B
+  rotate: true
+  xy: 1748, 548
+  size: 543, 298
+  orig: 556, 311
+  offset: 10, 10
+  index: -1
+Fire Lava Worm
+  rotate: false
+  xy: 1169, 1
+  size: 581, 325
+  orig: 581, 325
+  offset: 0, 0
+  index: -1
+Fire Snake
+  rotate: true
+  xy: 1052, 921
+  size: 130, 109
+  orig: 212, 159
+  offset: 42, 20
+  index: -1
+Forest Kawabun
+  rotate: true
+  xy: 1163, 1366
+  size: 144, 72
+  orig: 144, 72
+  offset: 0, 0
+  index: -1
+Ghost Puppet Pailo
+  rotate: true
+  xy: 479, 1886
+  size: 161, 187
+  orig: 161, 187
+  offset: 0, 0
+  index: -1
+Ghost Revelator
+  rotate: false
+  xy: 1653, 1724
+  size: 85, 90
+  orig: 85, 90
+  offset: 0, 0
+  index: -1
+Ice Ogre
+  rotate: true
+  xy: 1752, 1
+  size: 310, 295
+  orig: 322, 319
+  offset: 11, 8
+  index: -1
+Insects Waterstrider
+  rotate: false
+  xy: 580, 921
+  size: 239, 138
+  orig: 239, 138
+  offset: 0, 0
+  index: -1
+Light Angel Heavy Knight
+  rotate: true
+  xy: 1740, 1093
+  size: 466, 307
+  orig: 475, 307
+  offset: 0, 0
+  index: -1
+Light Dragon
+  rotate: false
+  xy: 1237, 1366
+  size: 501, 356
+  orig: 501, 356
+  offset: 0, 0
+  index: -1
+Light Summoned Angel
+  rotate: false
+  xy: 1163, 836
+  size: 575, 528
+  orig: 596, 575
+  offset: 0, 0
+  index: -1
+Megapack III Void Gargoyle
+  rotate: false
+  xy: 586, 1
+  size: 581, 473
+  orig: 581, 473
+  offset: 0, 0
+  index: -1
+Mirror Mimic
+  rotate: true
+  xy: 1740, 1561
+  size: 258, 307
+  orig: 271, 318
+  offset: 8, 3
+  index: -1
+Orc Archer Weak
+  rotate: false
+  xy: 1, 1561
+  size: 476, 480
+  orig: 476, 480
+  offset: 0, 0
+  index: -1
+Orc Archer
+  rotate: false
+  xy: 685, 1061
+  size: 476, 480
+  orig: 476, 480
+  offset: 0, 0
+  index: -1
+Plant Warriors Cape Sundew
+  rotate: true
+  xy: 442, 1061
+  size: 498, 241
+  orig: 498, 241
+  offset: 0, 0
+  index: -1
+Pre-legendary Knights Inventor Sen
+  rotate: true
+  xy: 479, 1561
+  size: 323, 203
+  orig: 323, 203
+  offset: 0, 0
+  index: -1
+Sea Beach Shell Claw A
+  rotate: true
+  xy: 685, 1543
+  size: 502, 274
+  orig: 502, 274
+  offset: 0, 0
+  index: -1
+Sea Beach Shell Claw B
+  rotate: true
+  xy: 961, 1543
+  size: 502, 274
+  orig: 502, 274
+  offset: 0, 0
+  index: -1
+Sea Beach War Lobster A
+  rotate: false
+  xy: 821, 921
+  size: 229, 138
+  orig: 229, 138
+  offset: 0, 0
+  index: -1
+Sea Spheria
+  rotate: true
+  xy: 1653, 1821
+  size: 226, 206
+  orig: 228, 207
+  offset: 0, 0
+  index: -1
+Seven Sins Wrath
+  rotate: false
+  xy: 584, 476
+  size: 577, 443
+  orig: 577, 443
+  offset: 0, 0
+  index: -1
+Slime Earthii
+  rotate: false
+  xy: 1861, 1955
+  size: 140, 92
+  orig: 140, 92
+  offset: 0, 0
+  index: -1
+Slime Fireiii
+  rotate: false
+  xy: 1861, 1821
+  size: 186, 132
+  orig: 186, 132
+  offset: 0, 0
+  index: -1
+
+Enemies-10.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Bonemask Shadow Creature
+  rotate: false
+  xy: 1656, 1151
+  size: 391, 305
+  orig: 391, 305
+  offset: 0, 0
+  index: -1
+Boss Ice Titan Demeres
+  rotate: true
+  xy: 545, 920
+  size: 448, 537
+  orig: 448, 538
+  offset: 0, 0
+  index: -1
+Boss Mecha-Dragon Ladon
+  rotate: false
+  xy: 1361, 1177
+  size: 293, 461
+  orig: 293, 461
+  offset: 0, 0
+  index: -1
+Boss Nuckelavee
+  rotate: false
+  xy: 1607, 1714
+  size: 368, 333
+  orig: 368, 333
+  offset: 0, 0
+  index: -1
+Boss Thunder Titan Dynamo
+  rotate: true
+  xy: 1, 1208
+  size: 473, 533
+  orig: 474, 534
+  offset: 0, 0
+  index: -1
+Clockwork Dragon Juggernaut
+  rotate: false
+  xy: 1, 774
+  size: 542, 432
+  orig: 542, 432
+  offset: 0, 0
+  index: -1
+Clockwork Dragon
+  rotate: false
+  xy: 1112, 743
+  size: 542, 432
+  orig: 542, 432
+  offset: 0, 0
+  index: -1
+Clockwork Spider
+  rotate: true
+  xy: 1696, 379
+  size: 373, 351
+  orig: 373, 351
+  offset: 0, 0
+  index: -1
+Dragon Egg B
+  rotate: true
+  xy: 1977, 1799
+  size: 82, 69
+  orig: 82, 69
+  offset: 0, 0
+  index: -1
+Dragon Egg C
+  rotate: true
+  xy: 1977, 1714
+  size: 83, 70
+  orig: 83, 70
+  offset: 0, 0
+  index: -1
+Dragon Triple Head Venom
+  rotate: false
+  xy: 1, 389
+  size: 561, 383
+  orig: 561, 383
+  offset: 0, 0
+  index: -1
+Dwarf Dragon Slayer
+  rotate: false
+  xy: 1031, 1370
+  size: 328, 311
+  orig: 328, 311
+  offset: 0, 0
+  index: -1
+Earth Rock Golem
+  rotate: true
+  xy: 488, 1683
+  size: 364, 214
+  orig: 364, 216
+  offset: 0, 1
+  index: -1
+Eldritch Slime Spawn A
+  rotate: true
+  xy: 1, 1683
+  size: 364, 253
+  orig: 368, 253
+  offset: 3, 0
+  index: -1
+Garuda Garunix
+  rotate: true
+  xy: 1361, 1640
+  size: 407, 244
+  orig: 407, 244
+  offset: 0, 0
+  index: -1
+Ice Bull
+  rotate: true
+  xy: 1112, 1683
+  size: 349, 247
+  orig: 352, 258
+  offset: 2, 2
+  index: -1
+Insects Caterpillar B
+  rotate: true
+  xy: 1977, 1883
+  size: 122, 63
+  orig: 122, 63
+  offset: 0, 0
+  index: -1
+Legendary Knight Dalton
+  rotate: true
+  xy: 1696, 1
+  size: 376, 351
+  orig: 376, 351
+  offset: 0, 0
+  index: -1
+Legendary Knight King Archial
+  rotate: false
+  xy: 564, 537
+  size: 546, 381
+  orig: 570, 409
+  offset: 10, 5
+  index: -1
+Legendary Knights Minion Axe
+  rotate: false
+  xy: 536, 1370
+  size: 493, 311
+  orig: 493, 311
+  offset: 0, 0
+  index: -1
+Legendary Knights Summoner Dante B
+  rotate: false
+  xy: 1656, 1458
+  size: 391, 254
+  orig: 391, 254
+  offset: 0, 0
+  index: -1
+Megapack III Elemental Lords Ice Maiden
+  rotate: false
+  xy: 572, 1
+  size: 564, 534
+  orig: 564, 534
+  offset: 0, 0
+  index: -1
+Mimic Armor
+  rotate: true
+  xy: 1656, 754
+  size: 395, 391
+  orig: 479, 437
+  offset: 33, 18
+  index: -1
+Mimic Humanoid
+  rotate: true
+  xy: 256, 1683
+  size: 364, 230
+  orig: 389, 245
+  offset: 5, 1
+  index: -1
+Orc Warlock Weak
+  rotate: false
+  xy: 1138, 378
+  size: 556, 363
+  orig: 569, 386
+  offset: 0, 0
+  index: -1
+Orc Warlock
+  rotate: false
+  xy: 1, 1
+  size: 569, 386
+  orig: 569, 386
+  offset: 0, 0
+  index: -1
+Possessed Knights Saber
+  rotate: false
+  xy: 704, 1683
+  size: 406, 363
+  orig: 406, 363
+  offset: 0, 0
+  index: -1
+Post-Modern Machinery Scout
+  rotate: false
+  xy: 1138, 1
+  size: 556, 375
+  orig: 580, 430
+  offset: 9, 7
+  index: -1
+Slime Thunderiii
+  rotate: false
+  xy: 1084, 1177
+  size: 275, 180
+  orig: 275, 180
+  offset: 0, 0
+  index: -1
+
+Enemies-11.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+AncientAutomaton
+  rotate: false
+  xy: 1, 1
+  size: 533, 317
+  orig: 533, 318
+  offset: 0, 1
+  index: -1
+Aspiring Knight Valterra
+  rotate: true
+  xy: 449, 1696
+  size: 351, 269
+  orig: 351, 269
+  offset: 0, 0
+  index: -1
+Boss Alfadriel
+  rotate: false
+  xy: 1553, 1003
+  size: 494, 355
+  orig: 508, 379
+  offset: 14, 0
+  index: -1
+Boss Ancient Automaton
+  rotate: false
+  xy: 1, 1
+  size: 533, 317
+  orig: 533, 318
+  offset: 0, 1
+  index: -1
+Boss Ancient Priestess
+  rotate: true
+  xy: 1020, 1278
+  size: 367, 284
+  orig: 374, 287
+  offset: 5, 2
+  index: -1
+Boss God Warrior Isis
+  rotate: true
+  xy: 1066, 387
+  size: 390, 521
+  orig: 390, 521
+  offset: 0, 0
+  index: -1
+Boss The Fallen
+  rotate: true
+  xy: 1306, 1278
+  size: 366, 245
+  orig: 391, 250
+  offset: 11, 0
+  index: -1
+Breakfast Nightmares Bacon Beast
+  rotate: false
+  xy: 1, 690
+  size: 517, 238
+  orig: 517, 238
+  offset: 0, 0
+  index: -1
+Darkness Behemoth
+  rotate: false
+  xy: 1601, 362
+  size: 442, 327
+  orig: 442, 327
+  offset: 0, 0
+  index: -1
+Dragon Black
+  rotate: false
+  xy: 1, 930
+  size: 514, 274
+  orig: 514, 274
+  offset: 0, 0
+  index: -1
+Dragon Dark King
+  rotate: false
+  xy: 1070, 1
+  size: 529, 384
+  orig: 532, 385
+  offset: 2, 0
+  index: -1
+Eldritch Abomination Gazer
+  rotate: true
+  xy: 1553, 1793
+  size: 254, 265
+  orig: 254, 265
+  offset: 0, 0
+  index: -1
+Fallen Dragon Knight
+  rotate: false
+  xy: 536, 1
+  size: 532, 304
+  orig: 532, 304
+  offset: 0, 0
+  index: -1
+Halloween Pumpkin
+  rotate: false
+  xy: 1069, 1931
+  size: 188, 116
+  orig: 188, 116
+  offset: 0, 0
+  index: -1
+Insects Giant Bug Death Worm B
+  rotate: false
+  xy: 1039, 779
+  size: 512, 497
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Insects Giant Bug Hercules
+  rotate: false
+  xy: 512, 1260
+  size: 506, 385
+  orig: 512, 416
+  offset: 6, 0
+  index: -1
+Knight Axe Elite
+  rotate: false
+  xy: 1, 1206
+  size: 509, 279
+  orig: 538, 307
+  offset: 10, 11
+  index: -1
+Legendary Knights Disciple Chain
+  rotate: false
+  xy: 1589, 691
+  size: 457, 310
+  orig: 457, 310
+  offset: 0, 0
+  index: -1
+Megapack II White Minotaur
+  rotate: false
+  xy: 536, 307
+  size: 528, 257
+  orig: 528, 257
+  offset: 0, 0
+  index: -1
+Megapack III Black Iron Minotaur Beef
+  rotate: false
+  xy: 1553, 1360
+  size: 492, 431
+  orig: 492, 431
+  offset: 0, 0
+  index: -1
+Mimic Jar
+  rotate: false
+  xy: 1306, 1888
+  size: 228, 159
+  orig: 302, 204
+  offset: 32, 18
+  index: -1
+Mimic Sarcophagus
+  rotate: false
+  xy: 1820, 1793
+  size: 199, 254
+  orig: 334, 317
+  offset: 64, 43
+  index: -1
+Mountain Bull Dragon
+  rotate: false
+  xy: 517, 936
+  size: 509, 322
+  orig: 515, 329
+  offset: 3, 5
+  index: -1
+Mountain Hornette
+  rotate: false
+  xy: 275, 1487
+  size: 172, 158
+  orig: 172, 158
+  offset: 0, 0
+  index: -1
+Objects Mainframe
+  rotate: false
+  xy: 1, 1487
+  size: 272, 158
+  orig: 272, 158
+  offset: 0, 0
+  index: -1
+Orc Axe Warrior_W
+  rotate: true
+  xy: 1, 1647
+  size: 398, 363
+  orig: 420, 380
+  offset: 11, 9
+  index: -1
+Orc Sword Warrior Weak
+  rotate: false
+  xy: 1, 320
+  size: 517, 368
+  orig: 517, 368
+  offset: 0, 0
+  index: -1
+Orc Sword Warrior
+  rotate: false
+  xy: 520, 566
+  size: 517, 368
+  orig: 517, 368
+  offset: 0, 0
+  index: -1
+Pirate Captain
+  rotate: true
+  xy: 1069, 1647
+  size: 282, 235
+  orig: 282, 235
+  offset: 0, 0
+  index: -1
+Possessed Knights Gun
+  rotate: false
+  xy: 1601, 1
+  size: 442, 359
+  orig: 442, 359
+  offset: 0, 0
+  index: -1
+Sea Beach Urchin
+  rotate: true
+  xy: 449, 1593
+  size: 101, 60
+  orig: 101, 60
+  offset: 0, 0
+  index: -1
+Sea Fatoad
+  rotate: true
+  xy: 366, 1647
+  size: 120, 81
+  orig: 120, 81
+  offset: 0, 0
+  index: -1
+Sea Lickitoad
+  rotate: true
+  xy: 366, 1769
+  size: 145, 78
+  orig: 145, 78
+  offset: 0, 0
+  index: -1
+Slime Icei
+  rotate: true
+  xy: 366, 1916
+  size: 130, 71
+  orig: 130, 71
+  offset: 0, 0
+  index: -1
+Slimei
+  rotate: true
+  xy: 449, 1487
+  size: 104, 60
+  orig: 104, 60
+  offset: 0, 0
+  index: -1
+Titan Earth Terran
+  rotate: false
+  xy: 1306, 1646
+  size: 245, 240
+  orig: 245, 240
+  offset: 0, 0
+  index: -1
+Zodiac Capricorn
+  rotate: true
+  xy: 720, 1647
+  size: 398, 347
+  orig: 398, 347
+  offset: 0, 0
+  index: -1
+
+Enemies-12.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Boss Big Fish
+  rotate: true
+  xy: 1518, 1
+  size: 397, 495
+  orig: 397, 495
+  offset: 0, 0
+  index: -1
+Boss Black Ant Queen
+  rotate: true
+  xy: 1, 742
+  size: 469, 479
+  orig: 469, 479
+  offset: 0, 0
+  index: -1
+Boss Eldritch Slime Overmind
+  rotate: false
+  xy: 1, 1648
+  size: 422, 397
+  orig: 425, 403
+  offset: 2, 0
+  index: -1
+Boss Khronos
+  rotate: true
+  xy: 1500, 400
+  size: 475, 478
+  orig: 475, 478
+  offset: 0, 0
+  index: -1
+Boss The Horde
+  rotate: false
+  xy: 508, 247
+  size: 500, 347
+  orig: 500, 362
+  offset: 0, 0
+  index: -1
+Breakfast Nightmares Egg Slime
+  rotate: false
+  xy: 1015, 1
+  size: 501, 352
+  orig: 501, 352
+  offset: 0, 0
+  index: -1
+Celestial Beatrix
+  rotate: true
+  xy: 1526, 1302
+  size: 228, 222
+  orig: 228, 222
+  offset: 0, 0
+  index: -1
+Clockwork Skull
+  rotate: true
+  xy: 1526, 1719
+  size: 328, 313
+  orig: 343, 320
+  offset: 15, 3
+  index: -1
+Cyber Ogre
+  rotate: true
+  xy: 777, 1648
+  size: 394, 349
+  orig: 436, 398
+  offset: 25, 9
+  index: -1
+Cyber Slime
+  rotate: true
+  xy: 1980, 522
+  size: 92, 53
+  orig: 104, 70
+  offset: 7, 8
+  index: -1
+Darkness Blade Reaper
+  rotate: false
+  xy: 992, 734
+  size: 477, 303
+  orig: 477, 303
+  offset: 0, 0
+  index: -1
+Darkness Ogre
+  rotate: true
+  xy: 1750, 1250
+  size: 318, 296
+  orig: 318, 296
+  offset: 0, 0
+  index: -1
+Dryads Archer
+  rotate: false
+  xy: 1750, 877
+  size: 296, 371
+  orig: 296, 371
+  offset: 0, 0
+  index: -1
+Earth Gemstone Golem
+  rotate: false
+  xy: 502, 596
+  size: 488, 334
+  orig: 488, 334
+  offset: 0, 0
+  index: -1
+Earth Turtle
+  rotate: false
+  xy: 1750, 1570
+  size: 238, 147
+  orig: 266, 158
+  offset: 16, 1
+  index: -1
+Fallen Winged Sword
+  rotate: true
+  xy: 1526, 1039
+  size: 261, 222
+  orig: 261, 222
+  offset: 0, 0
+  index: -1
+Fire Bull
+  rotate: false
+  xy: 1128, 1810
+  size: 388, 237
+  orig: 430, 283
+  offset: 10, 12
+  index: -1
+Forest Mobun
+  rotate: false
+  xy: 1841, 1963
+  size: 78, 84
+  orig: 78, 84
+  offset: 0, 0
+  index: -1
+Forest Noxluff
+  rotate: false
+  xy: 1921, 1963
+  size: 72, 84
+  orig: 72, 84
+  offset: 0, 0
+  index: -1
+Goblin Raider
+  rotate: false
+  xy: 1128, 1648
+  size: 162, 160
+  orig: 162, 160
+  offset: 0, 0
+  index: -1
+Goddess Innova
+  rotate: false
+  xy: 1841, 1719
+  size: 206, 242
+  orig: 206, 242
+  offset: 0, 0
+  index: -1
+Insects Dragon
+  rotate: false
+  xy: 1, 1
+  size: 505, 356
+  orig: 505, 356
+  offset: 0, 0
+  index: -1
+Insects Giant Bug Death Worm A
+  rotate: false
+  xy: 508, 1
+  size: 505, 244
+  orig: 505, 244
+  offset: 0, 0
+  index: -1
+Knight Axe Common
+  rotate: false
+  xy: 479, 1367
+  size: 466, 279
+  orig: 473, 281
+  offset: 3, 2
+  index: -1
+Knight Spear Elite
+  rotate: true
+  xy: 1292, 1366
+  size: 370, 232
+  orig: 425, 281
+  offset: 23, 20
+  index: -1
+Legendary Knight Michael
+  rotate: false
+  xy: 1, 359
+  size: 499, 381
+  orig: 499, 381
+  offset: 0, 0
+  index: -1
+Legendary Knights Nobleman Ansellus
+  rotate: true
+  xy: 1526, 1532
+  size: 185, 222
+  orig: 185, 222
+  offset: 0, 0
+  index: -1
+Machines Fantasy Tank A
+  rotate: false
+  xy: 1471, 877
+  size: 277, 160
+  orig: 310, 184
+  offset: 8, 11
+  index: -1
+Megapack II Avian Elephant
+  rotate: true
+  xy: 425, 1648
+  size: 394, 350
+  orig: 394, 350
+  offset: 0, 0
+  index: -1
+Mountain Peacock
+  rotate: false
+  xy: 1010, 355
+  size: 488, 377
+  orig: 489, 382
+  offset: 0, 0
+  index: -1
+Orc Axe Warrior Weak
+  rotate: false
+  xy: 482, 932
+  size: 476, 433
+  orig: 516, 434
+  offset: 0, 0
+  index: -1
+Orc Axe Warrior
+  rotate: false
+  xy: 1, 1213
+  size: 476, 433
+  orig: 516, 434
+  offset: 0, 0
+  index: -1
+Sea Beach Spore
+  rotate: true
+  xy: 1980, 400
+  size: 120, 53
+  orig: 120, 53
+  offset: 0, 0
+  index: -1
+Summon Carbuncle
+  rotate: false
+  xy: 947, 1367
+  size: 343, 279
+  orig: 343, 279
+  offset: 0, 0
+  index: -1
+Summon Shiva
+  rotate: true
+  xy: 960, 1039
+  size: 325, 301
+  orig: 325, 301
+  offset: 0, 0
+  index: -1
+Vampiric Creatures Giant Mosquito
+  rotate: false
+  xy: 1263, 1039
+  size: 261, 325
+  orig: 261, 325
+  offset: 0, 0
+  index: -1
+
+Enemies-13.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arcane Orb Fire
+  rotate: false
+  xy: 450, 1947
+  size: 101, 98
+  orig: 101, 98
+  offset: 0, 0
+  index: -1
+Arcane Orb Wind
+  rotate: false
+  xy: 1329, 1959
+  size: 125, 86
+  orig: 125, 86
+  offset: 0, 0
+  index: -1
+Blood Manipulation Feral
+  rotate: false
+  xy: 1, 951
+  size: 441, 355
+  orig: 441, 355
+  offset: 0, 0
+  index: -1
+Boss Dryad Yggdrasil
+  rotate: false
+  xy: 474, 415
+  size: 462, 411
+  orig: 466, 415
+  offset: 0, 0
+  index: -1
+Boss God Warrior Poseidon
+  rotate: true
+  xy: 1, 308
+  size: 334, 471
+  orig: 339, 473
+  offset: 4, 0
+  index: -1
+Boss Orc Chief Grunt
+  rotate: false
+  xy: 952, 243
+  size: 464, 352
+  orig: 465, 352
+  offset: 0, 0
+  index: -1
+Boss Reaper Nihilo
+  rotate: false
+  xy: 1387, 967
+  size: 438, 259
+  orig: 438, 259
+  offset: 0, 0
+  index: -1
+Boss Slime Golem
+  rotate: false
+  xy: 1387, 688
+  size: 438, 277
+  orig: 438, 277
+  offset: 0, 0
+  index: -1
+Breakfast Nightmares Bread Loaf
+  rotate: false
+  xy: 1, 644
+  size: 454, 305
+  orig: 454, 305
+  offset: 0, 0
+  index: -1
+Colossal Snake Black
+  rotate: true
+  xy: 1331, 1552
+  size: 405, 316
+  orig: 405, 316
+  offset: 0, 0
+  index: -1
+Crystal Golem
+  rotate: false
+  xy: 938, 597
+  size: 447, 384
+  orig: 465, 395
+  offset: 16, 0
+  index: -1
+Darkness Angel Reaper
+  rotate: false
+  xy: 883, 1240
+  size: 434, 310
+  orig: 434, 310
+  offset: 0, 0
+  index: -1
+Darkness Blade Colossus
+  rotate: false
+  xy: 952, 1
+  size: 471, 240
+  orig: 471, 240
+  offset: 0, 0
+  index: -1
+Dragon Egg A
+  rotate: true
+  xy: 1550, 1959
+  size: 86, 72
+  orig: 86, 72
+  offset: 0, 0
+  index: -1
+Eldritch Abomination Hound
+  rotate: true
+  xy: 1892, 1
+  size: 338, 155
+  orig: 338, 155
+  offset: 0, 0
+  index: -1
+Eldritch Slime Spawn E
+  rotate: false
+  xy: 444, 1219
+  size: 437, 332
+  orig: 463, 352
+  offset: 8, 9
+  index: -1
+Elemental Gemstone Thunder
+  rotate: true
+  xy: 1649, 1463
+  size: 192, 176
+  orig: 192, 176
+  offset: 0, 0
+  index: -1
+Elemental Gemstone Wind
+  rotate: true
+  xy: 1892, 341
+  size: 187, 155
+  orig: 187, 155
+  offset: 0, 0
+  index: -1
+Fire Salamander
+  rotate: false
+  xy: 75, 1947
+  size: 263, 98
+  orig: 318, 109
+  offset: 23, 0
+  index: -1
+Flame Knight
+  rotate: false
+  xy: 1649, 1228
+  size: 176, 233
+  orig: 213, 260
+  offset: 17, 7
+  index: -1
+Forest Spora
+  rotate: false
+  xy: 891, 1946
+  size: 131, 101
+  orig: 131, 101
+  offset: 0, 0
+  index: -1
+Forest Tree
+  rotate: false
+  xy: 1425, 1
+  size: 465, 382
+  orig: 465, 382
+  offset: 0, 0
+  index: -1
+Gargoyle Grifos
+  rotate: true
+  xy: 1827, 863
+  size: 322, 220
+  orig: 322, 220
+  offset: 0, 0
+  index: -1
+Goblin Elite
+  rotate: true
+  xy: 1883, 530
+  size: 331, 164
+  orig: 331, 164
+  offset: 0, 0
+  index: -1
+God Novus
+  rotate: false
+  xy: 1319, 1240
+  size: 328, 310
+  orig: 328, 310
+  offset: 0, 0
+  index: -1
+Halloween Lick O Wisp
+  rotate: false
+  xy: 1456, 1959
+  size: 92, 86
+  orig: 92, 86
+  offset: 0, 0
+  index: -1
+Ice Avian
+  rotate: false
+  xy: 900, 983
+  size: 438, 255
+  orig: 445, 262
+  offset: 4, 3
+  index: -1
+Ice Snowman
+  rotate: true
+  xy: 1827, 1187
+  size: 301, 220
+  orig: 329, 246
+  offset: 26, 12
+  index: -1
+Light Snake
+  rotate: true
+  xy: 340, 1947
+  size: 98, 108
+  orig: 98, 108
+  offset: 0, 0
+  index: -1
+Machines Fantasy Tank D
+  rotate: false
+  xy: 1, 1308
+  size: 437, 223
+  orig: 494, 260
+  offset: 25, 1
+  index: -1
+Mushroom Don
+  rotate: false
+  xy: 1418, 385
+  size: 463, 301
+  orig: 463, 301
+  offset: 0, 0
+  index: -1
+Objects Driller
+  rotate: false
+  xy: 1933, 1788
+  size: 114, 210
+  orig: 114, 210
+  offset: 0, 0
+  index: -1
+Robot Dracozord
+  rotate: false
+  xy: 1, 1533
+  size: 436, 412
+  orig: 436, 412
+  offset: 0, 0
+  index: -1
+Rock golem
+  rotate: true
+  xy: 439, 1553
+  size: 392, 289
+  orig: 560, 338
+  offset: 88, 8
+  index: -1
+Sea Beach Seagull
+  rotate: false
+  xy: 726, 1947
+  size: 163, 97
+  orig: 163, 97
+  offset: 0, 0
+  index: -1
+Sea Seaweed Cannon
+  rotate: false
+  xy: 1024, 1942
+  size: 153, 105
+  orig: 179, 118
+  offset: 10, 3
+  index: -1
+Seven Sins Pride
+  rotate: true
+  xy: 457, 828
+  size: 389, 441
+  orig: 389, 441
+  offset: 0, 0
+  index: -1
+Skull Knight Xoer
+  rotate: false
+  xy: 477, 1
+  size: 473, 412
+  orig: 473, 412
+  offset: 0, 0
+  index: -1
+Slime Darki
+  rotate: true
+  xy: 553, 1947
+  size: 98, 96
+  orig: 98, 96
+  offset: 0, 0
+  index: -1
+Slime Holyii
+  rotate: false
+  xy: 1179, 1942
+  size: 148, 105
+  orig: 151, 108
+  offset: 1, 1
+  index: -1
+Slime RPG King
+  rotate: true
+  xy: 730, 1553
+  size: 391, 253
+  orig: 391, 253
+  offset: 0, 0
+  index: -1
+Slime Thunderi
+  rotate: true
+  xy: 651, 1947
+  size: 98, 73
+  orig: 98, 73
+  offset: 0, 0
+  index: -1
+Slime Wateri
+  rotate: true
+  xy: 1, 1947
+  size: 100, 72
+  orig: 100, 72
+  offset: 0, 0
+  index: -1
+Toxic Frog A
+  rotate: false
+  xy: 1649, 1657
+  size: 176, 112
+  orig: 176, 112
+  offset: 0, 0
+  index: -1
+Undead Claw Knight
+  rotate: true
+  xy: 1827, 1490
+  size: 296, 220
+  orig: 296, 220
+  offset: 0, 0
+  index: -1
+Undead Gigaraven
+  rotate: false
+  xy: 1, 1
+  size: 474, 305
+  orig: 474, 305
+  offset: 0, 0
+  index: -1
+Wind Lion
+  rotate: true
+  xy: 1649, 1788
+  size: 259, 282
+  orig: 259, 282
+  offset: 0, 0
+  index: -1
+Zodiac Aquarius B
+  rotate: true
+  xy: 985, 1552
+  size: 388, 344
+  orig: 388, 344
+  offset: 0, 0
+  index: -1
+
+Enemies-14.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Aspiring Knight Palazo
+  rotate: true
+  xy: 850, 1453
+  size: 237, 301
+  orig: 237, 301
+  offset: 0, 0
+  index: -1
+Boss Blood Feral
+  rotate: false
+  xy: 853, 1034
+  size: 422, 417
+  orig: 422, 417
+  offset: 0, 0
+  index: -1
+Boss God Warrior Osiris
+  rotate: false
+  xy: 1728, 709
+  size: 319, 383
+  orig: 319, 383
+  offset: 0, 0
+  index: -1
+Boss Lich King
+  rotate: false
+  xy: 874, 356
+  size: 425, 366
+  orig: 425, 366
+  offset: 0, 0
+  index: -1
+Boss Living Hoard Midas
+  rotate: true
+  xy: 1, 1692
+  size: 355, 197
+  orig: 356, 198
+  offset: 0, 0
+  index: -1
+Boss Mythical Knight Goldnharl
+  rotate: false
+  xy: 1153, 1453
+  size: 298, 237
+  orig: 299, 237
+  offset: 0, 0
+  index: -1
+Boss Tiamat
+  rotate: false
+  xy: 1, 1
+  size: 435, 263
+  orig: 435, 263
+  offset: 0, 0
+  index: -1
+Cave Dweller Blind Dragon
+  rotate: true
+  xy: 1, 453
+  size: 347, 424
+  orig: 347, 424
+  offset: 0, 0
+  index: -1
+Cave Dweller Worm
+  rotate: false
+  xy: 426, 1177
+  size: 422, 322
+  orig: 422, 322
+  offset: 0, 0
+  index: -1
+Clockwork King
+  rotate: true
+  xy: 438, 1
+  size: 403, 434
+  orig: 403, 434
+  offset: 0, 0
+  index: -1
+Corrupted Ice Mantis
+  rotate: true
+  xy: 887, 1692
+  size: 352, 214
+  orig: 352, 214
+  offset: 0, 0
+  index: -1
+Corrupted Stone Bear
+  rotate: false
+  xy: 853, 724
+  size: 424, 308
+  orig: 424, 308
+  offset: 0, 0
+  index: -1
+Dragon Wyvern Blue
+  rotate: false
+  xy: 1301, 423
+  size: 425, 318
+  orig: 431, 324
+  offset: 5, 3
+  index: -1
+Dragon Wyvern Brown
+  rotate: false
+  xy: 427, 621
+  size: 424, 318
+  orig: 435, 327
+  offset: 4, 1
+  index: -1
+Dragon Wyvern Green
+  rotate: false
+  xy: 1, 802
+  size: 424, 318
+  orig: 494, 351
+  offset: 43, 20
+  index: -1
+Dragon Wyvern Red
+  rotate: false
+  xy: 1279, 743
+  size: 423, 318
+  orig: 532, 380
+  offset: 50, 26
+  index: -1
+Dwarf Drill Knight
+  rotate: true
+  xy: 572, 1692
+  size: 352, 313
+  orig: 352, 313
+  offset: 0, 0
+  index: -1
+Egypt Chariot
+  rotate: true
+  xy: 424, 1501
+  size: 189, 268
+  orig: 189, 268
+  offset: 0, 0
+  index: -1
+Egypt Hieracosphinx
+  rotate: false
+  xy: 1, 1122
+  size: 423, 340
+  orig: 423, 340
+  offset: 0, 0
+  index: -1
+Eldritch Abominations Abyss Denizen
+  rotate: false
+  xy: 1, 266
+  size: 434, 185
+  orig: 434, 185
+  offset: 0, 0
+  index: -1
+Fire Elemental Angel
+  rotate: true
+  xy: 1727, 1409
+  size: 359, 320
+  orig: 359, 320
+  offset: 0, 0
+  index: -1
+Forest Darkluff
+  rotate: true
+  xy: 1970, 1770
+  size: 71, 77
+  orig: 71, 77
+  offset: 0, 0
+  index: -1
+Halloween Stein Monster
+  rotate: false
+  xy: 1622, 1770
+  size: 346, 277
+  orig: 346, 277
+  offset: 0, 0
+  index: -1
+Ice Yeti
+  rotate: false
+  xy: 1309, 240
+  size: 427, 181
+  orig: 427, 184
+  offset: 0, 0
+  index: -1
+Insects Black Ant Berserker
+  rotate: false
+  xy: 874, 1
+  size: 433, 353
+  orig: 433, 353
+  offset: 0, 0
+  index: -1
+Insects Black Ant Mage
+  rotate: true
+  xy: 1728, 1094
+  size: 313, 317
+  orig: 313, 317
+  offset: 0, 0
+  index: -1
+Legendary Knight Arriete
+  rotate: true
+  xy: 386, 1692
+  size: 353, 184
+  orig: 402, 201
+  offset: 42, 0
+  index: -1
+Legendary Knight Regulus
+  rotate: true
+  xy: 1738, 335
+  size: 372, 309
+  orig: 372, 309
+  offset: 0, 0
+  index: -1
+Library Book Swarm B
+  rotate: false
+  xy: 1744, 1
+  size: 301, 332
+  orig: 301, 332
+  offset: 0, 0
+  index: -1
+MAchines Fantasy Tank C
+  rotate: true
+  xy: 200, 1692
+  size: 354, 184
+  orig: 358, 190
+  offset: 2, 1
+  index: -1
+Megapack II Crocoknight
+  rotate: false
+  xy: 1, 1464
+  size: 421, 226
+  orig: 421, 226
+  offset: 0, 0
+  index: -1
+Mimic Paper Plane
+  rotate: false
+  xy: 694, 1501
+  size: 147, 189
+  orig: 188, 218
+  offset: 20, 7
+  index: -1
+Objects Dorian
+  rotate: false
+  xy: 1970, 1843
+  size: 75, 94
+  orig: 75, 94
+  offset: 0, 0
+  index: -1
+Objects wKing
+  rotate: false
+  xy: 1453, 1453
+  size: 272, 284
+  orig: 272, 284
+  offset: 0, 0
+  index: -1
+Plant Warriors Rose Knight
+  rotate: false
+  xy: 1277, 1094
+  size: 271, 357
+  orig: 271, 357
+  offset: 0, 0
+  index: -1
+Post-Modern Machinery Heavy
+  rotate: false
+  xy: 1309, 1
+  size: 433, 237
+  orig: 462, 264
+  offset: 16, 3
+  index: -1
+Sea Beach Turtle Golem
+  rotate: false
+  xy: 437, 406
+  size: 425, 213
+  orig: 425, 213
+  offset: 0, 0
+  index: -1
+Skeleton Knight Baron
+  rotate: true
+  xy: 1103, 1692
+  size: 352, 194
+  orig: 371, 212
+  offset: 5, 1
+  index: -1
+Titan Alfadriel
+  rotate: false
+  xy: 427, 941
+  size: 424, 234
+  orig: 424, 234
+  offset: 0, 0
+  index: -1
+Toxic Frog B
+  rotate: false
+  xy: 1550, 1063
+  size: 176, 112
+  orig: 176, 112
+  offset: 0, 0
+  index: -1
+Toxic Root B
+  rotate: false
+  xy: 1299, 1739
+  size: 321, 308
+  orig: 323, 308
+  offset: 0, 0
+  index: -1
+Toxic Shroom B
+  rotate: true
+  xy: 1550, 1177
+  size: 232, 175
+  orig: 262, 185
+  offset: 13, 0
+  index: -1
+Voidoll Erebia
+  rotate: true
+  xy: 1970, 1939
+  size: 92, 72
+  orig: 92, 72
+  offset: 0, 0
+  index: -1
+
+Enemies-15.png
+size: 2048, 2047
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Aspiring Knight Gladius
+  rotate: true
+  xy: 793, 1279
+  size: 372, 382
+  orig: 372, 382
+  offset: 0, 0
+  index: -1
+Assembling Automatons Automaton A
+  rotate: true
+  xy: 407, 767
+  size: 373, 403
+  orig: 373, 403
+  offset: 0, 0
+  index: -1
+Boss Abomination Aqua
+  rotate: false
+  xy: 1263, 1
+  size: 412, 387
+  orig: 412, 387
+  offset: 0, 0
+  index: -1
+Boss Darklord Excelsios
+  rotate: true
+  xy: 1493, 1628
+  size: 378, 262
+  orig: 386, 264
+  offset: 0, 2
+  index: -1
+Boss Earth Dragon
+  rotate: false
+  xy: 844, 1
+  size: 417, 315
+  orig: 417, 315
+  offset: 0, 0
+  index: -1
+Boss Goddess Innova
+  rotate: false
+  xy: 1677, 1
+  size: 368, 290
+  orig: 368, 290
+  offset: 0, 0
+  index: -1
+Boss Spirit Fighter
+  rotate: false
+  xy: 1442, 1333
+  size: 178, 293
+  orig: 178, 293
+  offset: 0, 0
+  index: -1
+Clockwork Queen
+  rotate: true
+  xy: 423, 1
+  size: 406, 419
+  orig: 406, 419
+  offset: 0, 0
+  index: -1
+Crocodile Warriors Mage
+  rotate: false
+  xy: 1257, 390
+  size: 411, 236
+  orig: 411, 236
+  offset: 0, 0
+  index: -1
+Darkness Cultist Mage
+  rotate: false
+  xy: 1234, 628
+  size: 402, 359
+  orig: 444, 367
+  offset: 42, 0
+  index: -1
+Dragon Green
+  rotate: false
+  xy: 1677, 293
+  size: 367, 269
+  orig: 367, 269
+  offset: 0, 0
+  index: -1
+Dragon Oriental Dragon
+  rotate: true
+  xy: 844, 318
+  size: 282, 411
+  orig: 282, 411
+  offset: 0, 0
+  index: -1
+Dragon Wyrm
+  rotate: true
+  xy: 552, 1708
+  size: 338, 264
+  orig: 338, 264
+  offset: 0, 0
+  index: -1
+Earth Bull
+  rotate: true
+  xy: 266, 1653
+  size: 381, 284
+  orig: 404, 290
+  offset: 10, 1
+  index: -1
+Eldritch Abominations Scout
+  rotate: true
+  xy: 1177, 1333
+  size: 317, 263
+  orig: 317, 263
+  offset: 0, 0
+  index: -1
+Eldritch Slime Spawn D
+  rotate: true
+  xy: 818, 1653
+  size: 379, 227
+  orig: 395, 233
+  offset: 11, 2
+  index: -1
+Fire Dragonspawn
+  rotate: false
+  xy: 829, 602
+  size: 403, 402
+  orig: 494, 445
+  offset: 78, 10
+  index: -1
+Fire Lion
+  rotate: true
+  xy: 571, 1430
+  size: 276, 220
+  orig: 369, 287
+  offset: 40, 19
+  index: -1
+Forest Panda
+  rotate: true
+  xy: 1, 1653
+  size: 382, 263
+  orig: 382, 263
+  offset: 0, 0
+  index: -1
+Legendary Knight Ansellus
+  rotate: false
+  xy: 406, 1142
+  size: 385, 286
+  orig: 385, 286
+  offset: 0, 0
+  index: -1
+Legendary Knights Disciple Pike
+  rotate: false
+  xy: 1622, 1138
+  size: 383, 223
+  orig: 383, 223
+  offset: 0, 0
+  index: -1
+Light Creatures Throne
+  rotate: false
+  xy: 1047, 1653
+  size: 173, 379
+  orig: 173, 379
+  offset: 0, 0
+  index: -1
+Mountain Fetero
+  rotate: true
+  xy: 1222, 1652
+  size: 378, 269
+  orig: 378, 269
+  offset: 0, 0
+  index: -1
+Mountain Harpy
+  rotate: true
+  xy: 1757, 1628
+  size: 312, 290
+  orig: 312, 291
+  offset: 0, 0
+  index: -1
+Objects wPawnB
+  rotate: true
+  xy: 1757, 1942
+  size: 104, 108
+  orig: 104, 108
+  offset: 0, 0
+  index: -1
+Possessed Knights Axe
+  rotate: false
+  xy: 1, 981
+  size: 403, 361
+  orig: 403, 361
+  offset: 0, 0
+  index: -1
+Post-Modern Machinery Assault
+  rotate: false
+  xy: 1, 1344
+  size: 384, 229
+  orig: 434, 272
+  offset: 14, 6
+  index: -1
+Rabbit Warriors Bandit
+  rotate: false
+  xy: 1913, 1363
+  size: 134, 191
+  orig: 134, 191
+  offset: 0, 0
+  index: -1
+Rogue Dagger Monk
+  rotate: false
+  xy: 1622, 1363
+  size: 289, 263
+  orig: 289, 263
+  offset: 0, 0
+  index: -1
+Sea Crab
+  rotate: false
+  xy: 1, 1575
+  size: 187, 73
+  orig: 187, 73
+  offset: 0, 0
+  index: -1
+Secondary Elementals Acid Elemental
+  rotate: false
+  xy: 1, 1
+  size: 420, 251
+  orig: 420, 251
+  offset: 0, 0
+  index: -1
+Slime Thunderii
+  rotate: false
+  xy: 1867, 1942
+  size: 164, 103
+  orig: 164, 103
+  offset: 0, 0
+  index: -1
+Summon Alicorn
+  rotate: false
+  xy: 1, 632
+  size: 404, 347
+  orig: 404, 347
+  offset: 0, 0
+  index: -1
+Toxic Cactus C
+  rotate: false
+  xy: 1638, 878
+  size: 393, 258
+  orig: 422, 268
+  offset: 23, 5
+  index: -1
+Toxic Maneater Plant C
+  rotate: true
+  xy: 387, 1430
+  size: 221, 182
+  orig: 271, 212
+  offset: 35, 10
+  index: -1
+Toxic Shroom C
+  rotate: false
+  xy: 1670, 564
+  size: 377, 312
+  orig: 384, 317
+  offset: 5, 1
+  index: -1
+Vampiric Creature Dragon Lamprey
+  rotate: true
+  xy: 1, 254
+  size: 376, 418
+  orig: 376, 418
+  offset: 0, 0
+  index: -1
+Voidoll Erabos
+  rotate: false
+  xy: 190, 1575
+  size: 167, 73
+  orig: 167, 73
+  offset: 0, 0
+  index: -1
+Xmas Snowman
+  rotate: false
+  xy: 812, 1006
+  size: 386, 271
+  orig: 386, 271
+  offset: 0, 0
+  index: -1
+Zodiac Aquarius
+  rotate: false
+  xy: 1234, 989
+  size: 386, 342
+  orig: 386, 342
+  offset: 0, 0
+  index: -1
+Zodiac Aries
+  rotate: false
+  xy: 421, 409
+  size: 406, 356
+  orig: 408, 389
+  offset: 2, 0
+  index: -1
+
+Enemies-16.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arcane Crystal Magic Circle
+  rotate: false
+  xy: 1504, 1
+  size: 371, 330
+  orig: 371, 330
+  offset: 0, 0
+  index: -1
+Assasin Garland
+  rotate: false
+  xy: 580, 1789
+  size: 144, 140
+  orig: 144, 140
+  offset: 0, 0
+  index: -1
+Boss Daidarabotchi
+  rotate: false
+  xy: 1, 254
+  size: 373, 271
+  orig: 373, 271
+  offset: 0, 0
+  index: -1
+Boss Doppelganger Slime
+  rotate: false
+  xy: 726, 1494
+  size: 336, 239
+  orig: 376, 273
+  offset: 21, 13
+  index: -1
+Boss Flynn The Original Slime
+  rotate: false
+  xy: 726, 916
+  size: 348, 274
+  orig: 348, 274
+  offset: 0, 0
+  index: -1
+Boss God Jupiter
+  rotate: true
+  xy: 1763, 1325
+  size: 330, 284
+  orig: 330, 284
+  offset: 0, 0
+  index: -1
+Clockwork Aerial
+  rotate: false
+  xy: 1456, 913
+  size: 347, 249
+  orig: 347, 249
+  offset: 0, 0
+  index: -1
+Clockwork Gigas
+  rotate: false
+  xy: 753, 326
+  size: 365, 322
+  orig: 365, 322
+  offset: 0, 0
+  index: -1
+Clockwork Juggernaut
+  rotate: false
+  xy: 726, 1192
+  size: 342, 300
+  orig: 342, 300
+  offset: 0, 0
+  index: -1
+Clockwork Mini B
+  rotate: true
+  xy: 1877, 1867
+  size: 180, 155
+  orig: 180, 155
+  offset: 0, 0
+  index: -1
+Clockwork Mini C
+  rotate: true
+  xy: 1877, 1
+  size: 272, 170
+  orig: 272, 170
+  offset: 0, 0
+  index: -1
+Clockwork Spider Mini
+  rotate: false
+  xy: 1877, 275
+  size: 170, 160
+  orig: 170, 160
+  offset: 0, 0
+  index: -1
+Colossal T-Rex Black
+  rotate: false
+  xy: 1, 1406
+  size: 340, 324
+  orig: 340, 324
+  offset: 0, 0
+  index: -1
+Darkness Drakenvamp
+  rotate: false
+  xy: 1130, 267
+  size: 371, 264
+  orig: 371, 264
+  offset: 0, 0
+  index: -1
+Darkness Flame
+  rotate: true
+  xy: 580, 1931
+  size: 116, 138
+  orig: 116, 138
+  offset: 0, 0
+  index: -1
+Darkness Imp
+  rotate: false
+  xy: 1104, 894
+  size: 350, 202
+  orig: 350, 202
+  offset: 0, 0
+  index: -1
+Dryads Warrior
+  rotate: false
+  xy: 938, 1735
+  size: 324, 310
+  orig: 324, 310
+  offset: 0, 0
+  index: -1
+Egypt Axe
+  rotate: false
+  xy: 1076, 1098
+  size: 346, 241
+  orig: 346, 241
+  offset: 0, 0
+  index: -1
+Eldritch Gazer Velz
+  rotate: false
+  xy: 1871, 437
+  size: 175, 203
+  orig: 175, 203
+  offset: 0, 0
+  index: -1
+Eldritch Slime Cerulean
+  rotate: true
+  xy: 343, 1443
+  size: 277, 235
+  orig: 337, 251
+  offset: 33, 4
+  index: -1
+Eldritch Slime Vermillion
+  rotate: false
+  xy: 378, 1
+  size: 375, 230
+  orig: 420, 258
+  offset: 14, 9
+  index: -1
+Elemental Goddess Ice Yukia
+  rotate: true
+  xy: 1805, 1083
+  size: 240, 242
+  orig: 240, 242
+  offset: 0, 0
+  index: -1
+FIre Toad
+  rotate: true
+  xy: 1842, 804
+  size: 277, 205
+  orig: 279, 205
+  offset: 0, 0
+  index: -1
+Fire Wisp
+  rotate: false
+  xy: 1498, 1732
+  size: 108, 133
+  orig: 133, 161
+  offset: 19, 13
+  index: -1
+Forest Mothy
+  rotate: false
+  xy: 1498, 1867
+  size: 202, 180
+  orig: 202, 180
+  offset: 0, 0
+  index: -1
+Gazers Tenteye
+  rotate: true
+  xy: 726, 1735
+  size: 312, 210
+  orig: 312, 210
+  offset: 0, 0
+  index: -1
+Halloween Dagger skeleton
+  rotate: false
+  xy: 1130, 1
+  size: 372, 264
+  orig: 372, 309
+  offset: 0, 0
+  index: -1
+Halloween Witch Baba
+  rotate: false
+  xy: 376, 517
+  size: 363, 361
+  orig: 363, 361
+  offset: 0, 0
+  index: -1
+Ice Snowball
+  rotate: false
+  xy: 1332, 1634
+  size: 72, 78
+  orig: 98, 83
+  offset: 16, 2
+  index: -1
+Insects Sickle Mantis
+  rotate: false
+  xy: 580, 1443
+  size: 144, 196
+  orig: 144, 196
+  offset: 0, 0
+  index: -1
+Knights Spear Common
+  rotate: true
+  xy: 1264, 1732
+  size: 310, 232
+  orig: 368, 257
+  offset: 24, 6
+  index: -1
+Legendary Knights Minion Spear
+  rotate: false
+  xy: 1503, 333
+  size: 366, 330
+  orig: 366, 330
+  offset: 0, 0
+  index: -1
+Light Gemstone A
+  rotate: false
+  xy: 1871, 642
+  size: 175, 160
+  orig: 175, 160
+  offset: 0, 0
+  index: -1
+Mage Garrintan
+  rotate: false
+  xy: 1702, 1867
+  size: 173, 180
+  orig: 173, 180
+  offset: 0, 0
+  index: -1
+Megapack II Frost Gorilla
+  rotate: false
+  xy: 378, 233
+  size: 373, 282
+  orig: 373, 282
+  offset: 0, 0
+  index: -1
+Megapack II Rocktail Demolisher
+  rotate: true
+  xy: 292, 1732
+  size: 312, 286
+  orig: 312, 286
+  offset: 0, 0
+  index: -1
+Megapack III Hellhound Inferni
+  rotate: false
+  xy: 755, 1
+  size: 373, 323
+  orig: 373, 323
+  offset: 0, 0
+  index: -1
+Megpack III Drill Dwarf
+  rotate: false
+  xy: 1762, 1657
+  size: 250, 208
+  orig: 250, 208
+  offset: 0, 0
+  index: -1
+Megpack III Fallen Kings Undead King Berthelot
+  rotate: false
+  xy: 1, 1
+  size: 375, 251
+  orig: 375, 251
+  offset: 0, 0
+  index: -1
+Mimic Bow
+  rotate: false
+  xy: 1609, 1596
+  size: 151, 269
+  orig: 192, 273
+  offset: 21, 2
+  index: -1
+Mimic Chest
+  rotate: false
+  xy: 1609, 1487
+  size: 152, 107
+  orig: 301, 207
+  offset: 89, 50
+  index: -1
+Mimic Door
+  rotate: true
+  xy: 1409, 1487
+  size: 243, 198
+  orig: 317, 230
+  offset: 37, 5
+  index: -1
+Mountain Chimera
+  rotate: false
+  xy: 1483, 665
+  size: 357, 246
+  orig: 358, 247
+  offset: 1, 1
+  index: -1
+Rogue Bastard Sword
+  rotate: false
+  xy: 1, 843
+  size: 363, 228
+  orig: 363, 228
+  offset: 0, 0
+  index: -1
+Sea Mermaid Warrior Arliette
+  rotate: false
+  xy: 1, 527
+  size: 363, 314
+  orig: 363, 314
+  offset: 0, 0
+  index: -1
+Seven Sins Lust
+  rotate: true
+  xy: 1120, 533
+  size: 359, 361
+  orig: 359, 361
+  offset: 0, 0
+  index: -1
+Slime Darkii
+  rotate: false
+  xy: 580, 1641
+  size: 144, 146
+  orig: 144, 146
+  offset: 0, 0
+  index: -1
+Slime Waterii
+  rotate: false
+  xy: 1158, 1634
+  size: 172, 96
+  orig: 172, 96
+  offset: 0, 0
+  index: -1
+Titan Aquos
+  rotate: false
+  xy: 741, 650
+  size: 361, 264
+  orig: 361, 264
+  offset: 0, 0
+  index: -1
+Tribal Elves Bastard Sword
+  rotate: true
+  xy: 1, 1732
+  size: 315, 289
+  orig: 315, 289
+  offset: 0, 0
+  index: -1
+Undead Skull Tree
+  rotate: false
+  xy: 1070, 1341
+  size: 337, 291
+  orig: 337, 291
+  offset: 0, 0
+  index: -1
+Vampiric Creatures Flying Leech
+  rotate: false
+  xy: 1064, 1634
+  size: 92, 97
+  orig: 92, 97
+  offset: 0, 0
+  index: -1
+Weretiger Maxima
+  rotate: false
+  xy: 1, 1073
+  size: 358, 331
+  orig: 358, 352
+  offset: 0, 0
+  index: -1
+Wind Avian
+  rotate: true
+  xy: 1424, 1164
+  size: 321, 337
+  orig: 321, 337
+  offset: 0, 0
+  index: -1
+Wind Spawn
+  rotate: false
+  xy: 361, 1229
+  size: 341, 212
+  orig: 341, 212
+  offset: 0, 0
+  index: -1
+Zodiac Gemini
+  rotate: true
+  xy: 366, 880
+  size: 347, 358
+  orig: 347, 358
+  offset: 0, 0
+  index: -1
+
+Enemies-17.png
+size: 2035, 2034
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arcane Crystal
+  rotate: true
+  xy: 1572, 550
+  size: 214, 291
+  orig: 214, 291
+  offset: 0, 0
+  index: -1
+Cerberus Ptolemaios
+  rotate: false
+  xy: 1028, 1249
+  size: 271, 241
+  orig: 271, 241
+  offset: 0, 0
+  index: -1
+Clockwork Abomination
+  rotate: false
+  xy: 250, 1388
+  size: 280, 269
+  orig: 280, 269
+  offset: 0, 0
+  index: -1
+Clockwork Knight C
+  rotate: true
+  xy: 1017, 968
+  size: 279, 246
+  orig: 279, 246
+  offset: 0, 0
+  index: -1
+Clockwork Reaper
+  rotate: true
+  xy: 1618, 267
+  size: 281, 264
+  orig: 281, 264
+  offset: 0, 0
+  index: -1
+Colossal Bat
+  rotate: false
+  xy: 337, 1
+  size: 328, 292
+  orig: 328, 292
+  offset: 0, 0
+  index: -1
+Colossal T-Rex Red
+  rotate: false
+  xy: 1, 1
+  size: 334, 322
+  orig: 334, 322
+  offset: 0, 0
+  index: -1
+Corrupted Ice Mantis B
+  rotate: true
+  xy: 1, 1601
+  size: 316, 233
+  orig: 316, 233
+  offset: 0, 0
+  index: -1
+Dark Elves Crystal Mage
+  rotate: false
+  xy: 1, 643
+  size: 282, 320
+  orig: 282, 320
+  offset: 0, 0
+  index: -1
+Darkness Reaper
+  rotate: true
+  xy: 883, 1693
+  size: 203, 156
+  orig: 203, 156
+  offset: 0, 0
+  index: -1
+Darkness Succubus
+  rotate: true
+  xy: 1, 1290
+  size: 309, 247
+  orig: 391, 285
+  offset: 44, 13
+  index: -1
+Desert Feral Cactus
+  rotate: false
+  xy: 1865, 620
+  size: 158, 141
+  orig: 158, 141
+  offset: 0, 0
+  index: -1
+Desert Parasand
+  rotate: true
+  xy: 1848, 1500
+  size: 224, 151
+  orig: 224, 151
+  offset: 0, 0
+  index: -1
+Dryads Mage
+  rotate: false
+  xy: 1, 325
+  size: 309, 316
+  orig: 309, 316
+  offset: 0, 0
+  index: -1
+Eldritch Slime A
+  rotate: true
+  xy: 1952, 1278
+  size: 106, 82
+  orig: 162, 95
+  offset: 39, 12
+  index: -1
+Elemental Gemstone Fire
+  rotate: false
+  xy: 1587, 1870
+  size: 146, 155
+  orig: 146, 155
+  offset: 0, 0
+  index: -1
+Elemental Gemstone Water
+  rotate: false
+  xy: 1624, 1712
+  size: 148, 154
+  orig: 148, 154
+  offset: 0, 0
+  index: -1
+Elemental Goddess Forest Flora
+  rotate: true
+  xy: 1007, 680
+  size: 286, 263
+  orig: 292, 265
+  offset: 3, 1
+  index: -1
+Elemental Goddess Wind Airi
+  rotate: false
+  xy: 756, 1493
+  size: 282, 198
+  orig: 282, 198
+  offset: 0, 0
+  index: -1
+Elf_Knight_Dual
+  rotate: false
+  xy: 1296, 1508
+  size: 279, 207
+  orig: 279, 207
+  offset: 0, 0
+  index: -1
+Elf_Knight_Spear
+  rotate: true
+  xy: 548, 966
+  size: 281, 207
+  orig: 281, 207
+  offset: 0, 0
+  index: -1
+Elf_Knight_Sword
+  rotate: true
+  xy: 1815, 997
+  size: 279, 207
+  orig: 279, 207
+  offset: 0, 0
+  index: -1
+Elves Spellcaster
+  rotate: false
+  xy: 1301, 1249
+  size: 223, 257
+  orig: 223, 257
+  offset: 0, 0
+  index: -1
+Fire Elemental  Imp
+  rotate: false
+  xy: 1577, 1500
+  size: 269, 210
+  orig: 269, 210
+  offset: 0, 0
+  index: -1
+Fire Pumice Rock
+  rotate: false
+  xy: 159, 1920
+  size: 110, 83
+  orig: 133, 109
+  offset: 6, 14
+  index: -1
+Forest Deer
+  rotate: true
+  xy: 1008, 283
+  size: 219, 306
+  orig: 219, 306
+  offset: 0, 0
+  index: -1
+Forest Imperial Widow
+  rotate: true
+  xy: 757, 988
+  size: 269, 258
+  orig: 269, 258
+  offset: 0, 0
+  index: -1
+Gazers Eyewing
+  rotate: false
+  xy: 1526, 1262
+  size: 268, 236
+  orig: 268, 236
+  offset: 0, 0
+  index: -1
+Halloween Skeleton
+  rotate: false
+  xy: 1884, 332
+  size: 148, 286
+  orig: 148, 286
+  offset: 0, 0
+  index: -1
+Halloween Stein's Monster MK2
+  rotate: false
+  xy: 570, 692
+  size: 294, 258
+  orig: 294, 258
+  offset: 0, 0
+  index: -1
+Ice Glacier SPawn
+  rotate: true
+  xy: 1587, 1
+  size: 264, 298
+  orig: 265, 312
+  offset: 1, 0
+  index: -1
+Ice Golem
+  rotate: false
+  xy: 1558, 766
+  size: 283, 229
+  orig: 299, 236
+  offset: 8, 5
+  index: -1
+Ice Lion
+  rotate: false
+  xy: 264, 966
+  size: 282, 281
+  orig: 287, 283
+  offset: 4, 2
+  index: -1
+Ice Turtle
+  rotate: false
+  xy: 532, 1491
+  size: 222, 164
+  orig: 234, 166
+  offset: 11, 1
+  index: -1
+Insects Black Ant Archer
+  rotate: true
+  xy: 1040, 1492
+  size: 194, 254
+  orig: 194, 254
+  offset: 0, 0
+  index: -1
+Knight Blunderbuss Common
+  rotate: true
+  xy: 1796, 1278
+  size: 220, 154
+  orig: 258, 173
+  offset: 19, 5
+  index: -1
+Legendary Knight Arriette F
+  rotate: false
+  xy: 312, 491
+  size: 327, 192
+  orig: 331, 192
+  offset: 4, 0
+  index: -1
+Legendary Knight Serat
+  rotate: false
+  xy: 675, 286
+  size: 331, 206
+  orig: 331, 206
+  offset: 0, 0
+  index: -1
+Legendary Knight Zidh B
+  rotate: true
+  xy: 285, 685
+  size: 279, 283
+  orig: 351, 360
+  offset: 41, 0
+  index: -1
+Legendary Knights Minion Claymore
+  rotate: true
+  xy: 1, 965
+  size: 323, 261
+  orig: 323, 261
+  offset: 0, 0
+  index: -1
+Light Angel Knight
+  rotate: false
+  xy: 1316, 271
+  size: 300, 246
+  orig: 300, 260
+  offset: 0, 14
+  index: -1
+Light Holy Orb
+  rotate: true
+  xy: 236, 1659
+  size: 259, 279
+  orig: 259, 279
+  offset: 0, 0
+  index: -1
+Light Slime
+  rotate: false
+  xy: 882, 1898
+  size: 160, 126
+  orig: 166, 126
+  offset: 0, 0
+  index: -1
+Machines Fantasy Tank B
+  rotate: true
+  xy: 1887, 1
+  size: 329, 147
+  orig: 344, 161
+  offset: 8, 4
+  index: -1
+Medieval Bandit Great Sword
+  rotate: false
+  xy: 757, 1259
+  size: 269, 232
+  orig: 269, 232
+  offset: 0, 0
+  index: -1
+Megapack III Fallen Kings Arcane King Jeffroy
+  rotate: false
+  xy: 667, 1
+  size: 304, 283
+  orig: 304, 283
+  offset: 0, 0
+  index: -1
+Megapack III Fallen Kings King Of Dwarves Skor
+  rotate: true
+  xy: 558, 1249
+  size: 240, 197
+  orig: 240, 197
+  offset: 0, 0
+  index: -1
+Megapack III Fallen Kings King Of Elves Dreyel
+  rotate: true
+  xy: 1272, 739
+  size: 230, 284
+  orig: 230, 284
+  offset: 0, 0
+  index: -1
+Mushroom Shroomslinger
+  rotate: false
+  xy: 337, 295
+  size: 336, 194
+  orig: 336, 194
+  offset: 0, 0
+  index: -1
+Objects Ace Heart
+  rotate: false
+  xy: 1041, 1688
+  size: 224, 138
+  orig: 224, 138
+  offset: 0, 0
+  index: -1
+Objects wBishop
+  rotate: true
+  xy: 1242, 1857
+  size: 122, 166
+  orig: 122, 166
+  offset: 0, 0
+  index: -1
+Objects YBox
+  rotate: false
+  xy: 641, 494
+  size: 310, 196
+  orig: 310, 196
+  offset: 0, 0
+  index: -1
+Sea Beach Emperor Crab A
+  rotate: true
+  xy: 866, 692
+  size: 294, 139
+  orig: 294, 139
+  offset: 0, 0
+  index: -1
+Sea Beach Emperor Crab B
+  rotate: false
+  xy: 264, 1249
+  size: 292, 137
+  orig: 292, 137
+  offset: 0, 0
+  index: -1
+Sea Beach Star Shell
+  rotate: false
+  xy: 1466, 1717
+  size: 156, 151
+  orig: 156, 151
+  offset: 0, 0
+  index: -1
+Sea Beach Stars
+  rotate: false
+  xy: 1735, 1869
+  size: 154, 146
+  orig: 154, 146
+  offset: 0, 0
+  index: -1
+Sea Beach War Lobster B
+  rotate: true
+  xy: 517, 1659
+  size: 229, 138
+  orig: 229, 138
+  offset: 0, 0
+  index: -1
+Sea Fish A
+  rotate: false
+  xy: 1933, 1726
+  size: 78, 116
+  orig: 78, 116
+  offset: 0, 0
+  index: -1
+Sea Fish B
+  rotate: false
+  xy: 517, 1890
+  size: 123, 143
+  orig: 123, 143
+  offset: 0, 0
+  index: -1
+Sea Mermaid Warrior Sion
+  rotate: true
+  xy: 973, 1
+  size: 280, 304
+  orig: 280, 304
+  offset: 0, 0
+  index: -1
+Sea Octopus
+  rotate: true
+  xy: 657, 1693
+  size: 187, 224
+  orig: 187, 224
+  offset: 0, 0
+  index: -1
+Skeleton Knight Debons
+  rotate: true
+  xy: 657, 1882
+  size: 151, 223
+  orig: 151, 223
+  offset: 0, 0
+  index: -1
+Slime Holyiii
+  rotate: false
+  xy: 953, 504
+  size: 320, 174
+  orig: 320, 174
+  offset: 0, 0
+  index: -1
+Slime Windii
+  rotate: false
+  xy: 1267, 1717
+  size: 197, 138
+  orig: 197, 138
+  offset: 0, 0
+  index: -1
+slimeiii
+  rotate: false
+  xy: 1044, 1828
+  size: 196, 157
+  orig: 196, 157
+  offset: 0, 0
+  index: -1
+Titan Darkness Ilnoct
+  rotate: false
+  xy: 1279, 1
+  size: 306, 268
+  orig: 306, 268
+  offset: 0, 0
+  index: -1
+Titan Ice Demeres
+  rotate: false
+  xy: 1265, 971
+  size: 270, 276
+  orig: 270, 276
+  offset: 0, 0
+  index: -1
+Titan Wind Ventoss
+  rotate: true
+  xy: 1537, 997
+  size: 263, 276
+  orig: 263, 276
+  offset: 0, 0
+  index: -1
+Toxic Cactus B
+  rotate: true
+  xy: 1891, 1869
+  size: 157, 126
+  orig: 186, 149
+  offset: 18, 9
+  index: -1
+Toxic FRog A2
+  rotate: false
+  xy: 1410, 1870
+  size: 175, 112
+  orig: 175, 112
+  offset: 0, 0
+  index: -1
+Undead Benkei
+  rotate: true
+  xy: 1774, 1726
+  size: 141, 157
+  orig: 141, 157
+  offset: 0, 0
+  index: -1
+Wind Fairy
+  rotate: true
+  xy: 1, 1919
+  size: 114, 156
+  orig: 114, 156
+  offset: 0, 0
+  index: -1
+Witch Hunters Leader
+  rotate: false
+  xy: 1275, 519
+  size: 295, 218
+  orig: 295, 218
+  offset: 0, 0
+  index: -1
+Witch Hunters Noble
+  rotate: false
+  xy: 1843, 766
+  size: 157, 229
+  orig: 157, 229
+  offset: 0, 0
+  index: -1
+
+Enemies-18.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Blood Manipulation Mage
+  rotate: false
+  xy: 1107, 253
+  size: 265, 199
+  orig: 265, 199
+  offset: 0, 0
+  index: -1
+Blood Manipulation Slime
+  rotate: false
+  xy: 756, 1634
+  size: 246, 205
+  orig: 246, 205
+  offset: 0, 0
+  index: -1
+Boss God Warrior Skoll
+  rotate: false
+  xy: 279, 212
+  size: 274, 237
+  orig: 274, 237
+  offset: 0, 0
+  index: -1
+Boss Sun Goddess
+  rotate: false
+  xy: 506, 1504
+  size: 248, 210
+  orig: 253, 212
+  offset: 5, 0
+  index: -1
+Clockwork Knight D
+  rotate: false
+  xy: 1849, 1219
+  size: 198, 245
+  orig: 198, 245
+  offset: 0, 0
+  index: -1
+Clockwork Prototype
+  rotate: false
+  xy: 555, 258
+  size: 272, 228
+  orig: 272, 228
+  offset: 0, 0
+  index: -1
+Crocodile Warriors Rogue
+  rotate: true
+  xy: 1374, 341
+  size: 259, 264
+  orig: 259, 264
+  offset: 0, 0
+  index: -1
+Cyber Blader
+  rotate: false
+  xy: 1267, 1484
+  size: 242, 172
+  orig: 247, 182
+  offset: 2, 5
+  index: -1
+Cyber Pegasus
+  rotate: false
+  xy: 277, 451
+  size: 271, 250
+  orig: 306, 258
+  offset: 12, 8
+  index: -1
+Dark Elves Healer Priestess
+  rotate: true
+  xy: 768, 1419
+  size: 213, 249
+  orig: 213, 249
+  offset: 0, 0
+  index: -1
+Darkness Angel
+  rotate: false
+  xy: 832, 113
+  size: 273, 249
+  orig: 273, 249
+  offset: 0, 0
+  index: -1
+Darkness Dullahan
+  rotate: false
+  xy: 1095, 454
+  size: 264, 188
+  orig: 264, 188
+  offset: 0, 0
+  index: -1
+Darkness Hound Inferni
+  rotate: false
+  xy: 1597, 918
+  size: 252, 252
+  orig: 252, 252
+  offset: 0, 0
+  index: -1
+Darkness Succubus Lariatt
+  rotate: false
+  xy: 1383, 111
+  size: 265, 228
+  orig: 265, 228
+  offset: 0, 0
+  index: -1
+Earth Snake
+  rotate: true
+  xy: 1725, 1483
+  size: 117, 89
+  orig: 151, 94
+  offset: 29, 0
+  index: -1
+Egypt Crocodile
+  rotate: false
+  xy: 253, 1576
+  size: 247, 143
+  orig: 247, 143
+  offset: 0, 0
+  index: -1
+Eldritch Ice Slimeiii
+  rotate: true
+  xy: 1081, 807
+  size: 230, 258
+  orig: 230, 258
+  offset: 0, 0
+  index: -1
+Eldritch Slime B
+  rotate: true
+  xy: 1928, 1
+  size: 201, 118
+  orig: 246, 149
+  offset: 20, 6
+  index: -1
+Elemental Earth Spirit Tellia
+  rotate: false
+  xy: 550, 701
+  size: 262, 241
+  orig: 262, 241
+  offset: 0, 0
+  index: -1
+Elemental Spirit Fire Blazia
+  rotate: true
+  xy: 1, 1413
+  size: 164, 250
+  orig: 164, 250
+  offset: 0, 0
+  index: -1
+Elf_Archer
+  rotate: false
+  xy: 550, 488
+  size: 264, 211
+  orig: 264, 211
+  offset: 0, 0
+  index: -1
+Elf_Knight_Mage
+  rotate: false
+  xy: 1469, 1840
+  size: 236, 207
+  orig: 241, 207
+  offset: 5, 0
+  index: -1
+Elves Nature Linker
+  rotate: true
+  xy: 1906, 643
+  size: 128, 141
+  orig: 128, 141
+  offset: 0, 0
+  index: -1
+Fallen Great Sword
+  rotate: false
+  xy: 1074, 1039
+  size: 252, 199
+  orig: 252, 199
+  offset: 0, 0
+  index: -1
+Fire Kindred Flame
+  rotate: false
+  xy: 1, 714
+  size: 261, 207
+  orig: 287, 228
+  offset: 9, 5
+  index: -1
+Fire Sabretooth
+  rotate: true
+  xy: 1622, 668
+  size: 248, 255
+  orig: 297, 313
+  offset: 10, 10
+  index: -1
+Fire Volcanic Golem
+  rotate: false
+  xy: 1341, 1030
+  size: 252, 235
+  orig: 330, 248
+  offset: 25, 6
+  index: -1
+Forest Catermoth
+  rotate: false
+  xy: 1879, 773
+  size: 168, 210
+  orig: 168, 210
+  offset: 0, 0
+  index: -1
+Forest Spider
+  rotate: true
+  xy: 1816, 1676
+  size: 142, 108
+  orig: 142, 108
+  offset: 0, 0
+  index: -1
+Gazers Skull
+  rotate: true
+  xy: 1707, 1820
+  size: 227, 208
+  orig: 227, 208
+  offset: 0, 0
+  index: -1
+Ghost Ghostus
+  rotate: false
+  xy: 1906, 509
+  size: 141, 132
+  orig: 141, 132
+  offset: 0, 0
+  index: -1
+Ghost Knight Destrand
+  rotate: false
+  xy: 1004, 1658
+  size: 216, 181
+  orig: 216, 181
+  offset: 0, 0
+  index: -1
+Ghost Knight Goliath
+  rotate: true
+  xy: 814, 877
+  size: 190, 258
+  orig: 190, 258
+  offset: 0, 0
+  index: -1
+Gunblin Schecter
+  rotate: true
+  xy: 454, 1721
+  size: 118, 198
+  orig: 118, 198
+  offset: 0, 0
+  index: -1
+Ice Kindred Glacier
+  rotate: false
+  xy: 1816, 1466
+  size: 230, 208
+  orig: 234, 211
+  offset: 1, 3
+  index: -1
+Insects Ant Lion
+  rotate: false
+  xy: 1, 484
+  size: 271, 228
+  orig: 271, 228
+  offset: 0, 0
+  index: -1
+Insects Dragonfly B
+  rotate: true
+  xy: 254, 1403
+  size: 171, 250
+  orig: 171, 250
+  offset: 0, 0
+  index: -1
+Insects Swarm
+  rotate: false
+  xy: 1, 249
+  size: 274, 233
+  orig: 274, 233
+  offset: 0, 0
+  index: -1
+Knight Sword Elite
+  rotate: false
+  xy: 1595, 1172
+  size: 252, 212
+  orig: 263, 222
+  offset: 9, 3
+  index: -1
+Kobolds Dagger Kobold
+  rotate: false
+  xy: 1051, 1240
+  size: 251, 199
+  orig: 251, 199
+  offset: 0, 0
+  index: -1
+Legendary Knight Croix
+  rotate: false
+  xy: 537, 944
+  size: 258, 182
+  orig: 258, 182
+  offset: 0, 0
+  index: -1
+Legendary Knight Zidh
+  rotate: false
+  xy: 1, 1809
+  size: 229, 238
+  orig: 229, 238
+  offset: 0, 0
+  index: -1
+Legendary Knights Huntress Arriette
+  rotate: false
+  xy: 1304, 1267
+  size: 246, 215
+  orig: 246, 215
+  offset: 0, 0
+  index: -1
+Legendary Knights Scholar Jeanne
+  rotate: false
+  xy: 454, 1841
+  size: 182, 206
+  orig: 182, 206
+  offset: 0, 0
+  index: -1
+Library Book Master
+  rotate: true
+  xy: 556, 1
+  size: 255, 274
+  orig: 255, 274
+  offset: 0, 0
+  index: -1
+Light Gemstone B
+  rotate: false
+  xy: 1222, 1658
+  size: 171, 180
+  orig: 171, 180
+  offset: 0, 0
+  index: -1
+Light Wolf
+  rotate: true
+  xy: 809, 1841
+  size: 205, 215
+  orig: 205, 215
+  offset: 0, 0
+  index: -1
+Machines Zeppellin
+  rotate: false
+  xy: 1361, 602
+  size: 259, 252
+  orig: 278, 263
+  offset: 19, 1
+  index: -1
+Medieval Bandit Child
+  rotate: true
+  xy: 1543, 1658
+  size: 110, 162
+  orig: 110, 162
+  offset: 0, 0
+  index: -1
+Medieval Bandit Dagger Gun
+  rotate: true
+  xy: 232, 1809
+  size: 237, 220
+  orig: 237, 220
+  offset: 0, 0
+  index: -1
+Megapack II Biofish
+  rotate: true
+  xy: 1916, 380
+  size: 127, 131
+  orig: 127, 131
+  offset: 0, 0
+  index: -1
+Megapack II Bug Originator
+  rotate: true
+  xy: 776, 1257
+  size: 160, 251
+  orig: 160, 251
+  offset: 0, 0
+  index: -1
+Megapack II Feathered Snake
+  rotate: false
+  xy: 263, 1165
+  size: 251, 236
+  orig: 251, 236
+  offset: 0, 0
+  index: -1
+Megapack II Silver Avian
+  rotate: true
+  xy: 1511, 1484
+  size: 172, 212
+  orig: 172, 212
+  offset: 0, 0
+  index: -1
+Megapack II Spiked Caterpillar
+  rotate: true
+  xy: 1916, 204
+  size: 174, 131
+  orig: 174, 131
+  offset: 0, 0
+  index: -1
+Megapack II Toucan Panther
+  rotate: false
+  xy: 1108, 1
+  size: 273, 250
+  orig: 273, 250
+  offset: 0, 0
+  index: -1
+Megapack III Red Guard A
+  rotate: false
+  xy: 638, 1841
+  size: 169, 206
+  orig: 169, 206
+  offset: 0, 0
+  index: -1
+Megapack III Red Guard B
+  rotate: false
+  xy: 279, 1
+  size: 275, 209
+  orig: 275, 209
+  offset: 0, 0
+  index: -1
+Megapack III Red Guard C
+  rotate: false
+  xy: 522, 1128
+  size: 252, 163
+  orig: 252, 163
+  offset: 0, 0
+  index: -1
+Mimic Crystal
+  rotate: false
+  xy: 1656, 1
+  size: 270, 184
+  orig: 320, 197
+  offset: 11, 7
+  index: -1
+Mimic Shield
+  rotate: true
+  xy: 1230, 1840
+  size: 207, 237
+  orig: 229, 276
+  offset: 15, 2
+  index: -1
+Minotaur BloodshotBeef
+  rotate: false
+  xy: 1, 1
+  size: 276, 246
+  orig: 276, 246
+  offset: 0, 0
+  index: -1
+Mountain Dodo
+  rotate: false
+  xy: 1926, 1676
+  size: 121, 138
+  orig: 121, 138
+  offset: 0, 0
+  index: -1
+Mountain Winter Wolf
+  rotate: true
+  xy: 1026, 1841
+  size: 203, 202
+  orig: 211, 203
+  offset: 5, 0
+  index: -1
+Moutain Behemoth
+  rotate: false
+  xy: 816, 629
+  size: 263, 246
+  orig: 263, 246
+  offset: 0, 0
+  index: -1
+Objects bHorse
+  rotate: false
+  xy: 654, 1716
+  size: 92, 122
+  orig: 92, 122
+  offset: 0, 0
+  index: -1
+Pirate Magic Scimitar
+  rotate: true
+  xy: 1341, 856
+  size: 172, 254
+  orig: 172, 254
+  offset: 0, 0
+  index: -1
+Pre-Legendary Knights Onna-bugeisha Croix
+  rotate: false
+  xy: 516, 1293
+  size: 250, 209
+  orig: 250, 209
+  offset: 0, 0
+  index: -1
+Rogue Twin Dagger
+  rotate: false
+  xy: 1851, 985
+  size: 196, 232
+  orig: 196, 232
+  offset: 0, 0
+  index: -1
+Sea Beach Spider Crab A
+  rotate: false
+  xy: 1383, 1
+  size: 271, 108
+  orig: 271, 108
+  offset: 0, 0
+  index: -1
+Sea Beach Spider Crab B
+  rotate: false
+  xy: 832, 1
+  size: 274, 110
+  orig: 274, 110
+  offset: 0, 0
+  index: -1
+Sea Blue Dragon
+  rotate: true
+  xy: 1552, 1386
+  size: 96, 129
+  orig: 96, 129
+  offset: 0, 0
+  index: -1
+Sea Fish C
+  rotate: false
+  xy: 1707, 1658
+  size: 107, 160
+  orig: 107, 160
+  offset: 0, 0
+  index: -1
+Skeleton Knight Alstreim
+  rotate: false
+  xy: 1019, 1441
+  size: 246, 215
+  orig: 248, 215
+  offset: 1, 0
+  index: -1
+Skeleton Knight Debon
+  rotate: false
+  xy: 797, 1069
+  size: 252, 186
+  orig: 254, 188
+  offset: 2, 0
+  index: -1
+Skeleton Mage
+  rotate: false
+  xy: 1, 923
+  size: 260, 257
+  orig: 265, 260
+  offset: 0, 0
+  index: -1
+Slime Iceiii
+  rotate: false
+  xy: 1081, 644
+  size: 259, 161
+  orig: 259, 162
+  offset: 0, 0
+  index: -1
+Slime RPG Buffer
+  rotate: false
+  xy: 1683, 1386
+  size: 131, 95
+  orig: 131, 95
+  offset: 0, 0
+  index: -1
+Titans Thunder Dynamo
+  rotate: true
+  xy: 1640, 452
+  size: 214, 264
+  orig: 214, 264
+  offset: 0, 0
+  index: -1
+Toxic Carnivorous Plant B
+  rotate: false
+  xy: 829, 364
+  size: 264, 263
+  orig: 271, 266
+  offset: 5, 0
+  index: -1
+Toxic Carnivorous Plant C
+  rotate: true
+  xy: 1650, 187
+  size: 263, 264
+  orig: 265, 269
+  offset: 0, 0
+  index: -1
+Toxic Frog B2
+  rotate: true
+  xy: 1917, 1820
+  size: 221, 130
+  orig: 221, 130
+  offset: 0, 0
+  index: -1
+Tribal Elves Dagger
+  rotate: false
+  xy: 1, 1579
+  size: 246, 228
+  orig: 246, 228
+  offset: 0, 0
+  index: -1
+Tribal Elves Rapier
+  rotate: false
+  xy: 274, 703
+  size: 261, 258
+  orig: 261, 259
+  offset: 0, 0
+  index: -1
+Undead Walker
+  rotate: false
+  xy: 1395, 1658
+  size: 146, 180
+  orig: 167, 199
+  offset: 13, 4
+  index: -1
+Wind Harpy
+  rotate: true
+  xy: 1, 1182
+  size: 229, 251
+  orig: 229, 251
+  offset: 0, 0
+  index: -1
+Witch Hunters Healer
+  rotate: true
+  xy: 263, 963
+  size: 200, 257
+  orig: 200, 257
+  offset: 0, 0
+  index: -1
+
+Enemies-19.png
+size: 2023, 2034
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arcane Orb Frost
+  rotate: false
+  xy: 934, 1506
+  size: 103, 147
+  orig: 103, 147
+  offset: 0, 0
+  index: -1
+Clockwork Mini A
+  rotate: true
+  xy: 861, 1211
+  size: 170, 135
+  orig: 170, 135
+  offset: 0, 0
+  index: -1
+Corrupted Void Fire Wolf
+  rotate: false
+  xy: 1189, 1
+  size: 243, 183
+  orig: 243, 183
+  offset: 0, 0
+  index: -1
+Dark Elves Axe Warrior
+  rotate: true
+  xy: 723, 412
+  size: 190, 228
+  orig: 190, 228
+  offset: 0, 0
+  index: -1
+Darkness Banshee
+  rotate: false
+  xy: 894, 771
+  size: 103, 202
+  orig: 103, 202
+  offset: 0, 0
+  index: -1
+Darkness Devilimp
+  rotate: false
+  xy: 1157, 1775
+  size: 137, 118
+  orig: 137, 118
+  offset: 0, 0
+  index: -1
+Darkness Seeker
+  rotate: false
+  xy: 480, 446
+  size: 241, 137
+  orig: 241, 137
+  offset: 0, 0
+  index: -1
+Darkness Slime GhastMallow
+  rotate: true
+  xy: 1756, 1243
+  size: 158, 126
+  orig: 158, 126
+  offset: 0, 0
+  index: -1
+Darkness Wisp
+  rotate: true
+  xy: 864, 1095
+  size: 114, 133
+  orig: 114, 133
+  offset: 0, 0
+  index: -1
+Desert Rock Bunny
+  rotate: true
+  xy: 864, 975
+  size: 118, 133
+  orig: 118, 133
+  offset: 0, 0
+  index: -1
+Desert Sand Snake
+  rotate: false
+  xy: 1599, 1932
+  size: 116, 90
+  orig: 116, 90
+  offset: 0, 0
+  index: -1
+Earth Spawn
+  rotate: true
+  xy: 1, 960
+  size: 234, 208
+  orig: 245, 209
+  offset: 3, 1
+  index: -1
+Egypt Archer
+  rotate: true
+  xy: 405, 1468
+  size: 192, 200
+  orig: 194, 200
+  offset: 2, 0
+  index: -1
+Egypt Knight
+  rotate: false
+  xy: 1402, 896
+  size: 165, 192
+  orig: 165, 192
+  offset: 0, 0
+  index: -1
+Egypt Mage
+  rotate: true
+  xy: 1, 1897
+  size: 133, 233
+  orig: 133, 233
+  offset: 0, 0
+  index: -1
+Egypt Mummy A
+  rotate: false
+  xy: 1900, 1
+  size: 121, 219
+  orig: 121, 219
+  offset: 0, 0
+  index: -1
+Egypt Mummy B
+  rotate: true
+  xy: 1189, 313
+  size: 121, 219
+  orig: 121, 219
+  offset: 0, 0
+  index: -1
+Egypt Mummy C
+  rotate: true
+  xy: 1410, 348
+  size: 121, 219
+  orig: 121, 219
+  offset: 0, 0
+  index: -1
+Eldritch Gazer Merem
+  rotate: false
+  xy: 617, 1655
+  size: 184, 198
+  orig: 184, 198
+  offset: 0, 0
+  index: -1
+Eldritch Slime Viridian
+  rotate: false
+  xy: 1, 247
+  size: 232, 236
+  orig: 265, 257
+  offset: 14, 5
+  index: -1
+Elemental Gemstone Earth
+  rotate: true
+  xy: 641, 1855
+  size: 178, 196
+  orig: 178, 196
+  offset: 0, 0
+  index: -1
+Elemental Ice Spirit Helida
+  rotate: true
+  xy: 1189, 186
+  size: 125, 241
+  orig: 125, 241
+  offset: 0, 0
+  index: -1
+Elemental Wind Spirit Tempestia
+  rotate: true
+  xy: 947, 1
+  size: 194, 240
+  orig: 194, 240
+  offset: 0, 0
+  index: -1
+Elf_Assasin
+  rotate: false
+  xy: 235, 1
+  size: 244, 220
+  orig: 244, 220
+  offset: 0, 0
+  index: -1
+Elf_Knight_Crossbow
+  rotate: false
+  xy: 706, 203
+  size: 220, 207
+  orig: 220, 207
+  offset: 0, 0
+  index: -1
+Fire Elemental Bat
+  rotate: false
+  xy: 1339, 1662
+  size: 151, 121
+  orig: 151, 121
+  offset: 0, 0
+  index: -1
+Fire Minivolcano
+  rotate: false
+  xy: 1809, 1819
+  size: 116, 89
+  orig: 139, 132
+  offset: 6, 17
+  index: -1
+Fire Pumice Sheep
+  rotate: false
+  xy: 807, 1506
+  size: 125, 147
+  orig: 164, 176
+  offset: 21, 3
+  index: -1
+Fire Turtle
+  rotate: false
+  xy: 231, 556
+  size: 241, 164
+  orig: 318, 222
+  offset: 34, 16
+  index: -1
+Fire Volcanic Maiden
+  rotate: true
+  xy: 1220, 1099
+  size: 145, 184
+  orig: 157, 211
+  offset: 5, 3
+  index: -1
+Forest Fairy Dragon Xinbal
+  rotate: true
+  xy: 1, 485
+  size: 234, 228
+  orig: 234, 228
+  offset: 0, 0
+  index: -1
+Forest Grasshopper
+  rotate: false
+  xy: 1770, 971
+  size: 130, 120
+  orig: 130, 120
+  offset: 0, 0
+  index: -1
+Forest Ogre Orkgre
+  rotate: true
+  xy: 664, 771
+  size: 187, 228
+  orig: 187, 228
+  offset: 0, 0
+  index: -1
+Forest Uzu
+  rotate: true
+  xy: 1490, 1896
+  size: 132, 107
+  orig: 132, 107
+  offset: 0, 0
+  index: -1
+Goblin Archer
+  rotate: false
+  xy: 1196, 1372
+  size: 184, 132
+  orig: 207, 136
+  offset: 15, 2
+  index: -1
+Goblin Mage
+  rotate: false
+  xy: 1395, 1280
+  size: 196, 130
+  orig: 228, 149
+  offset: 14, 10
+  index: -1
+Gunblin Gibson
+  rotate: true
+  xy: 1039, 1473
+  size: 184, 138
+  orig: 184, 138
+  offset: 0, 0
+  index: -1
+Halloween Bat
+  rotate: true
+  xy: 1898, 1093
+  size: 134, 124
+  orig: 134, 124
+  offset: 0, 0
+  index: -1
+Halloween Black Cat
+  rotate: true
+  xy: 1705, 1539
+  size: 137, 132
+  orig: 137, 132
+  offset: 0, 0
+  index: -1
+Halloween Pumpkin Gentleman
+  rotate: false
+  xy: 1593, 1258
+  size: 161, 165
+  orig: 161, 165
+  offset: 0, 0
+  index: -1
+Halloween Spirit Mumpkin
+  rotate: false
+  xy: 1196, 1246
+  size: 197, 124
+  orig: 197, 124
+  offset: 0, 0
+  index: -1
+Halloween Witch
+  rotate: false
+  xy: 1, 1
+  size: 232, 244
+  orig: 232, 244
+  offset: 0, 0
+  index: -1
+Ice Cave Bat
+  rotate: false
+  xy: 1179, 1647
+  size: 158, 126
+  orig: 158, 126
+  offset: 0, 0
+  index: -1
+Ice Snobros
+  rotate: false
+  xy: 1599, 1818
+  size: 103, 112
+  orig: 126, 119
+  offset: 5, 4
+  index: -1
+Ice Whisp
+  rotate: true
+  xy: 1559, 1425
+  size: 112, 174
+  orig: 134, 182
+  offset: 20, 3
+  index: -1
+Ice Yeti Whisp
+  rotate: false
+  xy: 1931, 1520
+  size: 91, 92
+  orig: 114, 98
+  offset: 7, 2
+  index: -1
+Insects Caterpillar A
+  rotate: false
+  xy: 1296, 1785
+  size: 134, 116
+  orig: 134, 116
+  offset: 0, 0
+  index: -1
+Insects Dragonfly
+  rotate: false
+  xy: 1432, 186
+  size: 230, 160
+  orig: 230, 160
+  offset: 0, 0
+  index: -1
+Insects eyehopper
+  rotate: true
+  xy: 1922, 535
+  size: 103, 95
+  orig: 103, 95
+  offset: 0, 0
+  index: -1
+Insects Lunar Butterfly
+  rotate: false
+  xy: 1226, 915
+  size: 174, 182
+  orig: 174, 182
+  offset: 0, 0
+  index: -1
+Insects Scarab
+  rotate: false
+  xy: 1151, 1895
+  size: 134, 90
+  orig: 134, 90
+  offset: 0, 0
+  index: -1
+Insects Tridentpupa
+  rotate: false
+  xy: 1287, 1903
+  size: 93, 130
+  orig: 93, 130
+  offset: 0, 0
+  index: -1
+Knights Sword Common
+  rotate: true
+  xy: 1, 721
+  size: 237, 213
+  orig: 249, 227
+  offset: 8, 4
+  index: -1
+Kobolds Mage Kobold
+  rotate: false
+  xy: 607, 1493
+  size: 198, 160
+  orig: 198, 160
+  offset: 0, 0
+  index: -1
+Kobolds Spear Kobold
+  rotate: false
+  xy: 425, 1136
+  size: 221, 161
+  orig: 221, 161
+  offset: 0, 0
+  index: -1
+Legendary Knight Dante
+  rotate: false
+  xy: 1434, 1
+  size: 232, 183
+  orig: 232, 183
+  offset: 0, 0
+  index: -1
+Legendary Knight Jeanne
+  rotate: false
+  xy: 204, 1663
+  size: 208, 208
+  orig: 208, 208
+  offset: 0, 0
+  index: -1
+Legendary Knights Dancer Zidh
+  rotate: true
+  xy: 422, 1299
+  size: 167, 208
+  orig: 167, 208
+  offset: 0, 0
+  index: -1
+Legendary Knights Summoner Dante A
+  rotate: false
+  xy: 235, 223
+  size: 244, 214
+  orig: 244, 214
+  offset: 0, 0
+  index: -1
+Library Book Swarm
+  rotate: true
+  xy: 649, 960
+  size: 187, 213
+  orig: 187, 213
+  offset: 0, 0
+  index: -1
+Light Gemstone C
+  rotate: false
+  xy: 1406, 1090
+  size: 173, 188
+  orig: 173, 188
+  offset: 0, 0
+  index: -1
+Light Scholar Angel
+  rotate: false
+  xy: 1569, 809
+  size: 184, 177
+  orig: 184, 177
+  offset: 0, 0
+  index: -1
+Light Wisp
+  rotate: false
+  xy: 1380, 616
+  size: 184, 185
+  orig: 184, 185
+  offset: 0, 0
+  index: -1
+Megapack II Avian A
+  rotate: false
+  xy: 1894, 222
+  size: 128, 191
+  orig: 128, 191
+  offset: 0, 0
+  index: -1
+Megapack II Dryad Mini
+  rotate: false
+  xy: 999, 1083
+  size: 219, 132
+  orig: 219, 132
+  offset: 0, 0
+  index: -1
+Megapack II Electroctopus
+  rotate: false
+  xy: 216, 934
+  size: 213, 198
+  orig: 213, 198
+  offset: 0, 0
+  index: -1
+MEgapack II Hornet Warrior
+  rotate: true
+  xy: 648, 1149
+  size: 153, 211
+  orig: 153, 211
+  offset: 0, 0
+  index: -1
+Megapack II Mountain Razortail Eagle
+  rotate: true
+  xy: 1191, 630
+  size: 190, 187
+  orig: 190, 187
+  offset: 0, 0
+  index: -1
+Megapack II Samurai Skeleton
+  rotate: true
+  xy: 481, 235
+  size: 209, 223
+  orig: 209, 223
+  offset: 0, 0
+  index: -1
+Megapack III Dragonslayer Dwarf
+  rotate: true
+  xy: 803, 1655
+  size: 198, 184
+  orig: 198, 184
+  offset: 0, 0
+  index: -1
+Megapack III Undead Warrior Benkei
+  rotate: false
+  xy: 953, 319
+  size: 219, 200
+  orig: 219, 200
+  offset: 0, 0
+  index: -1
+Mimic Barrel
+  rotate: true
+  xy: 632, 1304
+  size: 187, 198
+  orig: 253, 286
+  offset: 48, 36
+  index: -1
+Mimic Book
+  rotate: true
+  xy: 211, 1134
+  size: 160, 212
+  orig: 195, 221
+  offset: 17, 3
+  index: -1
+Mimic Bush
+  rotate: true
+  xy: 1769, 1678
+  size: 139, 118
+  orig: 148, 134
+  offset: 5, 3
+  index: -1
+Mimic Slime
+  rotate: false
+  xy: 839, 1855
+  size: 168, 178
+  orig: 209, 199
+  offset: 27, 7
+  index: -1
+Mimic Sword
+  rotate: true
+  xy: 235, 439
+  size: 115, 243
+  orig: 280, 303
+  offset: 72, 41
+  index: -1
+Mimic
+  rotate: false
+  xy: 953, 521
+  size: 227, 174
+  orig: 227, 174
+  offset: 0, 0
+  index: -1
+Mountain Bat
+  rotate: false
+  xy: 1492, 1679
+  size: 146, 121
+  orig: 146, 121
+  offset: 0, 0
+  index: -1
+Mountain Black Wolf
+  rotate: false
+  xy: 201, 1459
+  size: 202, 202
+  orig: 203, 202
+  offset: 1, 0
+  index: -1
+Mountain Goat
+  rotate: true
+  xy: 1382, 1903
+  size: 128, 106
+  orig: 147, 112
+  offset: 11, 1
+  index: -1
+Mountain Greathorn Goat
+  rotate: true
+  xy: 1534, 1539
+  size: 138, 169
+  orig: 139, 169
+  offset: 0, 0
+  index: -1
+Mountain Scorpion Scopus
+  rotate: false
+  xy: 1897, 810
+  size: 125, 112
+  orig: 125, 112
+  offset: 0, 0
+  index: -1
+Mountain Wolf
+  rotate: false
+  xy: 414, 1662
+  size: 201, 202
+  orig: 207, 202
+  offset: 5, 0
+  index: -1
+Objects Ace Diamond
+  rotate: false
+  xy: 236, 1873
+  size: 201, 160
+  orig: 220, 160
+  offset: 0, 0
+  index: -1
+Objects Assault Station
+  rotate: true
+  xy: 1, 1430
+  size: 236, 198
+  orig: 236, 198
+  offset: 0, 0
+  index: -1
+Objects bPawnB
+  rotate: false
+  xy: 1704, 1819
+  size: 103, 108
+  orig: 103, 108
+  offset: 0, 0
+  index: -1
+Objects bQueen
+  rotate: true
+  xy: 1631, 366
+  size: 132, 198
+  orig: 132, 198
+  offset: 0, 0
+  index: -1
+Objects Twin handheld
+  rotate: false
+  xy: 1769, 500
+  size: 151, 138
+  orig: 151, 138
+  offset: 0, 0
+  index: -1
+Objects wHorse
+  rotate: true
+  xy: 1432, 1802
+  size: 92, 121
+  orig: 92, 121
+  offset: 0, 0
+  index: -1
+Objects wQueen
+  rotate: true
+  xy: 1569, 500
+  size: 132, 198
+  orig: 132, 198
+  offset: 0, 0
+  index: -1
+Objects wTower
+  rotate: true
+  xy: 1900, 640
+  size: 161, 116
+  orig: 161, 116
+  offset: 0, 0
+  index: -1
+Pirate Parrot
+  rotate: true
+  xy: 1664, 195
+  size: 169, 228
+  orig: 169, 228
+  offset: 0, 0
+  index: -1
+Pirate Skeleton
+  rotate: false
+  xy: 1, 1196
+  size: 207, 232
+  orig: 207, 232
+  offset: 0, 0
+  index: -1
+Plant Warriors Screamer Mandrake
+  rotate: false
+  xy: 216, 722
+  size: 214, 210
+  orig: 214, 210
+  offset: 0, 0
+  index: -1
+Post-Modern Soldier A
+  rotate: false
+  xy: 439, 1866
+  size: 200, 167
+  orig: 232, 188
+  offset: 6, 8
+  index: -1
+Post-Modern Soldier B
+  rotate: true
+  xy: 1009, 1809
+  size: 173, 140
+  orig: 197, 158
+  offset: 11, 4
+  index: -1
+Post-Modern Soldier C
+  rotate: false
+  xy: 999, 917
+  size: 225, 164
+  orig: 276, 173
+  offset: 4, 7
+  index: -1
+Rabbit Warriors Archer
+  rotate: true
+  xy: 999, 697
+  size: 218, 190
+  orig: 218, 190
+  offset: 0, 0
+  index: -1
+Sea Abismos
+  rotate: false
+  xy: 703, 1
+  size: 242, 200
+  orig: 244, 200
+  offset: 0, 0
+  index: -1
+Sea Arman
+  rotate: false
+  xy: 999, 197
+  size: 188, 120
+  orig: 188, 120
+  offset: 0, 0
+  index: -1
+Sea Armes
+  rotate: false
+  xy: 1019, 1351
+  size: 175, 120
+  orig: 175, 120
+  offset: 0, 0
+  index: -1
+Sea Armon
+  rotate: false
+  xy: 832, 1383
+  size: 185, 121
+  orig: 185, 121
+  offset: 0, 0
+  index: -1
+Sea Beach Pelican
+  rotate: true
+  xy: 1, 1668
+  size: 227, 201
+  orig: 227, 201
+  offset: 0, 0
+  index: -1
+Sea Horntle
+  rotate: false
+  xy: 998, 1217
+  size: 196, 132
+  orig: 196, 132
+  offset: 0, 0
+  index: -1
+Sea Jellyfish
+  rotate: false
+  xy: 1640, 1679
+  size: 127, 137
+  orig: 127, 137
+  offset: 0, 0
+  index: -1
+Sea Mermaid
+  rotate: false
+  xy: 431, 938
+  size: 216, 196
+  orig: 216, 196
+  offset: 0, 0
+  index: -1
+Sea Shelltacke
+  rotate: true
+  xy: 1179, 1506
+  size: 139, 177
+  orig: 139, 177
+  offset: 0, 0
+  index: -1
+Sea Tortoad
+  rotate: true
+  xy: 1884, 1384
+  size: 134, 138
+  orig: 134, 138
+  offset: 0, 0
+  index: -1
+Sea Turtle
+  rotate: false
+  xy: 1884, 1243
+  size: 138, 139
+  orig: 138, 139
+  offset: 0, 0
+  index: -1
+Sea Vamphibian
+  rotate: false
+  xy: 1191, 822
+  size: 192, 91
+  orig: 192, 91
+  offset: 0, 0
+  index: -1
+Seven Sins Greed
+  rotate: false
+  xy: 1581, 1079
+  size: 173, 177
+  orig: 173, 177
+  offset: 0, 0
+  index: -1
+Skeleton Archer
+  rotate: false
+  xy: 1668, 1
+  size: 230, 192
+  orig: 299, 218
+  offset: 35, 5
+  index: -1
+Skeleton Hare
+  rotate: true
+  xy: 1922, 415
+  size: 118, 93
+  orig: 118, 93
+  offset: 0, 0
+  index: -1
+Skeleton Mage Mabon
+  rotate: true
+  xy: 432, 758
+  size: 178, 230
+  orig: 178, 230
+  offset: 0, 0
+  index: -1
+Slime Darkiii
+  rotate: false
+  xy: 1182, 436
+  size: 194, 192
+  orig: 194, 192
+  offset: 0, 0
+  index: -1
+Slime Earthiii
+  rotate: false
+  xy: 1566, 634
+  size: 192, 173
+  orig: 192, 173
+  offset: 0, 0
+  index: -1
+Slime Fireii
+  rotate: true
+  xy: 1760, 640
+  size: 168, 138
+  orig: 168, 138
+  offset: 0, 0
+  index: -1
+Slime Iceii
+  rotate: false
+  xy: 1569, 988
+  size: 199, 89
+  orig: 199, 89
+  offset: 0, 0
+  index: -1
+Slime RPG Attacker
+  rotate: false
+  xy: 1385, 803
+  size: 174, 91
+  orig: 174, 91
+  offset: 0, 0
+  index: -1
+Slime RPG Healer
+  rotate: false
+  xy: 1756, 1403
+  size: 126, 132
+  orig: 126, 132
+  offset: 0, 0
+  index: -1
+Toxic Frog C
+  rotate: false
+  xy: 1382, 1412
+  size: 175, 112
+  orig: 175, 112
+  offset: 0, 0
+  index: -1
+Toxic Maneater Plan A
+  rotate: true
+  xy: 1756, 1093
+  size: 148, 140
+  orig: 209, 167
+  offset: 42, 11
+  index: -1
+Toxic Maneater Plant B
+  rotate: true
+  xy: 1755, 810
+  size: 159, 140
+  orig: 181, 143
+  offset: 14, 0
+  index: -1
+Toxic Root A
+  rotate: true
+  xy: 1889, 1676
+  size: 141, 112
+  orig: 146, 129
+  offset: 5, 2
+  index: -1
+Undead Jiangshi
+  rotate: true
+  xy: 210, 1296
+  size: 161, 210
+  orig: 161, 210
+  offset: 0, 0
+  index: -1
+Undead Skull Slime
+  rotate: true
+  xy: 711, 604
+  size: 165, 233
+  orig: 198, 257
+  offset: 20, 15
+  index: -1
+Voidoll Erebus
+  rotate: true
+  xy: 1902, 924
+  size: 108, 120
+  orig: 108, 120
+  offset: 0, 0
+  index: -1
+Whisp Wispia
+  rotate: false
+  xy: 1839, 1537
+  size: 90, 137
+  orig: 90, 137
+  offset: 0, 0
+  index: -1
+Wind Feathered Razor
+  rotate: true
+  xy: 1358, 1526
+  size: 134, 174
+  orig: 134, 174
+  offset: 0, 0
+  index: -1
+Wind Mantis
+  rotate: false
+  xy: 474, 585
+  size: 235, 171
+  orig: 235, 171
+  offset: 0, 0
+  index: -1
+Wind Snake
+  rotate: false
+  xy: 1927, 1819
+  size: 95, 93
+  orig: 95, 93
+  offset: 0, 0
+  index: -1
+Wind Wisp
+  rotate: false
+  xy: 989, 1659
+  size: 166, 148
+  orig: 166, 148
+  offset: 0, 0
+  index: -1
+Xmas Cookie
+  rotate: false
+  xy: 1378, 471
+  size: 189, 143
+  orig: 189, 143
+  offset: 0, 0
+  index: -1
+Xmas Tree
+  rotate: false
+  xy: 481, 1
+  size: 220, 232
+  orig: 220, 232
+  offset: 0, 0
+  index: -1
+
+Enemies-20.png
+size: 255, 1487
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Forest Blue Flower
+  rotate: false
+  xy: 1, 621
+  size: 111, 153
+  orig: 111, 153
+  offset: 0, 0
+  index: -1
+Forest Green Spider
+  rotate: true
+  xy: 1, 1233
+  size: 140, 107
+  orig: 140, 107
+  offset: 0, 0
+  index: -1
+Forest Pink Flower
+  rotate: false
+  xy: 1, 776
+  size: 111, 153
+  orig: 111, 153
+  offset: 0, 0
+  index: -1
+Forest Red Flower
+  rotate: false
+  xy: 114, 862
+  size: 111, 153
+  orig: 111, 153
+  offset: 0, 0
+  index: -1
+Forest Red Spider
+  rotate: true
+  xy: 1, 1086
+  size: 145, 110
+  orig: 145, 110
+  offset: 0, 0
+  index: -1
+Forest White Flower
+  rotate: false
+  xy: 1, 931
+  size: 111, 153
+  orig: 111, 153
+  offset: 0, 0
+  index: -1
+Insects Bee
+  rotate: false
+  xy: 148, 156
+  size: 106, 148
+  orig: 106, 148
+  offset: 0, 0
+  index: -1
+Insects Tick
+  rotate: false
+  xy: 113, 1162
+  size: 139, 112
+  orig: 139, 112
+  offset: 0, 0
+  index: -1
+Megapack II Betafish
+  rotate: false
+  xy: 1, 462
+  size: 111, 157
+  orig: 111, 157
+  offset: 0, 0
+  index: -1
+Megapack II Blue Seeker
+  rotate: false
+  xy: 1, 1
+  size: 159, 153
+  orig: 159, 153
+  offset: 0, 0
+  index: -1
+Megapack II Red Shroom A
+  rotate: true
+  xy: 1, 295
+  size: 165, 117
+  orig: 165, 117
+  offset: 0, 0
+  index: -1
+MEgapack II Red Shroom B
+  rotate: true
+  xy: 114, 1017
+  size: 143, 117
+  orig: 165, 117
+  offset: 22, 0
+  index: -1
+Mimic Potion
+  rotate: true
+  xy: 129, 1276
+  size: 111, 117
+  orig: 146, 134
+  offset: 20, 6
+  index: -1
+Mountain Serpens
+  rotate: false
+  xy: 1, 156
+  size: 145, 137
+  orig: 145, 137
+  offset: 0, 0
+  index: -1
+Mountain Warthog
+  rotate: false
+  xy: 1, 1375
+  size: 126, 111
+  orig: 126, 111
+  offset: 0, 0
+  index: -1
+MountainScarbear
+  rotate: true
+  xy: 114, 608
+  size: 126, 138
+  orig: 126, 138
+  offset: 0, 0
+  index: -1
+Objects Ace Club
+  rotate: false
+  xy: 114, 736
+  size: 140, 124
+  orig: 140, 124
+  offset: 0, 0
+  index: -1
+Objects bTower
+  rotate: true
+  xy: 120, 306
+  size: 161, 117
+  orig: 161, 117
+  offset: 0, 0
+  index: -1
+Undead Wolf
+  rotate: true
+  xy: 114, 469
+  size: 137, 139
+  orig: 137, 139
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,418 @@
+items.png
+size: 1228, 128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Accessory_belt1
+  rotate: false
+  xy: 973, 58
+  size: 48, 52
+  orig: 48, 52
+  offset: 0, 0
+  index: -1
+Accessory_belt2
+  rotate: false
+  xy: 1119, 101
+  size: 37, 25
+  orig: 37, 25
+  offset: 0, 0
+  index: -1
+Accessory_cape1
+  rotate: true
+  xy: 257, 85
+  size: 42, 54
+  orig: 42, 54
+  offset: 0, 0
+  index: -1
+Accessory_cape2
+  rotate: true
+  xy: 511, 79
+  size: 48, 53
+  orig: 48, 53
+  offset: 0, 0
+  index: -1
+Accessory_earring1
+  rotate: true
+  xy: 1158, 96
+  size: 31, 42
+  orig: 31, 42
+  offset: 0, 0
+  index: -1
+Accessory_earring2
+  rotate: false
+  xy: 1196, 1
+  size: 31, 32
+  orig: 31, 32
+  offset: 0, 0
+  index: -1
+Accessory_earring3
+  rotate: false
+  xy: 1086, 101
+  size: 31, 26
+  orig: 31, 26
+  offset: 0, 0
+  index: -1
+Accessory_necklace1
+  rotate: true
+  xy: 637, 77
+  size: 50, 52
+  orig: 50, 52
+  offset: 0, 0
+  index: -1
+Accessory_necklace2
+  rotate: false
+  xy: 403, 81
+  size: 51, 46
+  orig: 51, 46
+  offset: 0, 0
+  index: -1
+Accessory_necklace3
+  rotate: false
+  xy: 119, 86
+  size: 55, 41
+  orig: 55, 41
+  offset: 0, 0
+  index: -1
+Accessory_orb1
+  rotate: false
+  xy: 1149, 1
+  size: 33, 37
+  orig: 33, 37
+  offset: 0, 0
+  index: -1
+Accessory_orb2
+  rotate: false
+  xy: 1166, 40
+  size: 31, 33
+  orig: 31, 33
+  offset: 0, 0
+  index: -1
+Accessory_ring1
+  rotate: false
+  xy: 1065, 107
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+Accessory_ring2
+  rotate: false
+  xy: 1199, 35
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: -1
+Accessory_ring3
+  rotate: true
+  xy: 1166, 75
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+armor_cloth1
+  rotate: true
+  xy: 1, 87
+  size: 40, 44
+  orig: 40, 44
+  offset: 0, 0
+  index: -1
+armor_cloth2
+  rotate: false
+  xy: 362, 82
+  size: 39, 44
+  orig: 39, 44
+  offset: 0, 0
+  index: -1
+armor_cloth3
+  rotate: true
+  xy: 1068, 1
+  size: 49, 47
+  orig: 49, 47
+  offset: 0, 0
+  index: -1
+armor_cloth4
+  rotate: false
+  xy: 456, 79
+  size: 53, 48
+  orig: 53, 48
+  offset: 0, 0
+  index: -1
+armor_cloth5
+  rotate: false
+  xy: 821, 68
+  size: 60, 55
+  orig: 60, 55
+  offset: 0, 0
+  index: -1
+armor_leather1
+  rotate: true
+  xy: 1086, 52
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
+armor_leather2
+  rotate: false
+  xy: 1117, 1
+  size: 30, 47
+  orig: 30, 47
+  offset: 0, 0
+  index: -1
+armor_leather3
+  rotate: true
+  xy: 952, 1
+  size: 55, 49
+  orig: 55, 49
+  offset: 0, 0
+  index: -1
+armor_leather4
+  rotate: false
+  xy: 911, 64
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+armor_leather5
+  rotate: false
+  xy: 871, 1
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1
+armor_plate1
+  rotate: true
+  xy: 313, 85
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+armor_plate2
+  rotate: false
+  xy: 1038, 55
+  size: 46, 50
+  orig: 46, 50
+  offset: 0, 0
+  index: -1
+armor_plate3
+  rotate: true
+  xy: 754, 68
+  size: 59, 55
+  orig: 59, 55
+  offset: 0, 0
+  index: -1
+armor_plate4
+  rotate: false
+  xy: 691, 69
+  size: 61, 58
+  orig: 61, 58
+  offset: 0, 0
+  index: -1
+armor_plate5
+  rotate: false
+  xy: 786, 1
+  size: 64, 65
+  orig: 64, 65
+  offset: 0, 0
+  index: -1
+potion
+  rotate: false
+  xy: 1184, 1
+  size: 10, 33
+  orig: 10, 33
+  offset: 0, 0
+  index: 1
+potion
+  rotate: true
+  xy: 1026, 109
+  size: 18, 37
+  orig: 18, 37
+  offset: 0, 0
+  index: 2
+potion
+  rotate: false
+  xy: 1134, 50
+  size: 30, 44
+  orig: 30, 44
+  offset: 0, 0
+  index: 3
+potion
+  rotate: false
+  xy: 1003, 1
+  size: 37, 52
+  orig: 37, 52
+  offset: 0, 0
+  index: 4
+weapon_axe1
+  rotate: false
+  xy: 1042, 1
+  size: 24, 50
+  orig: 24, 50
+  offset: 0, 0
+  index: -1
+weapon_axe2
+  rotate: false
+  xy: 683, 1
+  size: 34, 66
+  orig: 34, 66
+  offset: 0, 0
+  index: -1
+weapon_axe3
+  rotate: false
+  xy: 481, 1
+  size: 47, 76
+  orig: 47, 76
+  offset: 0, 0
+  index: -1
+weapon_axe4
+  rotate: false
+  xy: 430, 1
+  size: 49, 76
+  orig: 49, 76
+  offset: 0, 0
+  index: -1
+weapon_axe5
+  rotate: true
+  xy: 566, 78
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+weapon_club1
+  rotate: false
+  xy: 1023, 55
+  size: 13, 52
+  orig: 13, 52
+  offset: 0, 0
+  index: -1
+weapon_club2
+  rotate: false
+  xy: 883, 64
+  size: 26, 61
+  orig: 26, 61
+  offset: 0, 0
+  index: -1
+weapon_club3
+  rotate: false
+  xy: 327, 1
+  size: 23, 81
+  orig: 23, 81
+  offset: 0, 0
+  index: -1
+weapon_club4
+  rotate: true
+  xy: 47, 86
+  size: 41, 70
+  orig: 41, 70
+  offset: 0, 0
+  index: -1
+weapon_club5
+  rotate: true
+  xy: 176, 86
+  size: 39, 79
+  orig: 39, 79
+  offset: 0, 0
+  index: -1
+weapon_spear1
+  rotate: false
+  xy: 607, 1
+  size: 74, 74
+  orig: 74, 74
+  offset: 0, 0
+  index: -1
+weapon_spear2
+  rotate: false
+  xy: 530, 1
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+weapon_spear3
+  rotate: false
+  xy: 214, 1
+  size: 82, 82
+  orig: 82, 82
+  offset: 0, 0
+  index: -1
+weapon_spear4
+  rotate: false
+  xy: 130, 1
+  size: 82, 83
+  orig: 82, 83
+  offset: 0, 0
+  index: -1
+weapon_spear5
+  rotate: false
+  xy: 45, 1
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1
+weapon_sword1
+  rotate: true
+  xy: 973, 112
+  size: 15, 51
+  orig: 15, 51
+  offset: 0, 0
+  index: -1
+weapon_sword2
+  rotate: false
+  xy: 852, 1
+  size: 17, 62
+  orig: 17, 62
+  offset: 0, 0
+  index: -1
+weapon_sword3
+  rotate: false
+  xy: 298, 1
+  size: 27, 82
+  orig: 27, 82
+  offset: 0, 0
+  index: -1
+weapon_sword4
+  rotate: false
+  xy: 719, 1
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
+weapon_sword5
+  rotate: false
+  xy: 1, 1
+  size: 42, 84
+  orig: 42, 84
+  offset: 0, 0
+  index: -1
+weapon_wand1
+  rotate: false
+  xy: 934, 1
+  size: 16, 60
+  orig: 16, 60
+  offset: 0, 0
+  index: -1
+weapon_wand2
+  rotate: false
+  xy: 811, 68
+  size: 8, 58
+  orig: 8, 58
+  offset: 0, 0
+  index: -1
+weapon_wand3
+  rotate: false
+  xy: 379, 1
+  size: 14, 79
+  orig: 14, 79
+  offset: 0, 0
+  index: -1
+weapon_wand4
+  rotate: false
+  xy: 352, 1
+  size: 25, 79
+  orig: 25, 79
+  offset: 0, 0
+  index: -1
+weapon_wand5
+  rotate: false
+  xy: 395, 1
+  size: 33, 78
+  orig: 33, 78
+  offset: 0, 0
+  index: -1

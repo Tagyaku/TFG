@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1000425909789",
+    "project_id": "tfg-rpg",
+    "storage_bucket": "tfg-rpg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000425909789:android:d220b8d6f5f179833a60f4",
+        "android_client_info": {
+          "package_name": "com.mygdx.game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRCeyZbFTEG00D4WMdV77qx0ZrOlGv1sE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+TFG_Atlas_1.png
+size: 1796, 1307
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BG_Intro1
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: -1
+Check-down
+  rotate: false
+  xy: 1480, 1
+  size: 11, 9
+  orig: 32, 32
+  offset: 11, 13
+  index: -1
+Check-up
+  rotate: false
+  xy: 1459, 1
+  size: 19, 16
+  orig: 32, 32
+  offset: 7, 8
+  index: -1
+MainTitleCavesBackground
+  rotate: false
+  xy: 835, 819
+  size: 960, 480
+  orig: 960, 480
+  offset: 0, 0
+  index: -1
+MenuBox2
+  rotate: false
+  xy: 1, 819
+  size: 832, 487
+  orig: 832, 487
+  offset: 0, 0
+  index: -1

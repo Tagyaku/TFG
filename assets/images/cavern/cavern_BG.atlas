@@ -1,0 +1,152 @@
+cavern_BG.tps-0.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 1
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 2
+
+cavern_BG.tps-1.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 3
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 4
+
+cavern_BG.tps-2.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 5
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 6
+
+cavern_BG.tps-3.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 7
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 8
+
+cavern_BG.tps-4.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 9
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 10
+
+cavern_BG.tps-5.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 11
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 12
+
+cavern_BG.tps-6.png
+size: 1458, 1636
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 13
+bg
+  rotate: false
+  xy: 1, 819
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 14
+
+cavern_BG.tps-7.png
+size: 1458, 818
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 1
+  size: 1456, 816
+  orig: 1456, 816
+  offset: 0, 0
+  index: 15

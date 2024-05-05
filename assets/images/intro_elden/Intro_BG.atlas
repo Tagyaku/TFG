@@ -1,0 +1,47 @@
+Intro_BG.png
+size: 3840, 1440
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+godwyn
+  rotate: false
+  xy: 0, 0
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Horah_loux
+  rotate: false
+  xy: 1280, 0
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+lands_in_between
+  rotate: false
+  xy: 2560, 0
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+marika
+  rotate: false
+  xy: 0, 720
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+marika_shatered_EldenRing
+  rotate: false
+  xy: 1280, 720
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+mogh
+  rotate: false
+  xy: 2560, 720
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1

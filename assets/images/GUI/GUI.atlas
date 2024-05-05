@@ -1,0 +1,75 @@
+GUI.png
+size: 117, 94
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+11 Border 01-0
+  rotate: false
+  xy: 1, 27
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
+UI_Flat_Banner_01_Upward
+  rotate: false
+  xy: 1, 1
+  size: 96, 24
+  orig: 96, 32
+  offset: 0, 2
+  index: -1
+UI_Flat_Button_Small_Press_02a4
+  rotate: false
+  xy: 68, 61
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+UI_Flat_Button_Small_Release_01a1
+  rotate: true
+  xy: 68, 27
+  size: 32, 29
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+UI_Flat_Checkmark_Large
+  rotate: true
+  xy: 99, 20
+  size: 19, 16
+  orig: 32, 32
+  offset: 7, 8
+  index: -1
+UI_Flat_Checkmark_Small
+  rotate: false
+  xy: 102, 54
+  size: 11, 9
+  orig: 32, 32
+  offset: 11, 13
+  index: -1
+UI_Flat_Cross_Large
+  rotate: false
+  xy: 99, 1
+  size: 17, 17
+  orig: 32, 32
+  offset: 7, 8
+  index: -1
+UI_Flat_Cross_Medium
+  rotate: false
+  xy: 102, 41
+  size: 11, 11
+  orig: 32, 32
+  offset: 10, 11
+  index: -1
+UI_Flat_Cross_Small
+  rotate: false
+  xy: 102, 65
+  size: 9, 9
+  orig: 32, 32
+  offset: 11, 13
+  index: -1
+UI_Flat_Dropdown_Handle
+  rotate: false
+  xy: 102, 76
+  size: 9, 7
+  orig: 32, 32
+  offset: 12, 13
+  index: -1

@@ -1,0 +1,146 @@
+buildscript {
+    ext.kotlinVersion = '1.9.21'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+
+        }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+
+        classpath 'com.google.gms:google-services:4.4.1'
+
+        //classpath "com.badlogicgames.gdx.tools:gdx-tools:$gdxVersion"
+
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+
+    version = '1.0'
+    ext {
+        appName = "Turn_Based_RPG"
+        gdxVersion = '1.12.1'
+        roboVMVersion = '2.3.20'
+        box2DLightsVersion = '1.5'
+        ashleyVersion = '1.7.4'
+        aiVersion = '1.8.2'
+        gdxControllersVersion = '2.2.1'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+
+project(":android") {
+    apply plugin: "android"
+    apply plugin: "kotlin-android"
+    //apply plugin: "com.badlogicgames.gdx.tools"
+    configurations { natives }
+
+    dependencies {
+        implementation project(":core")
+        api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
+        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
+        api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+        api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+        api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+        implementation "org.xerial:sqlite-jdbc:3.41.2.2"
+
+        implementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        implementation "com.badlogicgames.gdx-controllers:gdx-controllers-android:2.2.1"
+
+        implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+
+        implementation "com.android.support:appcompat-v7:28.0.0"
+
+
+        //implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+
+        //implementation files("libs/gdx-tools-1.12.1.jar")
+
+        //implementation "com.badlogicgames.gdx:gdx-scene2d:$gdxVersion"
+
+        //implementation "androidx.room:room-runtime:2.4.0"
+        //annotationProcessor "androidx.room:room-compiler:2.4.0"
+
+        //implementation "pl.mk5.gdx-fireapp:gdx-fireapp-android:$gdxFireappVersion" // the version you are using
+
+/*        implementation platform("com.google.firebase:firebase-bom:26.7.0")
+        implementation 'com.google.firebase:firebase-core'
+        implementation 'com.google.firebase:firebase-storage'
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-database'
+        implementation 'com.google.firebase:firebase-crashlytics'
+        implementation 'com.google.firebase:firebase-analytics'*/
+
+
+
+
+    }
+/*    // Definir la tarea de TexturePacker para las imágenes del TextFieldStyle
+    task packTextFieldImages(type: com.badlogic.gdx.tools.texturepacker.TexturePackerTask) {
+        inputDir = file("assets/pre-atlases") // Carpeta que contiene las imágenes del TextFieldStyle
+        outputDir = file("assets/atlases/textfields") // Carpeta donde se generará el atlas de textura para el TextFieldStyle
+        packFileName = "textfield-atlas" // Nombre del archivo de atlas resultante para el TextFieldStyle
+        atlasExtension = "atlas" // Extensión del archivo de atlas
+    }
+
+    // Definir la tarea de TexturePacker para otras imágenes utilizadas en la interfaz de usuario
+    task packUIImages(type: com.badlogic.gdx.tools.texturepacker.TexturePackerTask) {
+        inputDir = file("assets/pre-atlases") // Carpeta que contiene las imágenes de la interfaz de usuario
+        outputDir = file("assets/atlases/ui") // Carpeta donde se generará el atlas de textura para la interfaz de usuario
+        packFileName = "ui-atlas" // Nombre del archivo de atlas resultante para la interfaz de usuario
+        atlasExtension = "atlas" // Extensión del archivo de atlas
+    }
+
+    // Agregar dependencia de la tarea packTextFieldImages a la tarea build
+    build.dependsOn(packTextFieldImages)
+    // Agregar dependencia de la tarea packUIImages a la tarea build
+    build.dependsOn(packUIImages)*/
+
+}
+
+
+
+
+project(":core") {
+    apply plugin: "kotlin"
+
+
+    dependencies {
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+        api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+        api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    }
+}
