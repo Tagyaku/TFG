@@ -20,17 +20,19 @@ import java.util.List;
 public class GameplayScreen implements Screen {
     private MyGdxGame game;
     private SpriteBatch batch;
-    private TextureAtlas atlas, guiAtlas;
+    private TextureAtlas atlas, guiAtlas, bgAtlas;
     private TextureRegion borderTexture, boxTexture;
+    private TextureRegion currentBackground;
     private Rectangle lowerBorderArea, pauseButtonArea;
     private Stage stage;
     private TextButton pauseButton;
     private BitmapFont font;
+    private BitmapFont textFont;
     private List<String> gameTexts;
     private int currentTextIndex = 0;
-    private BitmapFont textFont;
     private boolean isInCombat = false;
-    private TextureRegion currentBackground;
+    private int[] combatPoints = {2, 5}; // Puntos donde ocurren los combates
+    private int currentCombatIndex = 0;
 
 
 
@@ -42,10 +44,12 @@ public class GameplayScreen implements Screen {
         this.borderTexture = atlas.findRegion("MenuBox2");
         this.guiAtlas = new TextureAtlas("images/GUI/GUI.atlas");
         this.boxTexture = guiAtlas.findRegion("11 Border 01-0");
+        this.bgAtlas= new TextureAtlas("images/Forest/Forest.atlas");
         // Establecer el fondo inicial del atlas
-        this.currentBackground = atlas.findRegion("bg_f", 1); // Suponiendo que 'bg_f' es el nombre de la región y 0 es el índice
+        this.currentBackground = bgAtlas.findRegion("bg_f", 1); // Comenzar con el fondo inicial
         this.stage = new Stage(new ScreenViewport(), batch);
         this.font = new BitmapFont();
+        this.textFont = new BitmapFont();
         textFont.getData().setScale(2);
 
         Gdx.input.setInputProcessor(stage);
@@ -88,8 +92,10 @@ public class GameplayScreen implements Screen {
         gameTexts = new ArrayList<>();
         gameTexts.add("Primer mensaje que aparecerá en el juego.");
         gameTexts.add("Segundo mensaje, continúa la historia.");
-        gameTexts.add("Tercer mensaje, más sobre el juego.");
-        // Añade más mensajes según sea necesario
+        gameTexts.add("Preparando para el primer combate.");
+        gameTexts.add("Mensaje después del primer combate.");
+        gameTexts.add("Mensaje previo al segundo combate.");
+        gameTexts.add("Final del juego después del último combate.");
     }
     private void handleInput() {
         if (Gdx.input.justTouched() && !isInCombat) {
@@ -99,11 +105,17 @@ public class GameplayScreen implements Screen {
                 currentTextIndex++;
                 if (currentTextIndex >= gameTexts.size()) {
                 currentTextIndex = 0; // Reiniciar si se alcanza el final de los textos
+                }
+
+                if (currentCombatIndex < combatPoints.length && currentTextIndex == combatPoints[currentCombatIndex]) {
                 isInCombat = true; // Simula entrar en combate
                     startCombat();
             } else {
-                // Si no es tiempo de combate, mostrar el siguiente texto y cambiar el fondo
-                currentBackground = atlas.findRegion("bg_f", currentTextIndex % atlas.getRegions().size);
+                    // Cambiar fondo tras cada punto de combate
+                    if (currentCombatIndex < combatPoints.length && currentTextIndex > combatPoints[currentCombatIndex]) {
+                        currentCombatIndex++;
+                        currentBackground = atlas.findRegion("bg_f", currentCombatIndex); // Cambiar fondo
+                    }
                 }
             }
         }
@@ -119,11 +131,6 @@ public class GameplayScreen implements Screen {
     public void endCombat() {
         isInCombat = false;
         currentTextIndex++; // Avanzar al siguiente texto después del combate
-        if (currentTextIndex < gameTexts.size()) {
-            currentBackground = atlas.findRegion("bg_f", currentTextIndex);
-        } else {
-            currentTextIndex = 0; // Reiniciar índices si es necesario
-        }
     }
 
     @Override
@@ -133,8 +140,9 @@ public class GameplayScreen implements Screen {
 
         batch.begin();
         // Draw the lower border
-        batch.draw(borderTexture, lowerBorderArea.x, lowerBorderArea.y, lowerBorderArea.width, lowerBorderArea.height);
+
         batch.draw(currentBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.draw(borderTexture, lowerBorderArea.x, lowerBorderArea.y, lowerBorderArea.width, lowerBorderArea.height);
         if (!gameTexts.isEmpty() && !isInCombat) {
             String currentText = gameTexts.get(currentTextIndex);
             textFont.draw(batch, currentText, lowerBorderArea.x + 20, lowerBorderArea.y + lowerBorderArea.height / 2 + 10, lowerBorderArea.width - 40, Align.center, true);
@@ -169,6 +177,8 @@ public class GameplayScreen implements Screen {
     public void dispose() {
         batch.dispose();
         atlas.dispose();
+        bgAtlas.dispose(); // Asegúrate de disponer todos los atlas usados
         stage.dispose();
     }
+
 }

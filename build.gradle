@@ -80,52 +80,15 @@ project(":android") {
 
         implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
 
-        implementation "com.android.support:appcompat-v7:28.0.0"
+        implementation 'androidx.appcompat:appcompat:1.2.0'
 
 
-        //implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-
-        //implementation files("libs/gdx-tools-1.12.1.jar")
-
-        //implementation "com.badlogicgames.gdx:gdx-scene2d:$gdxVersion"
-
-        //implementation "androidx.room:room-runtime:2.4.0"
-        //annotationProcessor "androidx.room:room-compiler:2.4.0"
-
-        //implementation "pl.mk5.gdx-fireapp:gdx-fireapp-android:$gdxFireappVersion" // the version you are using
-
-/*        implementation platform("com.google.firebase:firebase-bom:26.7.0")
-        implementation 'com.google.firebase:firebase-core'
-        implementation 'com.google.firebase:firebase-storage'
-        implementation 'com.google.firebase:firebase-auth'
-        implementation 'com.google.firebase:firebase-database'
-        implementation 'com.google.firebase:firebase-crashlytics'
-        implementation 'com.google.firebase:firebase-analytics'*/
 
 
 
 
     }
-/*    // Definir la tarea de TexturePacker para las imágenes del TextFieldStyle
-    task packTextFieldImages(type: com.badlogic.gdx.tools.texturepacker.TexturePackerTask) {
-        inputDir = file("assets/pre-atlases") // Carpeta que contiene las imágenes del TextFieldStyle
-        outputDir = file("assets/atlases/textfields") // Carpeta donde se generará el atlas de textura para el TextFieldStyle
-        packFileName = "textfield-atlas" // Nombre del archivo de atlas resultante para el TextFieldStyle
-        atlasExtension = "atlas" // Extensión del archivo de atlas
-    }
 
-    // Definir la tarea de TexturePacker para otras imágenes utilizadas en la interfaz de usuario
-    task packUIImages(type: com.badlogic.gdx.tools.texturepacker.TexturePackerTask) {
-        inputDir = file("assets/pre-atlases") // Carpeta que contiene las imágenes de la interfaz de usuario
-        outputDir = file("assets/atlases/ui") // Carpeta donde se generará el atlas de textura para la interfaz de usuario
-        packFileName = "ui-atlas" // Nombre del archivo de atlas resultante para la interfaz de usuario
-        atlasExtension = "atlas" // Extensión del archivo de atlas
-    }
-
-    // Agregar dependencia de la tarea packTextFieldImages a la tarea build
-    build.dependsOn(packTextFieldImages)
-    // Agregar dependencia de la tarea packUIImages a la tarea build
-    build.dependsOn(packUIImages)*/
 
 }
 
