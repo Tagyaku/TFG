@@ -45,20 +45,34 @@ public class Combat implements Screen {
         float borderHeight = screenHeight * 0.30f;
         lowerBorderArea = new Rectangle(10, 10, screenWidth - 20, borderHeight);
 
-        // Create buttons and add them to the stage
+    // Configuración del estilo de los botones
+    font = new BitmapFont();  // Se podría utilizar una fuente más grande o personalizada
+    font.getData().setScale(3);  // Aumentar el tamaño de la fuente
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
-        buttonStyle.font = new BitmapFont();
+            buttonStyle.font = font;
+
         attackButton = new TextButton("Attack", buttonStyle);
         defendButton = new TextButton("Defend", buttonStyle);
         useItemButton = new TextButton("Use Item", buttonStyle);
         escapeButton = new TextButton("Escape", buttonStyle);
 
-        // Position buttons within the border area
-        attackButton.setPosition(20, 20);
-        defendButton.setPosition(20, 60);
-        useItemButton.setPosition(20, 100);
-        escapeButton.setPosition(20, 140);
+    // Ancho de los botones y espacio entre ellos
+    float buttonWidth = (lowerBorderArea.width - 80) / 4; // Distribuir el ancho del área entre los botones, dejando espacio
+    float buttonHeight = 50; // Altura fija para todos los botones
+    float spacing = 13; // Espacio entre botones
 
+    // Posición de los botones en horizontal
+    attackButton.setSize(buttonWidth, buttonHeight);
+    defendButton.setSize(buttonWidth, buttonHeight);
+    useItemButton.setSize(buttonWidth, buttonHeight);
+    escapeButton.setSize(buttonWidth, buttonHeight);
+
+    attackButton.setPosition(lowerBorderArea.x + 10, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
+    defendButton.setPosition(attackButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
+    useItemButton.setPosition(defendButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
+    escapeButton.setPosition(useItemButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
+
+    // Agregar botones al escenario
         stage.addActor(attackButton);
         stage.addActor(defendButton);
         stage.addActor(useItemButton);
