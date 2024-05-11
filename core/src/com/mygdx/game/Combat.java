@@ -26,14 +26,17 @@ public class Combat implements Screen {
     private Button attackButton, defendButton, useItemButton, escapeButton;
     private BitmapFont font;
 
-    public Combat(MyGdxGame game) {
+    private TextureRegion backgroundTexture;
+
+    public Combat(MyGdxGame game, TextureRegion background) {
         this.game = game;
+        this.backgroundTexture = background; // Guarda el fondo pasado desde GameplayScreen
         this.batch = new SpriteBatch();
         this.stage = new Stage(new ScreenViewport(), batch);
         this.atlas = new TextureAtlas("images/TFG_Atlas_1.atlas");
         this.borderTexture = atlas.findRegion("MenuBox2");
         this.player = Player.getInstance();
-        this.enemy = new Enemies("images/Enemies/Enemies.atlas");
+        this.enemy = new Enemies();
 
         initUI();
         Gdx.input.setInputProcessor(stage);
@@ -88,12 +91,36 @@ public class Combat implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
+        // Obtén la imagen del jugador y ajusta su escala y rotación
+        TextureRegion playerImage = player.getPlayerTexture("Idle-3"); // Asegúrate de que 'Idle-3' es el estado correcto
+        // Escala la imagen para que ocupe toda la altura de la pantalla menos un pequeño margen
+        float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
+        // Ajusta la posición x para centrar la imagen dentro del margen izquierdo y el borde de la pantalla
+        float imageX = 10;
+        // El margen superior ajusta la imagen para que esté centrada verticalmente dentro del área disponible
+        float imageY = 10;
+
+        // Punto de origen para la rotación (centro de la imagen original)
+        float originX = playerImage.getRegionWidth() / 2;
+        float originY = playerImage.getRegionHeight() / 2;
+
+        // Rota la imagen 90 grados para ponerla de pie (270 grados si se necesita al revés)
+        float rotation = 270;
+
+        // Dibuja el fondo y el borde
+        batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        // Ajusta la posición de dibujo y la escala para que la imagen quede bien posicionada
+        batch.draw(playerImage, imageX + originX * playerScale, imageY + originY * playerScale, originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(), playerScale, playerScale, rotation);
         batch.draw(borderTexture, lowerBorderArea.x, lowerBorderArea.y, lowerBorderArea.width, lowerBorderArea.height);
         batch.end();
 
         stage.act(delta);
         stage.draw();
     }
+
+
+
+
 
     @Override
     public void resize(int width, int height) {

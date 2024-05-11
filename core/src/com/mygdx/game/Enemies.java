@@ -12,8 +12,8 @@ public class Enemies {
     private static final int DEFAULT_HEALTH = 50; // Puntos de vida constantes para todos los enemigos
     private static final int DEFAULT_DAMAGE = 4; // Daño constante para todos los enemigos
 
-    public Enemies(String atlasPath) {
-        this.enemyAtlas = new TextureAtlas(atlasPath);
+    public Enemies() {
+        this.enemyAtlas = new TextureAtlas("images/Enemies/Enemies.atlas");
         this.health = DEFAULT_HEALTH;
         this.damage = DEFAULT_DAMAGE;
         randomizeEnemyTexture();

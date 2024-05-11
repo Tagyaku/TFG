@@ -123,9 +123,10 @@ public class GameplayScreen implements Screen {
 
     private void startCombat() {
         if (isInCombat) {
-            game.setScreen(new Combat(game)); // Cambia a la pantalla de combate
+            game.setScreen(new Combat(game, currentBackground)); // Pasar el fondo actual al constructor de Combat
         }
     }
+
 
     // Suponiendo que tienes un método para finalizar el combate y regresar
     public void endCombat() {
