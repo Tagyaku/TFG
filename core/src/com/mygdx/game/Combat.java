@@ -3,17 +3,22 @@ package com.mygdx.game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.utils.Array;
 public class Combat implements Screen {
     private MyGdxGame game;
     private Stage stage;
@@ -27,8 +32,14 @@ public class Combat implements Screen {
     private BitmapFont font;
 
     private TextureRegion backgroundTexture;
+    private GlyphLayout layout;
+    private float stateTime;
+    private Animation<TextureRegion> attackAnimation; // Animación del ataque
+    private boolean isAttacking = false; // Estado de ataque
 
     public Combat(MyGdxGame game, TextureRegion background) {
+    // Inicialización en el constructor
+    this.layout = new GlyphLayout();
         this.game = game;
         this.backgroundTexture = background; // Guarda el fondo pasado desde GameplayScreen
         this.batch = new SpriteBatch();
@@ -38,9 +49,34 @@ public class Combat implements Screen {
         this.player = Player.getInstance();
         this.enemy = new Enemies();
 
+        setupAnimations();
         initUI();
         Gdx.input.setInputProcessor(stage);
     }
+
+    private void setupAnimations() {
+        TextureAtlas playerAtlas = new TextureAtlas(Gdx.files.internal("images/Main_Character/main_Character.atlas"));
+
+        // Manually add each frame to the animation
+        Array<TextureRegion> frames = new Array<>();
+        frames.add(playerAtlas.findRegion("Attack 1-0"));
+        frames.add(playerAtlas.findRegion("Attack 1-1"));
+        frames.add(playerAtlas.findRegion("Attack 1-2"));
+        frames.add(playerAtlas.findRegion("Attack 1-3"));
+        frames.add(playerAtlas.findRegion("Attack 1-4"));
+
+        // Check if any frames are missing to avoid NullPointerException
+        for (TextureRegion frame : frames) {
+            if (frame == null) {
+                System.out.println("One or more animation frames are missing!");
+                return;
+            }
+        }
+
+        // Create the animation with the frames array
+        attackAnimation = new Animation<>(0.1f, frames, Animation.PlayMode.NORMAL);
+    }
+
 
     private void initUI() {
         float screenWidth = Gdx.graphics.getWidth();
@@ -55,6 +91,13 @@ public class Combat implements Screen {
             buttonStyle.font = font;
 
         attackButton = new TextButton("Attack", buttonStyle);
+        attackButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                attackEnemy();
+            }
+        });
+
         defendButton = new TextButton("Defend", buttonStyle);
         useItemButton = new TextButton("Use Item", buttonStyle);
         escapeButton = new TextButton("Escape", buttonStyle);
@@ -82,6 +125,48 @@ public class Combat implements Screen {
         stage.addActor(escapeButton);
     }
 
+
+    private void attackEnemy() {
+        if (attackAnimation != null) {
+        int damage = player.calculateDamage();
+        enemy.receiveDamage(damage);
+            isAttacking = true;
+            stateTime = 0;
+        } else {
+            System.out.println("Animation not initialized.");
+        }
+    }
+
+    private void animateAttack(float delta) {
+        if (isAttacking) {
+            stateTime += delta; // Update the state time for the animation
+            TextureRegion currentFrame = attackAnimation.getKeyFrame(stateTime, false);
+            int frameIndex = attackAnimation.getKeyFrameIndex(stateTime);
+
+            if (attackAnimation.isAnimationFinished(stateTime)) {
+                isAttacking = false; // Stop the animation once it finishes
+            } else {
+                // Player's position and scale setup
+                TextureRegion playerImage = player.getPlayerTexture("Idle-3");
+                float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
+                float imageX = 10;
+                float imageY = 10;
+                float originX = playerImage.getRegionWidth() / 2;
+                float originY = playerImage.getRegionHeight() / 2;
+
+                // Conditionally rotate based on the frame index
+                float rotation = (frameIndex == 0 || frameIndex == 1) ? 270 : 0;  // Rotate only the first two frames
+
+                // Draw the current frame of the attack animation at the same position and size as the player
+                batch.draw(currentFrame, imageX + originX * playerScale - originX, imageY + originY * playerScale - originY,
+                        originX, originY, currentFrame.getRegionWidth(), currentFrame.getRegionHeight(),
+                        playerScale, playerScale, rotation);
+            }
+        }
+    }
+
+
+
     @Override
     public void show() {}
 
@@ -91,32 +176,49 @@ public class Combat implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        // Obtén la imagen del jugador y ajusta su escala y rotación
-        TextureRegion playerImage = player.getPlayerTexture("Idle-3"); // Asegúrate de que 'Idle-3' es el estado correcto
-        // Escala la imagen para que ocupe toda la altura de la pantalla menos un pequeño margen
-        float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
-        // Ajusta la posición x para centrar la imagen dentro del margen izquierdo y el borde de la pantalla
-        float imageX = 10;
-        // El margen superior ajusta la imagen para que esté centrada verticalmente dentro del área disponible
-        float imageY = 10;
+        // Dibuja el fondo
+        batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        // Punto de origen para la rotación (centro de la imagen original)
+        // Configuración y dibujo del jugador
+        TextureRegion playerImage = player.getPlayerTexture("Idle-3");
+        float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
+        float imageX = 10;
+        float imageY = 10;
         float originX = playerImage.getRegionWidth() / 2;
         float originY = playerImage.getRegionHeight() / 2;
-
-        // Rota la imagen 90 grados para ponerla de pie (270 grados si se necesita al revés)
         float rotation = 270;
+        if (!isAttacking) {
+            batch.draw(playerImage, imageX + originX * playerScale, imageY + originY * playerScale, originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(), playerScale, playerScale, rotation);
+        }
+        animateAttack(delta); // Manejar la animación de ataque si está activa
 
-        // Dibuja el fondo y el borde
-        batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        // Ajusta la posición de dibujo y la escala para que la imagen quede bien posicionada
-        batch.draw(playerImage, imageX + originX * playerScale, imageY + originY * playerScale, originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(), playerScale, playerScale, rotation);
+        // Configuración y dibujo del enemigo asegurando que no toque al jugador
+        TextureRegion enemyImage = enemy.getEnemyTexture();
+        float enemyScale = (Gdx.graphics.getHeight() - 20) / enemyImage.getRegionHeight();
+        float enemyX = imageX + playerImage.getRegionWidth() * playerScale + 50; // Margen de 50 píxeles entre jugador y enemigo
+        float enemyY = 10;
+        batch.draw(enemyImage, enemyX, enemyY, 0, 0, enemyImage.getRegionWidth(), enemyImage.getRegionHeight(), enemyScale, enemyScale, 0);
+
+        // Dibuja el borde
         batch.draw(borderTexture, lowerBorderArea.x, lowerBorderArea.y, lowerBorderArea.width, lowerBorderArea.height);
+
+        // Muestra información del jugador
+        String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints() + "/" + (10 + player.getVitality() * 2);
+        font.draw(batch, playerStats, lowerBorderArea.x + 10, lowerBorderArea.y + lowerBorderArea.height - 10);
+
+        // Muestra información del enemigo
+        String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + Enemies.DEFAULT_HEALTH;
+        layout.setText(font, enemyStats); // Usar GlyphLayout para medir el ancho del texto
+        font.draw(batch, enemyStats, lowerBorderArea.x + lowerBorderArea.width - layout.width - 10, lowerBorderArea.y + lowerBorderArea.height - 10);
+
         batch.end();
 
         stage.act(delta);
         stage.draw();
     }
+
+
+
 
 
 

@@ -1,15 +1,17 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Enemies {
     private TextureAtlas enemyAtlas;
     private TextureRegion enemyTexture;
+    private String textureName; // Almacenar el nombre de la textura actual
     private int health;
     private int damage;
-    private static final int DEFAULT_HEALTH = 50; // Puntos de vida constantes para todos los enemigos
+    public static final int DEFAULT_HEALTH = 50; // Puntos de vida constantes para todos los enemigos
     private static final int DEFAULT_DAMAGE = 4; // Daño constante para todos los enemigos
 
     public Enemies() {
@@ -20,9 +22,11 @@ public class Enemies {
     }
 
     private void randomizeEnemyTexture() {
-        // Suponiendo que el atlas tiene un array o lista de regiones accesible
-        Object[] regions = enemyAtlas.getRegions().toArray();
-        this.enemyTexture = (TextureRegion) regions[MathUtils.random(regions.length - 1)];
+        // Convertir a un array de AtlasRegion para acceder a los nombres
+        AtlasRegion[] regions = enemyAtlas.getRegions().toArray(AtlasRegion.class);
+        AtlasRegion selectedRegion = regions[MathUtils.random(regions.length - 1)];
+        this.enemyTexture = selectedRegion;
+        this.textureName = selectedRegion.name; // Almacena el nombre de la textura
     }
 
     public void attackPlayer(Player player) {
@@ -56,5 +60,10 @@ public class Enemies {
 
     public int getDamage() {
         return damage;
+    }
+
+    // Nuevo método para obtener el nombre de la textura del enemigo
+    public String getTextureName() {
+        return textureName;
     }
 }
