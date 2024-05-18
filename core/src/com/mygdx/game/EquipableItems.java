@@ -35,23 +35,11 @@ public class EquipableItems {
         int endurance = MathUtils.random(0, 10);
         int dexterity = MathUtils.random(0, 10);
         int luck = MathUtils.random(0, 10);
-        String specialAbility = generateSpecialAbility(type); // Placeholder for special ability generation
 
-        return new Equipment(itemName, itemsAtlas, regionName, type, vitality, strength, endurance, dexterity, luck, specialAbility);
+        return new Equipment(itemName, itemsAtlas, regionName, type, vitality, strength, endurance, dexterity, luck);
     }
 
-    private String generateSpecialAbility(Equipment.Type type) {
-        switch (type) {
-            case WEAPON:
-                return "Increased damage on critical hit";
-            case ARMOR:
-                return "Reduces damage from fire";
-            case ACCESSORY:
-                return "Boosts item drop rate";
-            default:
-                return "No special ability";
-        }
-    }
+
 
     // Additional methods as needed...
 }

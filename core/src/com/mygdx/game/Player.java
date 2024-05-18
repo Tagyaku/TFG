@@ -20,19 +20,30 @@ public class Player {
     private Equipment[] accessories = new Equipment[4];
     private Equipment armor;
     private TextureAtlas playerAtlas;
+    private boolean isDefending = false;
+    private boolean shouldRotatePlayer;
+    private Inventory inventory;  // Añadir inventario
 
     private Player() {
         this.playerName = "Default Hero";
         this.level = 1;
-        this.experience = 0;
-        this.vitality = 0;
-        this.strength = 0;
-        this.endurance = 0;
-        this.dexterity = 0;
-        this.luck = 0;
-        this.hitPoints = 0; // Initialized to 0, recalculated with vitality
+        this.experience = 5;
+        this.vitality = 5;
+        this.strength = 5;
+        this.endurance = 5;
+        this.dexterity = 5;
+        this.luck = 5;
+        this.hitPoints = 10 + this.vitality * 2;
         this.playerAtlas = new TextureAtlas("images/Main_Character/main_Character.atlas");
-        updateStats(); // Initial stat calculation
+        this.inventory = new Inventory();  // Inicializar inventario
+        updateStats();
+        setRotation();
+    }
+
+    private void setRotation() {
+        if (!playerAtlas.getRegions().isEmpty()) {
+            this.shouldRotatePlayer = playerAtlas.getRegions().first().rotate;
+        }
     }
 
     public static synchronized Player getInstance() {
@@ -119,7 +130,7 @@ public class Player {
             this.dexterity += equipment.getDexterityBonus();
             this.luck += equipment.getLuckBonus();
             // Recalculate hit points, critical stats after equipment change
-            this.hitPoints = 100 + this.vitality * 2;
+            this.hitPoints = 10 + this.vitality * 2;
             this.criticalChance = 5.0 + this.luck * 1.0;
             this.criticalDamage = 50.0 + this.dexterity * 2.0;
         }
@@ -127,7 +138,9 @@ public class Player {
     public TextureRegion getPlayerTexture(String state) {
         return playerAtlas.findRegion(state);
     }
-
+    public void defend() {
+        this.isDefending = true;
+    }
     // Battle mechanics
     public int calculateDamage() {
         double baseDamage = strength * 3;
@@ -138,8 +151,12 @@ public class Player {
     }
 
     public void receiveDamage(int damage) {
+        if (isDefending) {
+            damage *= 0.6;  // Apply 40% damage reduction
+            isDefending = false;  // Reset defending status after receiving the attack
+        }
         int finalDamage = damage - (int) (endurance * 0.5);
-        finalDamage = Math.max(0, finalDamage); // Ensure damage is not negative
+        finalDamage = Math.max(0, finalDamage);  // Ensure damage is not negative
         hitPoints -= finalDamage;
         checkDeath();
     }
@@ -149,6 +166,17 @@ public class Player {
             System.out.println(playerName + " has died.");
             // Handle death (e.g., restart level, game over screen)
         }
+    }
+
+    public void heal(float amount) {
+        this.hitPoints += amount;
+        if (this.hitPoints > this.getMaxHitPoints()) {
+            this.hitPoints = this.getMaxHitPoints();
+        }
+    }
+
+    public int getMaxHitPoints() {
+        return 10 + this.vitality * 2;
     }
 
     // Getters and Setters
@@ -214,6 +242,14 @@ public class Player {
 
     public int getHitPoints() {
         return hitPoints;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public boolean shouldRotate() {
+        return shouldRotatePlayer;
     }
 }
 

@@ -213,7 +213,7 @@ armor_plate5
   orig: 64, 65
   offset: 0, 0
   index: -1
-potion
+potion30
   rotate: false
   xy: 1184, 1
   size: 10, 33
@@ -227,7 +227,7 @@ potion
   orig: 18, 37
   offset: 0, 0
   index: 2
-potion
+potion100
   rotate: false
   xy: 1134, 50
   size: 30, 44

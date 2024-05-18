@@ -20,7 +20,7 @@ public class Equipment {
 
     public Equipment(String name, TextureAtlas atlas, String regionName, Type type,
                      int vitalityBonus, int strengthBonus, int enduranceBonus,
-                     int dexterityBonus, int luckBonus, String specialAbility) {
+                     int dexterityBonus, int luckBonus) {
         this.name = name;
         this.texture = atlas.findRegion(regionName);
         this.type = type;
@@ -29,7 +29,6 @@ public class Equipment {
         this.enduranceBonus = enduranceBonus;
         this.dexterityBonus = dexterityBonus;
         this.luckBonus = luckBonus;
-        this.specialAbility = specialAbility;
     }
 
     // Getters y setters
@@ -65,7 +64,5 @@ public class Equipment {
         return luckBonus;
     }
 
-    public String getSpecialAbility() {
-        return specialAbility;
-    }
+
 }

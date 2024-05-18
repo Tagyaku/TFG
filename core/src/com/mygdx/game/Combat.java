@@ -15,39 +15,49 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Array;
 public class Combat implements Screen {
     private MyGdxGame game;
     private Stage stage;
     private SpriteBatch batch;
     private TextureAtlas atlas;
+    private TextureAtlas itemAtlas;
     private TextureRegion borderTexture;
     private Rectangle lowerBorderArea;
+    private Rectangle enemyArea; // Area for the enemy
+    private Rectangle potionMenuArea; // Area of the potion menu
     private Player player;
     private Enemies enemy;
     private Button attackButton, defendButton, useItemButton, escapeButton;
     private BitmapFont font;
-
+    private boolean isPotionMenuVisible = false;
+    private TextureRegion potion30Texture;
+    private TextureRegion potion100Texture;
     private TextureRegion backgroundTexture;
     private GlyphLayout layout;
     private float stateTime;
-    private Animation<TextureRegion> attackAnimation; // Animación del ataque
-    private boolean isAttacking = false; // Estado de ataque
+    private Animation<TextureRegion> attackAnimation; // Attack animation
+    private boolean isAttacking = false; // Attack state
+    private boolean buttonsEnabled = true;
+    private float enemyX, enemyY;  // Declare these at the class level
+    private boolean enemyAttacking = false; // State for enemy attack animation
+    private boolean enemyMoving = false; // State for enemy moving animation
 
     public Combat(MyGdxGame game, TextureRegion background) {
-    // Inicialización en el constructor
     this.layout = new GlyphLayout();
         this.game = game;
         this.backgroundTexture = background; // Guarda el fondo pasado desde GameplayScreen
         this.batch = new SpriteBatch();
         this.stage = new Stage(new ScreenViewport(), batch);
         this.atlas = new TextureAtlas("images/TFG_Atlas_1.atlas");
+        this.itemAtlas = new TextureAtlas("images/items/items.atlas");
         this.borderTexture = atlas.findRegion("MenuBox2");
+        this.potion30Texture = itemAtlas.findRegion("potion30");
+        this.potion100Texture = itemAtlas.findRegion("potion100");
         this.player = Player.getInstance();
-        this.enemy = new Enemies();
+        this.enemy = new Enemies(game);
 
         setupAnimations();
         initUI();
@@ -84,9 +94,15 @@ public class Combat implements Screen {
         float borderHeight = screenHeight * 0.30f;
         lowerBorderArea = new Rectangle(10, 10, screenWidth - 20, borderHeight);
 
-    // Configuración del estilo de los botones
-    font = new BitmapFont();  // Se podría utilizar una fuente más grande o personalizada
-    font.getData().setScale(3);  // Aumentar el tamaño de la fuente
+        // Define the enemy area
+        enemyArea = new Rectangle(screenWidth - 500, 200, 280, screenHeight - 300);
+
+        // Define the potion menu area
+        potionMenuArea = new Rectangle(10, 600, screenWidth - 1500, screenHeight - 600);
+
+        // Configure button styles
+        font = new BitmapFont(); // Use a larger or customized font
+        font.getData().setScale(3); // Increase font size
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
             buttonStyle.font = font;
 
@@ -94,18 +110,49 @@ public class Combat implements Screen {
         attackButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                attackEnemy();
+                if (buttonsEnabled) {
+                    buttonsEnabled = false; // Disable buttons
+                    attackEnemy();
+                }
             }
         });
 
         defendButton = new TextButton("Defend", buttonStyle);
+        defendButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (buttonsEnabled) {
+                    buttonsEnabled = false; // Disable buttons
+                    defend();
+                    triggerEnemyAttack();
+                }
+            }
+        });
         useItemButton = new TextButton("Use Item", buttonStyle);
-        escapeButton = new TextButton("Escape", buttonStyle);
+    useItemButton.addListener(new ClickListener() {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            if (buttonsEnabled) {
+                    isPotionMenuVisible = !isPotionMenuVisible; // Toggle visibility
+            }
+        }
+    });
 
-    // Ancho de los botones y espacio entre ellos
-    float buttonWidth = (lowerBorderArea.width - 80) / 4; // Distribuir el ancho del área entre los botones, dejando espacio
-    float buttonHeight = 50; // Altura fija para todos los botones
-    float spacing = 13; // Espacio entre botones
+        escapeButton = new TextButton("Escape", buttonStyle);
+        escapeButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (buttonsEnabled) {
+                    buttonsEnabled = false; // Disable buttons
+                    attemptEscape();
+                }
+            }
+        });
+
+        // Button width and spacing
+        float buttonWidth = (lowerBorderArea.width - 80) / 4; // Distribute area width among buttons, leaving space
+        float buttonHeight = 50; // Fixed height for all buttons
+        float spacing = 13; // Space between buttons
 
     // Posición de los botones en horizontal
     attackButton.setSize(buttonWidth, buttonHeight);
@@ -125,16 +172,84 @@ public class Combat implements Screen {
         stage.addActor(escapeButton);
     }
 
+    private void triggerEnemyAttack() {
+        enemyAttacking = true; // Enable enemy attack animation
+        enemyAttack();
+    }
+    private void enemyAttack() {
+        // Asegurarse de que todos los botones están desactivados durante el ataque
+        buttonsEnabled = false;
+        enemyMoving = true;
+        float originalX = enemyX;
+        float attackMovement = 500;  // Distance to move left for the animation
 
+        // Step 1: Move enemy to the left (simulating attack)
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                enemyX -= attackMovement;
+            }
+        }, 0.3f);
+
+        // Step 2: Deal damage and reset position after a short delay
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                player.receiveDamage(enemy.getDamage());
+                enemyX = originalX;  // Reset position
+                enemyAttacking = false; // Disable enemy attack animation
+                enemyMoving = false; // Disable enemy moving animation
+                buttonsEnabled = true;  // Re-enable buttons after the attack
+            }
+        }, 0.4f);  // Delay to simulate the attack movement
+    }
+
+
+
+
+    private void defend() {
+        player.defend();
+    }
     private void attackEnemy() {
         if (attackAnimation != null) {
-        int damage = player.calculateDamage();
-        enemy.receiveDamage(damage);
-            isAttacking = true;
-            stateTime = 0;
+            isAttacking = true; // Iniciar animación de ataque
+            stateTime = 0; // Reiniciar el tiempo de animación
+
+        // Realizar el ataque después de la duración de la animación
+        Runnable attackRunnable = new Runnable() {
+            @Override
+            public void run() {
+                int damage = player.calculateDamage();
+                enemy.receiveDamage(damage);
+                updateEnemyStatsDisplay();  // Actualiza la información de la vida del enemigo en la UI.
+
+                if (!enemy.isAlive()) {
+                    game.setScreen(new GameplayScreen(game)); // Cambia la pantalla si el enemigo muere.
+                }
+                triggerEnemyAttack();
+            isAttacking = false; // Detener la animación del ataque.
+            }
+        };
+
+        // Programar el Runnable después de la duración de la animación
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                Gdx.app.postRunnable(attackRunnable);
+            }
+        }, attackAnimation.getAnimationDuration());
         } else {
             System.out.println("Animation not initialized.");
         }
+    }
+
+
+
+    private void updateEnemyStatsDisplay() {
+        // Este método actualiza el texto que muestra la salud actual del enemigo en la interfaz de usuario.
+        String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
+        layout.setText(font, enemyStats);  // Pre-calcula el layout del texto para su correcta visualización.
+        // Asumiendo que tienes una forma de dibujar este texto en tu método render(), solo necesitas actualizar el texto aquí.
     }
 
     private void animateAttack(float delta) {
@@ -165,10 +280,39 @@ public class Combat implements Screen {
         }
     }
 
+    private void positionEnemy() {
+        TextureRegion enemyImage = enemy.getEnemyTexture();
+        float enemyScale = 2.0f; // Set a fixed scale factor for the enemy
+        enemyX = Gdx.graphics.getWidth() - enemyImage.getRegionWidth() * enemyScale - 50;  // Position enemy on the right side with some padding
+        enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;  // Center vertically
+    }
 
+    private void attemptEscape() {
+        double escapeChance = Math.random();
+        if (escapeChance <= 0.3) {
+            game.setScreen(new GameplayScreen(game)); // Successful escape
+        } else {
+            triggerEnemyAttack(); // Failed escape, enemy attacks
+        }
+    }
+
+    private void renderPotionMenu() {
+        // Background for potion menu
+        batch.draw(borderTexture, potionMenuArea.x, potionMenuArea.y, potionMenuArea.width, potionMenuArea.height);
+
+        // Render potion 30
+        batch.draw(potion30Texture, potionMenuArea.x + 30, potionMenuArea.y + potionMenuArea.height - 70, 50, 50);
+        font.draw(batch, "Potion 30: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_30), potionMenuArea.x + 100, potionMenuArea.y + potionMenuArea.height - 50);
+
+        // Render potion 100
+        batch.draw(potion100Texture, potionMenuArea.x + 30, potionMenuArea.y + potionMenuArea.height - 150, 50, 50);
+        font.draw(batch, "Potion 100: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_100), potionMenuArea.x + 100, potionMenuArea.y + potionMenuArea.height - 130);
+    }
 
     @Override
-    public void show() {}
+    public void show() {
+        positionEnemy();
+    }
 
     @Override
     public void render(float delta) {
@@ -186,39 +330,70 @@ public class Combat implements Screen {
         float imageY = 10;
         float originX = playerImage.getRegionWidth() / 2;
         float originY = playerImage.getRegionHeight() / 2;
-        float rotation = 270;
+        float rotation = player.shouldRotate() ? 270 : 0;
         if (!isAttacking) {
-            batch.draw(playerImage, imageX + originX * playerScale, imageY + originY * playerScale, originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(), playerScale, playerScale, rotation);
+            batch.draw(playerImage, imageX + originX * playerScale - originX, imageY + originY * playerScale - originY,
+                    originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(),
+                    playerScale, playerScale, rotation);
         }
         animateAttack(delta); // Manejar la animación de ataque si está activa
 
-        // Configuración y dibujo del enemigo asegurando que no toque al jugador
+        // Configuración y dibujo del enemigo asegurando que se muestre en el centro de la pantalla
         TextureRegion enemyImage = enemy.getEnemyTexture();
-        float enemyScale = (Gdx.graphics.getHeight() - 20) / enemyImage.getRegionHeight();
-        float enemyX = imageX + playerImage.getRegionWidth() * playerScale + 50; // Margen de 50 píxeles entre jugador y enemigo
-        float enemyY = 10;
-        batch.draw(enemyImage, enemyX, enemyY, 0, 0, enemyImage.getRegionWidth(), enemyImage.getRegionHeight(), enemyScale, enemyScale, 0);
+        float enemyScale = 2.0f; // Set a fixed scale factor for the enemy
+/*        float enemyX = Gdx.graphics.getWidth() - enemyImage.getRegionWidth() * enemyScale - 50;  // Position enemy on the right side with some padding*/
+        float enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;  // Center vertically
+        float enemyRotation = enemy.shouldRotate() ? 270 : 0;
+        batch.draw(enemyImage, enemyX, enemyY, originX, originY, enemyImage.getRegionWidth(), enemyImage.getRegionHeight(),
+                enemyScale, enemyScale, enemyRotation);
 
         // Dibuja el borde
         batch.draw(borderTexture, lowerBorderArea.x, lowerBorderArea.y, lowerBorderArea.width, lowerBorderArea.height);
 
-        // Muestra información del jugador
-        String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints() + "/" + (10 + player.getVitality() * 2);
-        font.draw(batch, playerStats, lowerBorderArea.x + 10, lowerBorderArea.y + lowerBorderArea.height - 10);
+        // Muestra información del jugador y enemigo
+        displayStats();
 
-        // Muestra información del enemigo
-        String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + Enemies.DEFAULT_HEALTH;
-        layout.setText(font, enemyStats); // Usar GlyphLayout para medir el ancho del texto
-        font.draw(batch, enemyStats, lowerBorderArea.x + lowerBorderArea.width - layout.width - 10, lowerBorderArea.y + lowerBorderArea.height - 10);
+        if (isPotionMenuVisible) {
+    renderPotionMenu();
+        }
 
         batch.end();
 
+        // Handle click outside potion menu to close it
+        if (isPotionMenuVisible && Gdx.input.justTouched()) {
+            float touchX = Gdx.input.getX();
+            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY(); // Adjust for coordinate system
+            if (!potionMenuArea.contains(touchX, touchY)) {
+                isPotionMenuVisible = false;
+                buttonsEnabled = true;
+            }
+        }
+
         stage.act(delta);
         stage.draw();
+
+        // Update enemy position during attack animation
+        if (enemyMoving) {
+            float deltaX = 500 * delta;
+            enemyX -= deltaX;
+        }
     }
 
+    private void displayStats() {
+        String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints();
+        String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
 
+        // Calculate the y-coordinate to align with the top of the border
+        float statsY = lowerBorderArea.y + lowerBorderArea.height -20; // Adjust this value based on your font size and desired padding
 
+        // Display the player stats on the left
+        font.draw(batch, playerStats, lowerBorderArea.x + 30, statsY);
+
+        // Calculate the width of the enemy stats to right-align them
+        layout.setText(font, enemyStats);
+        float enemyStatsX = lowerBorderArea.x + lowerBorderArea.width - layout.width - 30; // Right-align text
+        font.draw(batch, enemyStats, enemyStatsX, statsY);
+    }
 
 
 
