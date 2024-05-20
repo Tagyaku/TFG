@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Equipment {
@@ -16,13 +15,12 @@ public class Equipment {
     private int enduranceBonus;
     private int dexterityBonus;
     private int luckBonus;
-    private String specialAbility;
 
-    public Equipment(String name, TextureAtlas atlas, String regionName, Type type,
+    public Equipment(String name, TextureRegion texture, Type type,
                      int vitalityBonus, int strengthBonus, int enduranceBonus,
                      int dexterityBonus, int luckBonus) {
         this.name = name;
-        this.texture = atlas.findRegion(regionName);
+        this.texture = texture;
         this.type = type;
         this.vitalityBonus = vitalityBonus;
         this.strengthBonus = strengthBonus;

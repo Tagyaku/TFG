@@ -18,24 +18,57 @@ public class Inventory {
         equipment.add(item);
     }
 
-    @SuppressWarnings("NewApi")
     public void addPotion(Potion.PotionType type, int quantity) {
-        potions.put(type, potions.getOrDefault(type, 0) + quantity);
+        Integer currentQuantity = potions.get(type);
+        if (currentQuantity == null) {
+            currentQuantity = 0;
+        }
+        potions.put(type, currentQuantity + quantity);
     }
 
-    @SuppressWarnings("NewApi")
     public int getPotionQuantity(Potion.PotionType type) {
-        return potions.getOrDefault(type, 0);
+        Integer quantity = potions.get(type);
+        return quantity != null ? quantity : 0;
     }
 
     public void usePotion(Potion.PotionType type) {
-        @SuppressWarnings("NewApi") int quantity = potions.getOrDefault(type, 0);
-        if (quantity > 0) {
+        Integer quantity = potions.get(type);
+        if (quantity != null && quantity > 0) {
             potions.put(type, quantity - 1);
         }
     }
 
     public Map<Potion.PotionType, Integer> getPotions() {
         return potions;
+    }
+
+    public List<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public void removeEquipment(Equipment item) {
+        equipment.remove(item);
+    }
+
+    public void removePotion(Potion.PotionType type, int quantity) {
+        Integer currentQuantity = potions.get(type);
+        if (currentQuantity != null && currentQuantity >= quantity) {
+            potions.put(type, currentQuantity - quantity);
+        }
+    }
+
+    public List<Equipment> getEquipmentByType(Equipment.Type type) {
+        List<Equipment> filteredEquipment = new ArrayList<>();
+        for (Equipment item : equipment) {
+            if (item.getType() == type) {
+                filteredEquipment.add(item);
+            }
+        }
+        return filteredEquipment;
+    }
+
+    public boolean hasPotion(Potion.PotionType type) {
+        Integer quantity = potions.get(type);
+        return quantity != null && quantity > 0;
     }
 }
