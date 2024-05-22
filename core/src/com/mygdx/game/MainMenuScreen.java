@@ -155,5 +155,6 @@ private void updateButtonState(float delta) {
         batch.dispose();
         atlas.dispose();
         font.dispose();
+        backgroundAtlas.dispose();
     }
 }

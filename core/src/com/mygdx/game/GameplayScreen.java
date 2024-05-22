@@ -8,9 +8,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -41,8 +45,12 @@ public class GameplayScreen implements Screen {
     private boolean isInCombat = false;
     private int[] combatPoints = {2, 5}; // Puntos donde ocurren los combates
     private int currentCombatIndex = 0;
-    private Dialog pauseDialog, inventoryDialog, statusDialog;
+    private Dialog pauseDialog, inventoryDialog, statusDialog, equipmentDialog, itemStatsDialog;
     private boolean isPaused = false;
+    private boolean isInventoryActive = false;
+    private boolean isStatusActive = false;
+    private boolean isEquipmentActive = false;
+    private boolean isItemStatsActive = false;
     private Skin skin;
 
     public GameplayScreen(MyGdxGame game) {
@@ -65,6 +73,28 @@ public class GameplayScreen implements Screen {
         initUI();
         initText();
         initSkin();
+
+        // Set a single listener to detect clicks outside of any dialogs
+        stage.addListener(new ClickListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if (isPaused) {
+                    boolean clickInsideAnyDialog = false;
+
+                    if (isDialogOpen(pauseDialog, x, y)) clickInsideAnyDialog = true;
+                    if (isDialogOpen(inventoryDialog, x, y)) clickInsideAnyDialog = true;
+                    if (isDialogOpen(statusDialog, x, y)) clickInsideAnyDialog = true;
+                    if (isDialogOpen(equipmentDialog, x, y)) clickInsideAnyDialog = true;
+                    if (isDialogOpen(itemStatsDialog, x, y)) clickInsideAnyDialog = true;
+
+                    if (!clickInsideAnyDialog) {
+                        hideAllDialogs();
+                        isPaused = false;
+                    }
+                }
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
     }
 
     private void initSkin() {
@@ -88,7 +118,6 @@ public class GameplayScreen implements Screen {
         Window.WindowStyle windowStyle = new Window.WindowStyle();
         windowStyle.background = new TextureRegionDrawable(borderTexture);
         windowStyle.titleFont = skin.getFont("default-font");
-        windowStyle.stageBackground = new TextureRegionDrawable(borderTexture);
         windowStyle.titleFontColor = Color.WHITE; // Proporcionar un color por defecto
         skin.add("default", windowStyle);
     }
@@ -123,6 +152,9 @@ public class GameplayScreen implements Screen {
                 if (!isPaused) {
                     isPaused = true;
                     showPauseDialog();
+                } else {
+                    isPaused = false;
+                    hideAllDialogs();
                 }
             }
         });
@@ -168,47 +200,112 @@ public class GameplayScreen implements Screen {
 
             pauseDialog.pack();
 
-            // Set the position of the pause dialog
-            pauseDialog.setPosition(10, Gdx.graphics.getHeight() - pauseDialog.getHeight() - 50);
+            pauseDialog.setPosition(10, Gdx.graphics.getHeight() - pauseDialog.getHeight() - 100);
 
             // Add listeners for inventory button
             inventoryButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    showInventoryDialog();
+                    if (isInventoryActive) {
+                        inventoryDialog.remove();
+                        isInventoryActive = false;
+                    } else {
+                        showInventoryDialog();
+                        isInventoryActive = true;
+                    }
+                }
+            });
+
+            equipmentButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    if (isEquipmentActive) {
+                        equipmentDialog.remove();
+                        isEquipmentActive = false;
+                    } else {
+                        showEquipmentDialog();
+                        isEquipmentActive = true;
+                    }
                 }
             });
 
             statusButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    showStatusDialog();
+                    if (isStatusActive) {
+                        statusDialog.remove();
+                        isStatusActive = false;
+                    } else {
+                        showStatusDialog();
+                        isStatusActive = true;
+                    }
                 }
             });
         }
-        pauseDialog.show(stage);
+        stage.addActor(pauseDialog);
+    }
 
-        // Set a listener to detect clicks outside the dialog
-        stage.addListener(new ClickListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if (isPaused) {
-                    float dialogX = pauseDialog.getX();
-                    float dialogY = pauseDialog.getY();
-                    float dialogWidth = pauseDialog.getWidth();
-                    float dialogHeight = pauseDialog.getHeight();
-                    if (x < dialogX || x > dialogX + dialogWidth || y < dialogY || y > dialogY + dialogHeight) {
-                        pauseDialog.hide();
-                        isPaused = false;
-                        stage.removeListener(this); // Remove the listener when the dialog is closed
+    private void addCloseButton(Dialog dialog) {
+        if (dialog!= null) { // Check if the dialog is not null
+            TextButton closeButton = new TextButton("X", skin);
+
+            // Define the size of the close button
+            float closeButtonWidth = 30; // Width of the close button
+            float closeButtonHeight = 30; // Height of the close button
+
+            // Set the size of the close button
+            closeButton.setSize(closeButtonWidth + 30, closeButtonHeight + 30);
+
+            closeButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    dialog.remove();
+                    if (dialog == inventoryDialog) {
+                        isInventoryActive = false;
+                    } else if (dialog == statusDialog) {
+                        isStatusActive = false;
+                    } else if (dialog == equipmentDialog) {
+                        isEquipmentActive = false;
+                    } else if (dialog == itemStatsDialog) {
+                        isItemStatsActive = false;
                     }
                 }
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
+            });
+
+            // Add the close button to the top right corner of the dialog
+            dialog.getTitleTable().add(closeButton).height(dialog.getTitleTable().getHeight()).padRight(10);
+        } else {
+            System.out.println("Error: Dialog is null when trying to add close button."); // Debugging log
+        }
+    }
+
+
+    private void hideAllDialogs() {
+        if (pauseDialog != null) {
+            pauseDialog.remove();
+        }
+        if (inventoryDialog != null) {
+            inventoryDialog.remove();
+            isInventoryActive = false;
+        }
+        if (statusDialog != null) {
+            statusDialog.remove();
+            isStatusActive = false;
+        }
+        if (equipmentDialog != null) {
+            equipmentDialog.remove();
+            isEquipmentActive = false;
+        }
+        if (itemStatsDialog != null) {
+            itemStatsDialog.remove();
+            isItemStatsActive = false;
+        }
+        isPaused = false;
     }
 
     private void showInventoryDialog() {
+        Player player = Player.getInstance();
+
         if (inventoryDialog == null) {
             inventoryDialog = new Dialog("Inventario", skin) {
                 @Override
@@ -216,6 +313,8 @@ public class GameplayScreen implements Screen {
                     // Handle the result here
                 }
             };
+
+            addCloseButton(inventoryDialog);
 
             Table inventoryTable = new Table(skin);
             Inventory playerInventory = Player.getInstance().getInventory();
@@ -227,6 +326,13 @@ public class GameplayScreen implements Screen {
                 TextureRegion itemTexture = item.getTexture();
                 if (itemTexture != null) {
                     TextButton itemButton = new TextButton("", new TextButton.TextButtonStyle(new TextureRegionDrawable(itemTexture), null, null, font));
+                    itemButton.addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            player.equip(item);  // Equip item on click
+                            updateInventoryDialog();
+                        }
+                    });
                     inventoryTable.add(itemButton).size(50).pad(5);
 
                     currentColumn++;
@@ -268,24 +374,17 @@ public class GameplayScreen implements Screen {
             // Set the position of the inventory dialog
             inventoryDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
         }
-        inventoryDialog.show(stage);
-
-        // Set a listener to detect clicks outside the inventory dialog
-        stage.addListener(new ClickListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                float dialogX = inventoryDialog.getX();
-                float dialogY = inventoryDialog.getY();
-                float dialogWidth = inventoryDialog.getWidth();
-                float dialogHeight = inventoryDialog.getHeight();
-                if (x < dialogX || x > dialogX + dialogWidth || y < dialogY || y > dialogY + dialogHeight) {
-                    inventoryDialog.hide();
-                    stage.removeListener(this); // Remove the listener when the dialog is closed
-                }
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
+        stage.addActor(inventoryDialog);
     }
+
+    private void updateInventoryDialog() {
+        if (inventoryDialog != null) {
+            inventoryDialog.remove();
+            inventoryDialog = null;
+            showInventoryDialog();
+        }
+    }
+
     private void showStatusDialog() {
         if (statusDialog == null) {
             statusDialog = new Dialog("Estado del Jugador", skin) {
@@ -294,8 +393,20 @@ public class GameplayScreen implements Screen {
                 }
             };
 
-            Table statusTable = new Table(skin);
+            addCloseButton(statusDialog);
+
+            updateStatusTable();
+            statusDialog.pack();
+            statusDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
+        }
+        stage.addActor(statusDialog);
+    }
+
+    private void updateStatusTable() {
+        if (statusDialog != null) {
+            statusDialog.getContentTable().clear();
             Player player = Player.getInstance();
+            Table statusTable = new Table(skin);
 
             statusTable.add(new Label("Nombre: " + player.getPlayerName(), skin)).pad(5).row();
             statusTable.add(new Label("Nivel: " + player.getLevel(), skin)).pad(5).row();
@@ -308,26 +419,127 @@ public class GameplayScreen implements Screen {
             statusTable.add(new Label("Suerte: " + player.getLuck(), skin)).pad(5).row();
 
             statusDialog.getContentTable().add(statusTable).pad(10);
-            statusDialog.pack();
-            statusDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
         }
-        statusDialog.show(stage);
-
-        stage.addListener(new ClickListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                float dialogX = statusDialog.getX();
-                float dialogY = statusDialog.getY();
-                float dialogWidth = statusDialog.getWidth();
-                float dialogHeight = statusDialog.getHeight();
-                if (x < dialogX || x > dialogX + dialogWidth || y < dialogY || y > dialogY + dialogHeight) {
-                    statusDialog.hide();
-                    stage.removeListener(this);
-                }
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
     }
+
+    private void showEquipmentDialog() {
+        if (equipmentDialog == null) {
+            equipmentDialog = new Dialog("Equipo", skin) {
+                @Override
+                protected void result(Object object) {
+                }
+            };
+
+            addCloseButton(equipmentDialog);
+
+            createEquipmentTable();
+
+            equipmentDialog.pack();
+            equipmentDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
+        } else {
+            equipmentDialog.getContentTable().clear();
+            createEquipmentTable();
+
+            equipmentDialog.pack();
+        }
+        stage.addActor(equipmentDialog);
+    }
+
+    private void createEquipmentTable() {
+        Table equipmentTable = new Table(skin);
+        Inventory playerInventory = Player.getInstance().getInventory();
+        Player player = Player.getInstance();
+
+        // Create inventory grid
+        int itemsPerRow = 4;
+        int currentColumn = 0;
+        for (Equipment item : playerInventory.getEquipment()) {
+            TextureRegion itemTexture = item.getTexture();
+            if (itemTexture != null) {
+                TextButton.TextButtonStyle itemButtonStyle = new TextButton.TextButtonStyle();
+                itemButtonStyle.up = new TextureRegionDrawable(itemTexture);
+                itemButtonStyle.font = font;
+
+                // Añadir tamaño ampliado si el objeto está equipado
+                if (player.isEquipped(item)) {
+                    itemButtonStyle.up.setMinWidth(60);
+                    itemButtonStyle.up.setMinHeight(60);
+                } else {
+                    itemButtonStyle.up.setMinWidth(50);
+                    itemButtonStyle.up.setMinHeight(50);
+                }
+
+                TextButton itemButton = new TextButton("", itemButtonStyle);
+                itemButton.addListener(new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        if (player.isEquipped(item)) {
+                            player.unequip(item);
+                        } else {
+                            player.equip(item);
+                        }
+                        updateStatusTable();
+                        updateEquipmentDialog();
+                        if (isItemStatsActive) {
+                            itemStatsDialog.remove();
+                            isItemStatsActive = false;
+                        } else {
+                            showItemStatsDialog(item);
+                            isItemStatsActive = true;
+                        }
+                    }
+                });
+                equipmentTable.add(itemButton).size(itemButtonStyle.up.getMinWidth(), itemButtonStyle.up.getMinHeight()).pad(5);
+
+                currentColumn++;
+                if (currentColumn >= itemsPerRow) {
+                    equipmentTable.row();
+                    currentColumn = 0;
+                }
+            }
+        }
+
+        equipmentDialog.getContentTable().add(equipmentTable).pad(10);
+    }
+
+    private void updateEquipmentDialog() {
+        if (equipmentDialog != null) {
+            equipmentDialog.remove();
+            equipmentDialog = null;
+            showEquipmentDialog();
+        }
+    }
+
+    private void showItemStatsDialog(Equipment item) {
+        if (itemStatsDialog != null) {
+            itemStatsDialog.remove();
+        }
+
+        itemStatsDialog = new Dialog(item.getName(), skin) {
+            @Override
+            protected void result(Object object) {
+                // Handle the result here
+            }
+        };
+
+        Table statsTable = new Table(skin);
+
+        statsTable.add(new Label("Nombre: " + item.getName(), skin)).pad(5).row();
+        statsTable.add(new Label("Tipo: " + item.getType(), skin)).pad(5).row();
+        statsTable.add(new Label("Vitalidad: " + item.getVitalityBonus(), skin)).pad(5).row();
+        statsTable.add(new Label("Fuerza: " + item.getStrengthBonus(), skin)).pad(5).row();
+        statsTable.add(new Label("Resistencia: " + item.getEnduranceBonus(), skin)).pad(5).row();
+        statsTable.add(new Label("Destreza: " + item.getDexterityBonus(), skin)).pad(5).row();
+        statsTable.add(new Label("Suerte: " + item.getLuckBonus(), skin)).pad(5).row();
+
+        itemStatsDialog.getContentTable().add(statsTable).pad(10);
+        itemStatsDialog.pack();
+        itemStatsDialog.setPosition(Gdx.graphics.getWidth() - itemStatsDialog.getWidth() - 10, 10);
+
+        addCloseButton(itemStatsDialog); // Add close button to itemStatsDialog
+        stage.addActor(itemStatsDialog);
+    }
+
     private void initText() {
         textFont = new BitmapFont();
         textFont.getData().setScale(2); // Escala del texto
@@ -339,6 +551,7 @@ public class GameplayScreen implements Screen {
         gameTexts.add("Mensaje previo al segundo combate.");
         gameTexts.add("Final del juego después del último combate.");
     }
+
     private void handleInput() {
         if (Gdx.input.justTouched() && !isInCombat && !isPaused) {
             float x = Gdx.input.getX();
@@ -369,7 +582,6 @@ public class GameplayScreen implements Screen {
         }
     }
 
-
     // Suponiendo que tienes un método para finalizar el combate y regresar
     public void endCombat() {
         isInCombat = false;
@@ -378,6 +590,7 @@ public class GameplayScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        updateStatusTable();
         // Asegurémonos de que la limpieza de la pantalla no cause un parpadeo negro.
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -423,5 +636,19 @@ public class GameplayScreen implements Screen {
         atlas.dispose();
         bgAtlas.dispose(); // Asegúrate de disponer todos los atlas usados
         stage.dispose();
+    }
+
+    // Utility method to check if a click is inside a dialog
+    private boolean isDialogOpen(Dialog dialog, float x, float y) {
+        if (dialog != null && dialog.isVisible()) {
+            float dialogX = dialog.getX();
+            float dialogY = dialog.getY();
+            float dialogWidth = dialog.getWidth();
+            float dialogHeight = dialog.getHeight();
+            if (x >= dialogX && x <= dialogX + dialogWidth && y >= dialogY && y <= dialogY + dialogHeight) {
+                return true;
+            }
+        }
+        return false;
     }
 }

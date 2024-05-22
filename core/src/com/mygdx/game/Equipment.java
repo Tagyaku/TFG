@@ -62,5 +62,16 @@ public class Equipment {
         return luckBonus;
     }
 
-
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "name='" + name + '\'' +
+                ", type=" + type +
+                ", vitalityBonus=" + vitalityBonus +
+                ", strengthBonus=" + strengthBonus +
+                ", enduranceBonus=" + enduranceBonus +
+                ", dexterityBonus=" + dexterityBonus +
+                ", luckBonus=" + luckBonus +
+                '}';
+    }
 }

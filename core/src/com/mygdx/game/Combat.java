@@ -344,7 +344,7 @@ public class Combat implements Screen {
         List<TextureRegion> rewardTextures = new ArrayList<>();
         Random random = new Random();
 
-        if (random.nextFloat() < 0.5) { // 50% probability to generate an equipable item
+        if (random.nextFloat() < 4) { // 50% probability to generate an equipable item
             Equipment equipment = equipableItems.createRandomItem();
             if (equipment != null) { // Check if equipment was successfully created
             playerInventory.addEquipment(equipment);

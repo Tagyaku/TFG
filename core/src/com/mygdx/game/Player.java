@@ -72,6 +72,7 @@ public class Player {
     }
 
     public void equip(Equipment item) {
+        unequip(item); // Ensure the item is unequipped first
         switch (item.getType()) { // Ensure Equipment has getType() method
             case WEAPON:
                 if (this.weapon != null) unequip(this.weapon);
@@ -85,9 +86,13 @@ public class Player {
                 for (int i = 0; i < this.accessories.length; i++) {
                     if (this.accessories[i] == null) {
                         this.accessories[i] = item;
-                        break;
+                        updateStats();
+                        return;
                     }
                 }
+                // If all accessory slots are filled, replace the first one
+                unequip(this.accessories[0]);
+                this.accessories[0] = item;
                 break;
         }
         updateStats();
@@ -110,9 +115,11 @@ public class Player {
     }
 
     private void updateStats() {
-        this.hitPoints =10 + this.vitality * 2; // Base health plus bonus from vitality
-        this.criticalChance = 5.0 + this.luck * 1.0; // Base plus bonus from luck
-        this.criticalDamage = 50.0 + this.dexterity * 2.0; // Base plus bonus from dexterity
+        this.vitality = 5;
+        this.strength = 5;
+        this.endurance = 5;
+        this.dexterity = 5;
+        this.luck = 5;
         applyEquipmentStats();
     }
     private void applyEquipmentStats() {
@@ -135,6 +142,16 @@ public class Player {
             this.criticalDamage = 50.0 + this.dexterity * 2.0;
         }
     }
+
+    public boolean isEquipped(Equipment item) {
+        if (item == this.weapon) return true;
+        if (item == this.armor) return true;
+        for (Equipment accessory : this.accessories) {
+            if (item == accessory) return true;
+        }
+        return false;
+    }
+
     public TextureRegion getPlayerTexture(String state) {
         return playerAtlas.findRegion(state);
     }

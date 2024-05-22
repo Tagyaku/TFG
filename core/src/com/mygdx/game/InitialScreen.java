@@ -281,5 +281,7 @@ public class InitialScreen implements Screen {
     public void dispose() {
         stage.dispose();
         batch.dispose();
+        backgroundsAtlas.dispose();
+        SkinManager.getAtlas().dispose();
     }
 }
