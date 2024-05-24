@@ -185,7 +185,7 @@ public class Player {
         }
     }
 
-    public void heal(float amount) {
+    public void heal(int amount) {
         this.hitPoints += amount;
         if (this.hitPoints > this.getMaxHitPoints()) {
             this.hitPoints = this.getMaxHitPoints();

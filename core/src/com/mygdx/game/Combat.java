@@ -10,14 +10,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.Array;
@@ -57,6 +60,8 @@ public class Combat implements Screen {
     private EquipableItems equipableItems;
     private Skin skin;
     private List<TextureRegion> rewardTextures; // Almacenar recompensas
+    private ImageButton potion30Button;
+    private ImageButton potion100Button;
 
     public Combat(MyGdxGame game, TextureRegion background) {
         this.layout = new GlyphLayout();
@@ -311,27 +316,98 @@ public class Combat implements Screen {
         }
     }
 
-    private void renderPotionMenu() {
-        // Background for potion menu
-        batch.draw(borderTexture, potionMenuArea.x, potionMenuArea.y, potionMenuArea.width, potionMenuArea.height);
+private void renderPotionMenu() {
+    // Background for potion menu
+    batch.draw(borderTexture, potionMenuArea.x, potionMenuArea.y, potionMenuArea.width, potionMenuArea.height);
 
-        // Render potion 30
-        batch.draw(potion30Texture, potionMenuArea.x + 30, potionMenuArea.y + potionMenuArea.height - 70, 50, 50);
-        font.draw(batch, "Potion 30: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_30), potionMenuArea.x + 100, potionMenuArea.y + potionMenuArea.height - 50);
+    if (potion30Button == null) {
+        // Crear y configurar el botón de la poción 30
+    ImageButton.ImageButtonStyle potion30ButtonStyle = new ImageButton.ImageButtonStyle();
+        potion30ButtonStyle.imageUp = new TextureRegionDrawable(potion30Texture);
 
-        // Render potion 100
-        batch.draw(potion100Texture, potionMenuArea.x + 30, potionMenuArea.y + potionMenuArea.height - 150, 50, 50);
-        font.draw(batch, "Potion 100: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_100), potionMenuArea.x + 100, potionMenuArea.y + potionMenuArea.height - 130);
+        potion30Button = new ImageButton(potion30ButtonStyle);
+    potion30Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 300);
+        potion30Button.setSize(200, 200);
+
+    potion30Button.getImage().setFillParent(true);
+    potion30Button.addListener(new ClickListener() {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            usePotion(Potion.PotionType.HEAL_30);
+        }
+    });
+
+        stage.addActor(potion30Button);
     }
 
-    void showVictoryDialog() {
-        isVictoryMenuVisible = true;
+    if (potion100Button == null) {
+        // Crear y configurar el botón de la poción 100
+        ImageButton.ImageButtonStyle potion100ButtonStyle = new ImageButton.ImageButtonStyle();
+        potion100ButtonStyle.imageUp = new TextureRegionDrawable(potion100Texture);
+
+        potion100Button = new ImageButton(potion100ButtonStyle);
+    potion100Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 500);
+        potion100Button.setSize(200, 200);
+
+    potion100Button.getImage().setFillParent(true);
+    potion100Button.addListener(new ClickListener() {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            usePotion(Potion.PotionType.HEAL_100);
+        }
+    });
+
+    stage.addActor(potion100Button);
+    }
+
+    // Renderizar botones y cantidad de pociones
+    font.draw(batch, "Potion 30: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_30), potionMenuArea.x + 250, potionMenuArea.y + potionMenuArea.height - 80);
+    font.draw(batch, "Potion 100: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_100), potionMenuArea.x + 300, potionMenuArea.y + potionMenuArea.height - 300);
+}
+
+private void usePotion(Potion.PotionType potionType) {
+    int healAmount = 0;
+    switch (potionType) {
+        case HEAL_30:
+            healAmount = 30;
+            break;
+        case HEAL_100:
+            healAmount = 100;
+            break;
+    }
+
+    if (player.getInventory().usePotion(potionType)) {
+        player.heal(healAmount);
+        closePotionMenu();
+        triggerEnemyAttack();
+    }
+}
+    private void closePotionMenu() {
+        isPotionMenuVisible = false;
+    if (potion30Button != null) {
+        potion30Button.remove();
+        potion30Button = null;
+            }
+    if (potion100Button != null) {
+        potion100Button.remove();
+        potion100Button = null;
+        }
+        buttonsEnabled = true;
+    }
+
+
+ @SuppressWarnings("SuspiciousIndentation")
+ void showVictoryDialog() {
+    if (rewardTextures == null) {
         // Incrementar experiencia del jugador
         int experienceGained = 40;
         player.gainExperience(experienceGained);
 
         // Generar recompensas una sola vez
         rewardTextures = generateRewards();
+    }
+
+    isVictoryMenuVisible = true;
 
         // Añadir listener para detectar clics fuera del menú de victoria y cerrar
         stage.addListener(new ClickListener() {
@@ -452,8 +528,7 @@ public class Combat implements Screen {
             float touchX = Gdx.input.getX();
             float touchY = Gdx.graphics.getHeight() - Gdx.input.getY(); // Adjust for coordinate system
             if (!potionMenuArea.contains(touchX, touchY)) {
-                isPotionMenuVisible = false;
-                buttonsEnabled = true;
+            closePotionMenu();
             }
         }
 

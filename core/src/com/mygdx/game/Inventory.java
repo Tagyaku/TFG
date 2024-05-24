@@ -31,11 +31,13 @@ public class Inventory {
         return quantity != null ? quantity : 0;
     }
 
-    public void usePotion(Potion.PotionType type) {
-        Integer quantity = potions.get(type);
-        if (quantity != null && quantity > 0) {
-            potions.put(type, quantity - 1);
+    public boolean usePotion(Potion.PotionType type) {
+        Integer currentQuantity = potions.get(type);
+        if (currentQuantity != null && currentQuantity > 0) {
+            potions.put(type, currentQuantity - 1);
+            return true;
         }
+        return false;
     }
 
     public Map<Potion.PotionType, Integer> getPotions() {
