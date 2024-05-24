@@ -250,11 +250,11 @@ public class GameplayScreen implements Screen {
             TextButton closeButton = new TextButton("X", skin);
 
             // Define the size of the close button
-            float closeButtonWidth = 30; // Width of the close button
-            float closeButtonHeight = 30; // Height of the close button
+            float closeButtonWidth = 100; // Width of the close button
+            float closeButtonHeight = 100; // Height of the close button
 
             // Set the size of the close button
-            closeButton.setSize(closeButtonWidth + 30, closeButtonHeight + 30);
+            closeButton.setSize(closeButtonWidth + 60, closeButtonHeight + 60);
 
             closeButton.addListener(new ClickListener() {
                 @Override
@@ -320,7 +320,7 @@ public class GameplayScreen implements Screen {
             Inventory playerInventory = Player.getInstance().getInventory();
 
             // Create inventory grid
-            int itemsPerRow = 4;
+            int itemsPerRow = 15;
             int currentColumn = 0;
             for (Equipment item : playerInventory.getEquipment()) {
                 TextureRegion itemTexture = item.getTexture();
@@ -397,7 +397,7 @@ public class GameplayScreen implements Screen {
 
             updateStatusTable();
             statusDialog.pack();
-            statusDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
+            statusDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY()-30);
         }
         stage.addActor(statusDialog);
     }
@@ -451,7 +451,7 @@ public class GameplayScreen implements Screen {
         Player player = Player.getInstance();
 
         // Create inventory grid
-        int itemsPerRow = 4;
+        int itemsPerRow = 10;
         int currentColumn = 0;
         for (Equipment item : playerInventory.getEquipment()) {
             TextureRegion itemTexture = item.getTexture();
@@ -462,8 +462,8 @@ public class GameplayScreen implements Screen {
 
                 // Añadir tamaño ampliado si el objeto está equipado
                 if (player.isEquipped(item)) {
-                    itemButtonStyle.up.setMinWidth(60);
-                    itemButtonStyle.up.setMinHeight(60);
+                    itemButtonStyle.up.setMinWidth(90);
+                    itemButtonStyle.up.setMinHeight(90);
                 } else {
                     itemButtonStyle.up.setMinWidth(50);
                     itemButtonStyle.up.setMinHeight(50);

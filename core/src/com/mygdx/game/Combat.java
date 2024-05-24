@@ -13,6 +13,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
@@ -33,11 +36,13 @@ public class Combat implements Screen {
     private Rectangle lowerBorderArea;
     private Rectangle enemyArea;
     private Rectangle potionMenuArea;
+    private Rectangle victoryMenuArea;
     private Player player;
     private Enemies enemy;
     private Button attackButton, defendButton, useItemButton, escapeButton;
     private BitmapFont font;
     private boolean isPotionMenuVisible = false;
+    private boolean isVictoryMenuVisible = false;
     private TextureRegion potion30Texture;
     private TextureRegion potion100Texture;
     private TextureRegion backgroundTexture;
@@ -50,6 +55,8 @@ public class Combat implements Screen {
     private boolean enemyAttacking = false;
     private boolean enemyMoving = false;
     private EquipableItems equipableItems;
+    private Skin skin;
+    private List<TextureRegion> rewardTextures; // Almacenar recompensas
 
     public Combat(MyGdxGame game, TextureRegion background) {
         this.layout = new GlyphLayout();
@@ -63,7 +70,7 @@ public class Combat implements Screen {
         this.potion30Texture = itemAtlas.findRegion("potion30");
         this.potion100Texture = itemAtlas.findRegion("potion100");
         this.player = Player.getInstance();
-        this.enemy = new Enemies(game);
+        this.enemy = new Enemies(game, this); // Pasa la instancia de Combat al constructor de Enemies
         this.equipableItems = new EquipableItems();
 
         setupAnimations();
@@ -105,6 +112,9 @@ public class Combat implements Screen {
 
         // Define the potion menu area
         potionMenuArea = new Rectangle(10, 600, screenWidth - 1500, screenHeight - 600);
+
+        // Define the victory menu area
+        victoryMenuArea = new Rectangle(screenWidth / 4, screenHeight / 4, screenWidth / 2, screenHeight / 2);
 
         // Configure button styles
         font = new BitmapFont(); // Use a larger or customized font
@@ -290,7 +300,7 @@ public class Combat implements Screen {
         float enemyScale = 2.0f; // Set a fixed scale factor for the enemy
         enemyX = Gdx.graphics.getWidth() - enemyImage.getRegionWidth() * enemyScale - 50;  // Position enemy on the right side with some padding
         enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;  // Center vertically
-    }
+        }
 
     private void attemptEscape() {
         double escapeChance = Math.random();
@@ -314,29 +324,43 @@ public class Combat implements Screen {
         font.draw(batch, "Potion 100: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_100), potionMenuArea.x + 100, potionMenuArea.y + potionMenuArea.height - 130);
     }
 
-    private void showVictoryDialog() {
+    void showVictoryDialog() {
+        isVictoryMenuVisible = true;
+        // Incrementar experiencia del jugador
+        int experienceGained = 40;
+        player.gainExperience(experienceGained);
+
+        // Generar recompensas una sola vez
+        rewardTextures = generateRewards();
+
+        // Añadir listener para detectar clics fuera del menú de victoria y cerrar
         stage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameplayScreen(game));
+                if (isVictoryMenuVisible && !victoryMenuArea.contains(x, Gdx.graphics.getHeight() - y)) {
+                    isVictoryMenuVisible = false;
+                    game.setScreen(new GameplayScreen(game));
+                }
             }
         });
+    }
 
-        batch.begin();
-        float dialogX = (Gdx.graphics.getWidth() - borderTexture.getRegionWidth()) / 2;
-        float dialogY = (Gdx.graphics.getHeight() - borderTexture.getRegionHeight()) / 2;
-        batch.draw(borderTexture, dialogX, dialogY, borderTexture.getRegionWidth(), borderTexture.getRegionHeight());
+    private void renderVictoryMenu() {
 
-        List<TextureRegion> rewardTextures = generateRewards();
-        float itemX = dialogX + 50;
-        float itemY = dialogY + borderTexture.getRegionHeight() - 100;
+        // Background for victory menu
+        batch.draw(borderTexture, victoryMenuArea.x, victoryMenuArea.y, victoryMenuArea.width, victoryMenuArea.height);
 
+        // Render victory text
+        font.draw(batch, "You've defeated the enemy!", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 40);
+        font.draw(batch, "Experience gained: 40", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 80);
+
+        // Render rewards
+        float itemX = victoryMenuArea.x + 20;
+        float itemY = victoryMenuArea.y + victoryMenuArea.height - 220;
         for (TextureRegion texture : rewardTextures) {
-            batch.draw(texture, itemX, itemY, 50, 50);
-            itemX += 60;
+            batch.draw(texture, itemX, itemY, 90, 90);
+            itemX += 130;
         }
-
-        batch.end();
     }
 
     private List<TextureRegion> generateRewards() {
@@ -344,12 +368,14 @@ public class Combat implements Screen {
         List<TextureRegion> rewardTextures = new ArrayList<>();
         Random random = new Random();
 
-        if (random.nextFloat() < 4) { // 50% probability to generate an equipable item
+    if (random.nextFloat() < 1) { // Cambiado a 1 para asegurar que se genera siempre un ítem
             Equipment equipment = equipableItems.createRandomItem();
-            if (equipment != null) { // Check if equipment was successfully created
-            playerInventory.addEquipment(equipment);
-            rewardTextures.add(equipment.getTexture());
-        }
+        if (equipment != null) { // Comprobar si se creó correctamente el equipo
+                playerInventory.addEquipment(equipment);
+                rewardTextures.add(equipment.getTexture());
+        } else {
+            System.out.println("No se generó ningún ítem equipable.");
+            }
         }
 
         Potion.PotionType[] potionTypes = Potion.PotionType.values();
@@ -413,6 +439,10 @@ public class Combat implements Screen {
 
         if (isPotionMenuVisible) {
             renderPotionMenu();
+        }
+
+        if (isVictoryMenuVisible) {
+            renderVictoryMenu();
         }
 
         batch.end();

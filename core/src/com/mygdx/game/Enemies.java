@@ -27,20 +27,17 @@ public class Enemies {
     private boolean shouldRotateEnemy; // Declare here without initializing
 
     private MyGdxGame game;
-    public Enemies(MyGdxGame game) {
+    private Combat combat;
+
+    public Enemies(MyGdxGame game, Combat combat) {
         this.game = game;
+        this.combat = combat;
         this.enemyAtlas = new TextureAtlas("images/Enemies/Enemies.atlas");
         this.health = maxHealth;
         this.damage = 4; // Daño constante para todos los enemigos
         randomizeEnemyTexture();
-        //setRotation(); // Initialize rotation after atlas is loaded
-
     }
-//    private void setRotation() {
-//        if (!enemyAtlas.getRegions().isEmpty()) {
-//            this.shouldRotateEnemy = enemyAtlas.getRegions().first().rotate;
-//        }
-//    }
+
     private void randomizeEnemyTexture() {
         // Convertir a un array de AtlasRegion para acceder a los nombres
         AtlasRegion[] regions = enemyAtlas.getRegions().toArray(AtlasRegion.class);
@@ -66,8 +63,7 @@ public class Enemies {
 
     private void die() {
         System.out.println("Enemy has died.");
-        // Cambio de pantalla, regresa a GameplayScreen o similar
-        game.setScreen(new GameplayScreen(game)); // Asegúrate de tener una referencia a 'game'
+        combat.showVictoryDialog(); // Llama a la función en Combat para mostrar el diálogo de victoria
     }
 
 
