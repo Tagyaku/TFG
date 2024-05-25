@@ -1,75 +1,82 @@
 GUI.png
-size: 117, 94
+size: 128, 161
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 11 Border 01-0
   rotate: false
-  xy: 1, 27
+  xy: 0, 0
   size: 65, 65
   orig: 65, 65
   offset: 0, 0
   index: -1
 UI_Flat_Banner_01_Upward
   rotate: false
-  xy: 1, 1
-  size: 96, 24
+  xy: 0, 65
+  size: 96, 32
   orig: 96, 32
-  offset: 0, 2
+  offset: 0, 0
   index: -1
 UI_Flat_Button_Small_Press_02a4
   rotate: false
-  xy: 68, 61
+  xy: 96, 65
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 UI_Flat_Button_Small_Release_01a1
-  rotate: true
-  xy: 68, 27
-  size: 32, 29
+  rotate: false
+  xy: 0, 97
+  size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 UI_Flat_Checkmark_Large
-  rotate: true
-  xy: 99, 20
-  size: 19, 16
+  rotate: false
+  xy: 32, 97
+  size: 32, 32
   orig: 32, 32
-  offset: 7, 8
+  offset: 0, 0
   index: -1
 UI_Flat_Checkmark_Small
   rotate: false
-  xy: 102, 54
-  size: 11, 9
+  xy: 64, 97
+  size: 32, 32
   orig: 32, 32
-  offset: 11, 13
+  offset: 0, 0
   index: -1
 UI_Flat_Cross_Large
   rotate: false
-  xy: 99, 1
-  size: 17, 17
+  xy: 96, 97
+  size: 32, 32
   orig: 32, 32
-  offset: 7, 8
+  offset: 0, 0
   index: -1
 UI_Flat_Cross_Medium
   rotate: false
-  xy: 102, 41
-  size: 11, 11
+  xy: 0, 129
+  size: 32, 32
   orig: 32, 32
-  offset: 10, 11
+  offset: 0, 0
   index: -1
 UI_Flat_Cross_Small
   rotate: false
-  xy: 102, 65
-  size: 9, 9
+  xy: 32, 129
+  size: 32, 32
   orig: 32, 32
-  offset: 11, 13
+  offset: 0, 0
   index: -1
 UI_Flat_Dropdown_Handle
   rotate: false
-  xy: 102, 76
-  size: 9, 7
+  xy: 64, 129
+  size: 32, 32
   orig: 32, 32
-  offset: 12, 13
+  offset: 0, 0
   index: -1
+UI_Flat_Scrollbar
+  rotate: false
+  xy: 96, 129
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1

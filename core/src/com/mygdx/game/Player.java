@@ -8,35 +8,42 @@ public class Player {
     private String playerName;
     private int level;
     private int experience;
-    private int vitality;
-    private int strength;
-    private int endurance;
-    private int dexterity;
-    private int luck;
+    private int baseVitality;
+    private int baseStrength;
+    private int baseEndurance;
+    private int baseDexterity;
+    private int baseLuck;
     private int hitPoints;
-    private double criticalChance = 5.0; // 5% base critical chance
-    private double criticalDamage = 50.0; // 50% base critical damage
+    private double criticalChance;
+    private double criticalDamage;
     private Equipment weapon;
     private Equipment[] accessories = new Equipment[4];
     private Equipment armor;
     private TextureAtlas playerAtlas;
     private boolean isDefending = false;
     private boolean shouldRotatePlayer;
-    private Inventory inventory;  // Añadir inventario
+    private Inventory inventory;
+
+    // Stats after applying equipment bonuses
+    private int vitality;
+    private int strength;
+    private int endurance;
+    private int dexterity;
+    private int luck;
 
     private Player() {
         this.playerName = "Default Hero";
         this.level = 1;
         this.experience = 5;
-        this.vitality = 5;
-        this.strength = 5;
-        this.endurance = 5;
-        this.dexterity = 5;
-        this.luck = 5;
-        this.hitPoints = 10 + this.vitality * 2;
+        this.baseVitality = 0;
+        this.baseStrength = 5;
+        this.baseEndurance = 5;
+        this.baseDexterity = 5;
+        this.baseLuck = 5;
         this.playerAtlas = new TextureAtlas("images/Main_Character/main_Character.atlas");
-        this.inventory = new Inventory();  // Inicializar inventario
+        this.inventory = new Inventory();
         updateStats();
+        this.hitPoints = getMaxHitPoints();
         setRotation();
     }
 
@@ -62,18 +69,21 @@ public class Player {
         while (this.experience >= 100 * this.level) {
             this.experience -= 100 * this.level;
             this.level++;
-            this.vitality += 5;
-            this.strength += 5;
-            this.endurance += 5;
-            this.dexterity += 5;
-            this.luck += 1;
+            this.baseVitality += 5;
+            this.baseStrength += 5;
+            this.baseEndurance += 5;
+            this.baseDexterity += 5;
+            this.baseLuck += 1;
             updateStats();
+            adjustCurrentHP();
         }
     }
 
+
     public void equip(Equipment item) {
-        unequip(item); // Ensure the item is unequipped first
-        switch (item.getType()) { // Ensure Equipment has getType() method
+        unequip(item);
+
+        switch (item.getType()) {
             case WEAPON:
                 if (this.weapon != null) unequip(this.weapon);
                 this.weapon = item;
@@ -86,16 +96,13 @@ public class Player {
                 for (int i = 0; i < this.accessories.length; i++) {
                     if (this.accessories[i] == null) {
                         this.accessories[i] = item;
-                        updateStats();
-                        return;
+                        break;
                     }
                 }
-                // If all accessory slots are filled, replace the first one
-                unequip(this.accessories[0]);
-                this.accessories[0] = item;
                 break;
         }
-        updateStats();
+                        updateStats();
+        adjustCurrentHP();
     }
 
     public void unequip(Equipment item) {
@@ -112,16 +119,33 @@ public class Player {
             }
         }
         updateStats();
+        adjustCurrentHP();
+    }
+
+    private void adjustCurrentHP() {
+        int newMaxHP = getMaxHitPoints();
+        if (this.hitPoints > newMaxHP) {
+            this.hitPoints = newMaxHP;
+        }
     }
 
     private void updateStats() {
-        this.vitality = 5;
-        this.strength = 5;
-        this.endurance = 5;
-        this.dexterity = 5;
-        this.luck = 5;
+        // Reset stats
+        this.vitality = this.baseVitality;
+        this.strength = this.baseStrength;
+        this.endurance = this.baseEndurance;
+        this.dexterity = this.baseDexterity;
+        this.luck = this.baseLuck;
+
+        // Apply equipment bonuses
         applyEquipmentStats();
+
+        // Recalculate derived stats
+        this.criticalChance = 5.0 + this.luck * 1.0;
+        this.criticalDamage = 50.0 + this.dexterity * 2.0;
     }
+
+
     private void applyEquipmentStats() {
         applyStats(this.weapon);
         applyStats(this.armor);
@@ -136,12 +160,9 @@ public class Player {
             this.endurance += equipment.getEnduranceBonus();
             this.dexterity += equipment.getDexterityBonus();
             this.luck += equipment.getLuckBonus();
-            // Recalculate hit points, critical stats after equipment change
-            this.hitPoints = 10 + this.vitality * 2;
-            this.criticalChance = 5.0 + this.luck * 1.0;
-            this.criticalDamage = 50.0 + this.dexterity * 2.0;
         }
     }
+
 
     public boolean isEquipped(Equipment item) {
         if (item == this.weapon) return true;
@@ -161,12 +182,15 @@ public class Player {
     // Battle mechanics
     public int calculateDamage() {
         double baseDamage = strength * 3;
-        if (Math.random() * 100 < criticalChance) {
+        if (isCriticalHit()) {
             return (int) (baseDamage * (1 + criticalDamage / 100));
         }
         return (int) baseDamage;
     }
 
+    public boolean isCriticalHit() {
+        return Math.random() * 100 < criticalChance;
+    }
     public void receiveDamage(int damage) {
         if (isDefending) {
             damage *= 0.6;  // Apply 40% damage reduction
@@ -231,6 +255,25 @@ public class Player {
 
     public int getLuck() {
         return luck;
+    }
+    public int getBaseVitality() {
+        return baseVitality;
+    }
+
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
+    public int getBaseEndurance() {
+        return baseEndurance;
+    }
+
+    public int getBaseDexterity() {
+        return baseDexterity;
+    }
+
+    public int getBaseLuck() {
+        return baseLuck;
     }
 
     public Equipment getWeapon() {

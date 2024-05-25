@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -28,9 +30,12 @@ import com.badlogic.gdx.utils.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Combat implements Screen {
     private MyGdxGame game;
+    private GameplayScreen gameplayScreen; // Añadir esto
+
     private Stage stage;
     private SpriteBatch batch;
     private TextureAtlas atlas;
@@ -62,11 +67,19 @@ public class Combat implements Screen {
     private List<TextureRegion> rewardTextures; // Almacenar recompensas
     private ImageButton potion30Button;
     private ImageButton potion100Button;
-
-    public Combat(MyGdxGame game, TextureRegion background) {
+    private TextureRegion protectTexture;
+    private boolean isDefending = false;
+    private Animation<TextureRegion> hurtAnimation;
+    private boolean isHurt = false;
+    private Label criticalHitLabel;
+    private Label damageLabel;
+    private BitmapFont specialFont;
+    public Combat(MyGdxGame game, GameplayScreen gameplayScreen) {
         this.layout = new GlyphLayout();
         this.game = game;
-        this.backgroundTexture = background; // Guarda el fondo pasado desde GameplayScreen
+        this.gameplayScreen = gameplayScreen; // Guardar la instancia de GameplayScreen
+
+        this.backgroundTexture = gameplayScreen.currentBackground; // Usar el fondo actual
         this.batch = new SpriteBatch();
         this.stage = new Stage(new ScreenViewport(), batch);
         this.atlas = new TextureAtlas("images/TFG_Atlas_1.atlas");
@@ -77,33 +90,95 @@ public class Combat implements Screen {
         this.player = Player.getInstance();
         this.enemy = new Enemies(game, this); // Pasa la instancia de Combat al constructor de Enemies
         this.equipableItems = new EquipableItems();
+        // Cargar la fuente desde el archivo
+        specialFont = new BitmapFont(Gdx.files.internal("skin/fonts/default.fnt"));
+        specialFont.getData().setScale(2); // Ajusta el tamaño de la fuente
 
+        // Inicializa la fuente general para otros textos
+        font = new BitmapFont();
         setupAnimations();
         initUI();
         Gdx.input.setInputProcessor(stage);
     }
+    private void playerReceiveDamage(int damage) {
+    if (!isDefending) { // Verifica si el jugador no está defendiendo
+        player.receiveDamage(damage);
+        isHurt = true;
+        buttonsEnabled = false; // Deshabilitar botones
+        stateTime = 0; // Reset animation state time
+
+        // Schedule to stop the hurt animation after it completes
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                isHurt = false;
+                buttonsEnabled = true; // Habilitar botones después de la animación
+            }
+        }, hurtAnimation.getAnimationDuration());
+    }
+}
+
+    private void animateHurt(float delta) {
+        if (isHurt) {
+            buttonsEnabled=false;
+            stateTime += delta; // Update the state time for the animation
+            TextureRegion currentFrame = hurtAnimation.getKeyFrame(stateTime, false);
+
+            // Player's position and scale setup
+            TextureRegion playerImage = player.getPlayerTexture("Idle-3");
+            float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
+            float imageX = 10;
+            float imageY = 10;
+            float originX = playerImage.getRegionWidth() / 2;
+            float originY = playerImage.getRegionHeight() / 2;
+
+            // Draw the current frame of the hurt animation at the same position and size as the player
+            batch.draw(currentFrame, imageX + originX * playerScale - originX, imageY + originY * playerScale - originY,
+                    originX, originY, currentFrame.getRegionWidth(), currentFrame.getRegionHeight(),
+                    playerScale, playerScale, 270);
+        }
+}
 
     private void setupAnimations() {
         TextureAtlas playerAtlas = new TextureAtlas(Gdx.files.internal("images/Main_Character/main_Character.atlas"));
 
-        // Manually add each frame to the animation
-        Array<TextureRegion> frames = new Array<>();
-        frames.add(playerAtlas.findRegion("Attack 1-0"));
-        frames.add(playerAtlas.findRegion("Attack 1-1"));
-        frames.add(playerAtlas.findRegion("Attack 1-2"));
-        frames.add(playerAtlas.findRegion("Attack 1-3"));
-        frames.add(playerAtlas.findRegion("Attack 1-4"));
+    // Manually add each frame to the attack animation
+    Array<TextureRegion> attackFrames = new Array<>();
+    attackFrames.add(playerAtlas.findRegion("Attack 1-0"));
+    attackFrames.add(playerAtlas.findRegion("Attack 1-1"));
+    attackFrames.add(playerAtlas.findRegion("Attack 1-2"));
+    attackFrames.add(playerAtlas.findRegion("Attack 1-3"));
+    attackFrames.add(playerAtlas.findRegion("Attack 1-4"));
 
         // Check if any frames are missing to avoid NullPointerException
-        for (TextureRegion frame : frames) {
+    for (TextureRegion frame : attackFrames) {
             if (frame == null) {
-                System.out.println("One or more animation frames are missing!");
+            System.out.println("One or more attack animation frames are missing!");
                 return;
             }
         }
 
-        // Create the animation with the frames array
-        attackAnimation = new Animation<>(0.1f, frames, Animation.PlayMode.NORMAL);
+    // Load the protect texture
+    protectTexture = playerAtlas.findRegion("Protect");
+
+    // Create the attack animation with the frames array
+    attackAnimation = new Animation<>(0.1f, attackFrames, Animation.PlayMode.NORMAL);
+
+    // Manually add each frame to the hurt animation
+    Array<TextureRegion> hurtFrames = new Array<>();
+    hurtFrames.add(playerAtlas.findRegion("Hurt-0"));
+    hurtFrames.add(playerAtlas.findRegion("Hurt-1"));
+
+    // Check if any frames are missing to avoid NullPointerException
+    for (TextureRegion frame : hurtFrames) {
+        if (frame == null) {
+            System.out.println("One or more hurt animation frames are missing!");
+            return;
+        }
+    }
+
+    // Create the hurt animation with the frames array
+    hurtAnimation = new Animation<>(0.2f, hurtFrames, Animation.PlayMode.NORMAL);
     }
 
     private void initUI() {
@@ -122,7 +197,6 @@ public class Combat implements Screen {
         victoryMenuArea = new Rectangle(screenWidth / 4, screenHeight / 4, screenWidth / 2, screenHeight / 2);
 
         // Configure button styles
-        font = new BitmapFont(); // Use a larger or customized font
         font.getData().setScale(3); // Increase font size
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = font;
@@ -192,6 +266,51 @@ public class Combat implements Screen {
         stage.addActor(defendButton);
         stage.addActor(useItemButton);
         stage.addActor(escapeButton);
+
+        // Configurar LabelStyle para criticalHitLabel y damageLabel
+        LabelStyle specialLabelStyle = new LabelStyle();
+        specialLabelStyle.font = specialFont;
+
+        criticalHitLabel = new Label("CRITICAL HIT!", specialLabelStyle);
+        criticalHitLabel.setVisible(false);
+        stage.addActor(criticalHitLabel);
+
+        damageLabel = new Label("", specialLabelStyle);
+        damageLabel.setVisible(false);
+        stage.addActor(damageLabel);
+    }
+    private void showCriticalHit() {
+    float screenWidth = Gdx.graphics.getWidth();
+    float screenHeight = Gdx.graphics.getHeight();
+
+    // Posiciona el mensaje en el centro de la pantalla
+    criticalHitLabel.setPosition((screenWidth - criticalHitLabel.getWidth()) / 2, (screenHeight - criticalHitLabel.getHeight()) / 2);
+        criticalHitLabel.setVisible(true);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                criticalHitLabel.setVisible(false);
+            }
+        }, 0.8f); // Display for 0.5 seconds
+    }
+
+    private void showDamage(int damage) {
+    float screenWidth = Gdx.graphics.getWidth();
+    float screenHeight = Gdx.graphics.getHeight();
+
+        damageLabel.setText(damage +" DMG!");
+    // Posiciona el mensaje en el centro arriba de la pantalla
+    damageLabel.setPosition((screenWidth - damageLabel.getWidth()) / 2, screenHeight - damageLabel.getHeight() - 50);
+
+        damageLabel.setVisible(true);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                damageLabel.setVisible(false);
+            }
+        }, 0.8f); // Display for 0.5 seconds
     }
 
     private void triggerEnemyAttack() {
@@ -218,7 +337,7 @@ public class Combat implements Screen {
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
-                player.receiveDamage(enemy.getDamage());
+                playerReceiveDamage(enemy.getDamage());
                 enemyX = originalX;  // Reset position
                 enemyAttacking = false; // Disable enemy attack animation
                 enemyMoving = false; // Disable enemy moving animation
@@ -229,6 +348,15 @@ public class Combat implements Screen {
 
     private void defend() {
         player.defend();
+    isDefending = true;
+
+    // Trigger enemy attack after a delay to allow defend animation to show
+    Timer.schedule(new Timer.Task() {
+        @Override
+        public void run() {
+            //triggerEnemyAttack();
+        }
+    }, 1.0f); // Adjust the delay as needed
     }
 
     private void attackEnemy() {
@@ -241,6 +369,10 @@ public class Combat implements Screen {
                 @Override
                 public void run() {
                     int damage = player.calculateDamage();
+                    if (player.isCriticalHit()) {
+                        showCriticalHit();
+                    }
+                    showDamage(damage);
                     enemy.receiveDamage(damage);
                     updateEnemyStatsDisplay();  // Actualiza la información de la vida del enemigo en la UI.
 
@@ -289,6 +421,19 @@ public class Combat implements Screen {
                 float originX = playerImage.getRegionWidth() / 2;
                 float originY = playerImage.getRegionHeight() / 2;
 
+            // Adjust position for frame 4
+            if (frameIndex == 2) {
+                imageY += -100;
+            }
+            if (frameIndex == 3) {
+                imageX += 200; // Adjust the value to move frame 4 to the right
+                imageY += -100;
+            }
+            if (frameIndex == 4) {
+                imageX += 200; // Adjust the value to move frame 4 to the right
+                imageY += -100;
+            }
+
                 // Conditionally rotate based on the frame index
                 float rotation = (frameIndex == 0 || frameIndex == 1) ? 270 : 0;  // Rotate only the first two frames
 
@@ -322,11 +467,11 @@ private void renderPotionMenu() {
 
     if (potion30Button == null) {
         // Crear y configurar el botón de la poción 30
-    ImageButton.ImageButtonStyle potion30ButtonStyle = new ImageButton.ImageButtonStyle();
+        ImageButton.ImageButtonStyle potion30ButtonStyle = new ImageButton.ImageButtonStyle();
         potion30ButtonStyle.imageUp = new TextureRegionDrawable(potion30Texture);
 
         potion30Button = new ImageButton(potion30ButtonStyle);
-    potion30Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 300);
+        potion30Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 300);
         potion30Button.setSize(200, 200);
 
     potion30Button.getImage().setFillParent(true);
@@ -406,7 +551,6 @@ private void usePotion(Potion.PotionType potionType) {
         // Generar recompensas una sola vez
         rewardTextures = generateRewards();
     }
-
     isVictoryMenuVisible = true;
 
         // Añadir listener para detectar clics fuera del menú de victoria y cerrar
@@ -415,7 +559,7 @@ private void usePotion(Potion.PotionType potionType) {
             public void clicked(InputEvent event, float x, float y) {
                 if (isVictoryMenuVisible && !victoryMenuArea.contains(x, Gdx.graphics.getHeight() - y)) {
                     isVictoryMenuVisible = false;
-                    game.setScreen(new GameplayScreen(game));
+                    endCombat(); // Finalizar el combate
                 }
             }
         });
@@ -485,18 +629,24 @@ private void usePotion(Potion.PotionType potionType) {
         batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         // Configuración y dibujo del jugador
-        TextureRegion playerImage = player.getPlayerTexture("Idle-3");
+    TextureRegion playerImage = isDefending ? protectTexture : player.getPlayerTexture("Idle-3");
         float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
         float imageX = 10;
         float imageY = 10;
         float originX = playerImage.getRegionWidth() / 2;
         float originY = playerImage.getRegionHeight() / 2;
         float rotation = player.shouldRotate() ? 270 : 0;
-        if (!isAttacking) {
+    if (!isAttacking && !isHurt) {
             batch.draw(playerImage, imageX + originX * playerScale - originX, imageY + originY * playerScale - originY,
                     originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(),
                     playerScale, playerScale, rotation);
         }
+
+    if (isHurt && !isDefending) { // Renderizar animación de daño solo si no se está defendiendo
+        animateHurt(delta);
+
+    }
+
         animateAttack(delta); // Manejar la animación de ataque si está activa
 
         // Configuración y dibujo del enemigo asegurando que se muestre en el centro de la pantalla
@@ -540,10 +690,26 @@ private void usePotion(Potion.PotionType potionType) {
             float deltaX = 500 * delta;
             enemyX -= deltaX;
         }
+
+    // Reset isDefending after showing the protection for a brief period
+    if (isDefending) {
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                isDefending = false;
+            }
+        }, 1.0f); // Adjust the duration as needed
+    }
+}
+    private void endCombat() {
+        gameplayScreen.endCombat(); // Llamar al método para finalizar el combate en GameplayScreen
+        game.setScreen(gameplayScreen); // Volver a GameplayScreen
     }
 
+
     private void displayStats() {
-        String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints();
+        if (font != null) {
+        String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints() + "/"+ player.getMaxHitPoints();
         String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
 
         // Calculate the y-coordinate to align with the top of the border
@@ -556,6 +722,7 @@ private void usePotion(Potion.PotionType potionType) {
         layout.setText(font, enemyStats);
         float enemyStatsX = lowerBorderArea.x + lowerBorderArea.width - layout.width - 30; // Right-align text
         font.draw(batch, enemyStats, enemyStatsX, statsY);
+    }
     }
 
     @Override
@@ -578,5 +745,6 @@ private void usePotion(Potion.PotionType potionType) {
         stage.dispose();
         atlas.dispose();
         itemAtlas.dispose(); // Dispose itemAtlas as well
+        if (font != null) font.dispose();
     }
 }

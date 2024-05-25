@@ -34,7 +34,7 @@ public class Enemies {
         this.combat = combat;
         this.enemyAtlas = new TextureAtlas("images/Enemies/Enemies.atlas");
         this.health = maxHealth;
-        this.damage = 4; // Daño constante para todos los enemigos
+        this.damage = 4;
         randomizeEnemyTexture();
     }
 
