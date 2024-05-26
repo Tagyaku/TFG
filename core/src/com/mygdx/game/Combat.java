@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -33,24 +34,25 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class Combat implements Screen {
-    private MyGdxGame game;
-    private GameplayScreen gameplayScreen; // Añadir esto
+    private final MyGdxGame game;
+    private final GameplayScreen gameplayScreen; // Añadir esto
 
-    private Stage stage;
-    private SpriteBatch batch;
-    private TextureAtlas atlas;
-    private TextureAtlas itemAtlas;
-    private TextureRegion borderTexture;
+    private final Stage stage;
+    private final SpriteBatch batch;
+    private final TextureAtlas atlas;
+    private final TextureAtlas itemAtlas;
+    private final TextureRegion borderTexture;
     private Rectangle lowerBorderArea;
     private Rectangle enemyArea;
     private Rectangle potionMenuArea;
     private Rectangle victoryMenuArea;
-    private Player player;
+    private final Player player;
     private Enemies enemy;
     private Button attackButton, defendButton, useItemButton, escapeButton;
     private BitmapFont font;
     private boolean isPotionMenuVisible = false;
     private boolean isVictoryMenuVisible = false;
+    private boolean isPlayerDead = false; // Nueva bandera
     private TextureRegion potion30Texture;
     private TextureRegion potion100Texture;
     private TextureRegion backgroundTexture;
@@ -77,9 +79,9 @@ public class Combat implements Screen {
     public Combat(MyGdxGame game, GameplayScreen gameplayScreen) {
         this.layout = new GlyphLayout();
         this.game = game;
-        this.gameplayScreen = gameplayScreen; // Guardar la instancia de GameplayScreen
+        this.gameplayScreen = gameplayScreen;
 
-        this.backgroundTexture = gameplayScreen.currentBackground; // Usar el fondo actual
+        this.backgroundTexture = gameplayScreen.currentBackground;
         this.batch = new SpriteBatch();
         this.stage = new Stage(new ScreenViewport(), batch);
         this.atlas = new TextureAtlas("images/TFG_Atlas_1.atlas");
@@ -87,36 +89,41 @@ public class Combat implements Screen {
         this.borderTexture = atlas.findRegion("MenuBox2");
         this.potion30Texture = itemAtlas.findRegion("potion30");
         this.potion100Texture = itemAtlas.findRegion("potion100");
-        this.player = Player.getInstance();
-        this.enemy = new Enemies(game, this); // Pasa la instancia de Combat al constructor de Enemies
+        this.player = Player.getInstance(game);
+        this.enemy = new Enemies(game, this);
         this.equipableItems = new EquipableItems();
-        // Cargar la fuente desde el archivo
         specialFont = new BitmapFont(Gdx.files.internal("skin/fonts/default.fnt"));
-        specialFont.getData().setScale(2); // Ajusta el tamaño de la fuente
+        specialFont.getData().setScale(2);
 
-        // Inicializa la fuente general para otros textos
         font = new BitmapFont();
         setupAnimations();
         initUI();
         Gdx.input.setInputProcessor(stage);
     }
     private void playerReceiveDamage(int damage) {
-    if (!isDefending) { // Verifica si el jugador no está defendiendo
+        if (!isDefending && !isPlayerDead) { // Verifica si el jugador no está defendiendo y no está muerto
         player.receiveDamage(damage);
         isHurt = true;
-        buttonsEnabled = false; // Deshabilitar botones
-        stateTime = 0; // Reset animation state time
+            buttonsEnabled = false;
+            stateTime = 0;
 
-        // Schedule to stop the hurt animation after it completes
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
                 isHurt = false;
-                buttonsEnabled = true; // Habilitar botones después de la animación
+                    if (!isPlayerDead) {
+                        buttonsEnabled = true;
+                    }
             }
         }, hurtAnimation.getAnimationDuration());
     }
-}
+        if (player.getHitPoints() <= 0) {
+            isPlayerDead = true;
+            buttonsEnabled=false;
+            showDeathMessageAndReturnToMenu();
+        }
+
+    }
 
     private void animateHurt(float delta) {
         if (isHurt) {
@@ -294,6 +301,23 @@ public class Combat implements Screen {
             }
         }, 0.8f); // Display for 0.5 seconds
     }
+    public void showDeathMessageAndReturnToMenu() {
+        buttonsEnabled=false;
+        isPlayerDead = true; // Actualiza la bandera para indicar que el jugador está muerto
+
+        Label deathLabel = new Label("Has muerto", new Label.LabelStyle(specialFont, Color.RED));
+        deathLabel.setFontScale(7); // Escala del texto
+    deathLabel.setPosition(Gdx.graphics.getWidth() / 2f - deathLabel.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
+        stage.addActor(deathLabel);
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                game.setScreen(new MainMenuScreen(game));
+            }
+        }, 3); // Muestra el mensaje por 3 segundos
+    }
+
 
     private void showDamage(int damage) {
     float screenWidth = Gdx.graphics.getWidth();
@@ -314,8 +338,10 @@ public class Combat implements Screen {
     }
 
     private void triggerEnemyAttack() {
-        enemyAttacking = true; // Enable enemy attack animation
+        if (!isPlayerDead) {
+            enemyAttacking = true;
         enemyAttack();
+    }
     }
 
     private void enemyAttack() {
@@ -537,9 +563,10 @@ private void usePotion(Potion.PotionType potionType) {
         potion100Button.remove();
         potion100Button = null;
         }
+        if (!isPlayerDead) {
         buttonsEnabled = true;
     }
-
+    }
 
  @SuppressWarnings("SuspiciousIndentation")
  void showVictoryDialog() {
@@ -702,8 +729,8 @@ private void usePotion(Potion.PotionType potionType) {
     }
 }
     private void endCombat() {
-        gameplayScreen.endCombat(); // Llamar al método para finalizar el combate en GameplayScreen
-        game.setScreen(gameplayScreen); // Volver a GameplayScreen
+        gameplayScreen.endCombat();
+        game.setScreen(gameplayScreen);
     }
 
 
@@ -711,16 +738,10 @@ private void usePotion(Potion.PotionType potionType) {
         if (font != null) {
         String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints() + "/"+ player.getMaxHitPoints();
         String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
-
-        // Calculate the y-coordinate to align with the top of the border
-        float statsY = lowerBorderArea.y + lowerBorderArea.height -20; // Adjust this value based on your font size and desired padding
-
-        // Display the player stats on the left
+            float statsY = lowerBorderArea.y + lowerBorderArea.height - 20;
         font.draw(batch, playerStats, lowerBorderArea.x + 30, statsY);
-
-        // Calculate the width of the enemy stats to right-align them
         layout.setText(font, enemyStats);
-        float enemyStatsX = lowerBorderArea.x + lowerBorderArea.width - layout.width - 30; // Right-align text
+            float enemyStatsX = lowerBorderArea.x + lowerBorderArea.width - layout.width - 30;
         font.draw(batch, enemyStats, enemyStatsX, statsY);
     }
     }
@@ -744,7 +765,7 @@ private void usePotion(Potion.PotionType potionType) {
         batch.dispose();
         stage.dispose();
         atlas.dispose();
-        itemAtlas.dispose(); // Dispose itemAtlas as well
+        itemAtlas.dispose();
         if (font != null) font.dispose();
     }
 }

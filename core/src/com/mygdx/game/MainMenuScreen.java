@@ -102,6 +102,7 @@ private void handleInput() {
                 cargarPartidaButtonPressed = true;
             } else if (nuevaPartidaButtonBounds.contains(touchPos.x, touchPos.y)) {
                 nuevaPartidaButtonPressed = true;
+            Player.getInstance(game).reset(); // Reinicia los datos del jugador
                 game.setScreen(new InitialScreen(game));
             }
         }

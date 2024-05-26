@@ -30,6 +30,10 @@ public class Inventory {
         Integer quantity = potions.get(type);
         return quantity != null ? quantity : 0;
     }
+    public void clear() {
+        equipment.clear();
+        potions.clear();
+    }
 
     public boolean usePotion(Potion.PotionType type) {
         Integer currentQuantity = potions.get(type);

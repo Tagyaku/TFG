@@ -69,7 +69,7 @@ public class InitialScreen implements Screen {
 
         initNameFieldUI(); // Llamamos a la inicialización del UI del nombre
         //initTextsAndBackgrounds();
-        playerName = Player.getInstance().getPlayerName();
+        playerName = Player.getInstance(game).getPlayerName();
 
     }
 
@@ -114,7 +114,7 @@ public class InitialScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 playerName = nameField.getText();
         if (!playerName.isEmpty()) {  // Asegúrate de que el nombre no esté vacío
-                Player.getInstance().setPlayerName(playerName);  // Guarda el nombre del jugador en el GameManager
+                Player.getInstance(game).setPlayerName(playerName);  // Guarda el nombre del jugador en el GameManager
                 nameEntered = true; // Cambiamos el estado a verdadero
                 initGameUI(); // Inicializamos el UI del juego
             }

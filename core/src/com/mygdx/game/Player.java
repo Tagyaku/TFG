@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -19,10 +20,10 @@ public class Player {
     private Equipment weapon;
     private Equipment[] accessories = new Equipment[4];
     private Equipment armor;
-    private TextureAtlas playerAtlas;
+    private final TextureAtlas playerAtlas;
     private boolean isDefending = false;
     private boolean shouldRotatePlayer;
-    private Inventory inventory;
+    private final Inventory inventory;
 
     // Stats after applying equipment bonuses
     private int vitality;
@@ -30,8 +31,9 @@ public class Player {
     private int endurance;
     private int dexterity;
     private int luck;
-
-    private Player() {
+    private MyGdxGame game;
+    private Player(MyGdxGame game) {
+        this.game = game; // Asignar la referencia de game
         this.playerName = "Default Hero";
         this.level = 1;
         this.experience = 5;
@@ -53,9 +55,9 @@ public class Player {
         }
     }
 
-    public static synchronized Player getInstance() {
+    public static synchronized Player getInstance(MyGdxGame game) {
         if (instance == null) {
-            instance = new Player();
+            instance = new Player(game);
         }
         return instance;
     }
@@ -104,7 +106,24 @@ public class Player {
                         updateStats();
         adjustCurrentHP();
     }
-
+    public void reset() {
+        this.playerName = "Default Hero";
+        this.level = 1;
+        this.experience = 0;
+        this.baseVitality = 0;
+        this.baseStrength = 5;
+        this.baseEndurance = 5;
+        this.baseDexterity = 5;
+        this.baseLuck = 5;
+        this.hitPoints = getMaxHitPoints();
+        this.weapon = null;
+        this.armor = null;
+        for (int i = 0; i < this.accessories.length; i++) {
+            this.accessories[i] = null;
+        }
+        this.inventory.clear(); // Assuming Inventory has a clear method to empty it
+        updateStats();
+    }
     public void unequip(Equipment item) {
         if (item == this.weapon) {
             this.weapon = null;
@@ -204,10 +223,16 @@ public class Player {
 
     private void checkDeath() {
         if (hitPoints <= 0) {
-            System.out.println(playerName + " has died.");
-            // Handle death (e.g., restart level, game over screen)
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    Combat combatScreen = (Combat) game.getScreen();
+                    combatScreen.showDeathMessageAndReturnToMenu();
+                }
+            });
         }
     }
+
 
     public void heal(int amount) {
         this.hitPoints += amount;
