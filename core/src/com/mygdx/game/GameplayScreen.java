@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
@@ -57,8 +58,10 @@ public class GameplayScreen implements Screen {
     private boolean isEquipmentActive = false;
     private boolean isItemStatsActive = false;
     private boolean isHelpActive = false;
-
+    private boolean isOptionsDialogVisible = false;
+    private OptionsDialog optionsDialog;
     private Skin skin;
+    private boolean isOptionsDialogActive = false;
 
     public GameplayScreen(MyGdxGame game) {
         this.game = game;
@@ -79,6 +82,12 @@ public class GameplayScreen implements Screen {
         this.textFont = new BitmapFont();
         textFont.getData().setScale(2);
 
+        Gdx.app.log("GameplayScreen", "Initializing GameplayScreen, playing music: Goblins_Den_(Regular).wav");
+    if (AudioManager.getInstance().getCurrentMusic() == null ||
+        !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/Golden Serpant Tavern (LOOP).mp3")) {
+        AudioManager.getInstance().playMusic("audio/music/Golden Serpant Tavern (LOOP).mp3");
+        AudioManager.getInstance().setMusicVolume(2f);
+    }
         Gdx.input.setInputProcessor(stage);
         initUI();
         initText();
@@ -98,6 +107,7 @@ public class GameplayScreen implements Screen {
                     if (isDialogOpen(equipmentDialog, x, y)) clickInsideAnyDialog = true;
                     if (isDialogOpen(itemStatsDialog, x, y)) clickInsideAnyDialog = true;
             if (isDialogOpen(helpDialog, x, y)) clickInsideAnyDialog = true;
+            if (isDialogOpen(optionsDialog, x, y)) clickInsideAnyDialog = true; // Añadir esta línea
 
             if (!clickInsideAnyDialog) {
                         hideAllDialogs();
@@ -124,6 +134,7 @@ public class GameplayScreen implements Screen {
         // Create the Label style
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = skin.getFont("default-font");
+    labelStyle.fontColor = Color.WHITE;
         skin.add("default", labelStyle);
 
         // Create the Window style
@@ -132,6 +143,12 @@ public class GameplayScreen implements Screen {
         windowStyle.titleFont = skin.getFont("default-font");
         windowStyle.titleFontColor = Color.WHITE;
         skin.add("default", windowStyle);
+
+    // Crear estilo de Slider
+    Slider.SliderStyle sliderStyle = new Slider.SliderStyle();
+    sliderStyle.background = new TextureRegionDrawable(slideBarTexture);
+    sliderStyle.knob = new TextureRegionDrawable(slideBarTexture);
+    skin.add("default-horizontal", sliderStyle);
 
         // Create the ScrollPane style
         ScrollPane.ScrollPaneStyle scrollPaneStyle = new ScrollPane.ScrollPaneStyle();
@@ -165,12 +182,17 @@ public class GameplayScreen implements Screen {
         pauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("GameplayScreen", "Pause button clicked, playing sound effect.");
+                AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
+            //Gdx.app.log("PauseButton", "Clicked");
                 if (!isPaused) {
                     isPaused = true;
                     showPauseDialog();
+                //Gdx.app.log("GameState", "Game Paused");
                 } else {
                     isPaused = false;
                     hideAllDialogs();
+                //Gdx.app.log("GameState", "Game Resumed");
                 }
             }
         });
@@ -226,14 +248,23 @@ public class GameplayScreen implements Screen {
 
             pauseDialog.setPosition(10, Gdx.graphics.getHeight() - pauseDialog.getHeight() - 100);
 
+        ClickListener buttonClickListener = new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
+            }
+        };
+
+        exitButton.addListener(buttonClickListener);
             exitButton.addListener(new ClickListener(){
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-        Player.getInstance(game).reset(); // Reinicia los datos del jugador
+                Player.getInstance(game).reset();
                     game.setScreen(new MainMenuScreen(game));
                 }
             });
 
+        inventoryButton.addListener(buttonClickListener);
             inventoryButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -247,6 +278,7 @@ public class GameplayScreen implements Screen {
                 }
             });
 
+        equipmentButton.addListener(buttonClickListener);
             equipmentButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -260,6 +292,7 @@ public class GameplayScreen implements Screen {
                 }
             });
 
+        statusButton.addListener(buttonClickListener);
             statusButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -273,6 +306,20 @@ public class GameplayScreen implements Screen {
                 }
             });
 
+        optionsButton.addListener(buttonClickListener);
+        optionsButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (isOptionsDialogActive) {
+                    optionsDialog.remove();
+                } else {
+                    showOptionsDialog();
+            }
+                isOptionsDialogActive = !isOptionsDialogActive;
+            }
+        });
+
+        helpButton.addListener(buttonClickListener);
         helpButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -333,7 +380,16 @@ public class GameplayScreen implements Screen {
     stage.addActor(helpDialog);
     isHelpActive = true;
     }
-
+    private void showOptionsDialog() {
+        if (optionsDialog == null) {
+            optionsDialog = new OptionsDialog("Opciones", skin);
+            addCloseButton(optionsDialog);
+            optionsDialog.pack();
+            optionsDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
+        }
+        stage.addActor(optionsDialog);
+        isOptionsDialogActive = true;
+    }
     private void addCloseButton(Dialog dialog) {
         if (dialog != null) {
         TextureRegionDrawable closeTexture = new TextureRegionDrawable(guiAtlas.findRegion("UI_Flat_Cross_Large"));
@@ -365,6 +421,8 @@ public class GameplayScreen implements Screen {
                         isItemStatsActive = false;
                 } else if (dialog == helpDialog) {
                     isHelpActive = false;
+            } else if (dialog == optionsDialog) {
+                isOptionsDialogActive = false;
                     }
                 }
             });
@@ -689,6 +747,8 @@ public class GameplayScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        //stage.setDebugAll(true);
+
         updateStatusTable();
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -709,7 +769,10 @@ public class GameplayScreen implements Screen {
     }
 
     @Override
-    public void show() {}
+    public void show() {
+        Gdx.input.setInputProcessor(stage);
+
+    }
 
     @Override
     public void resize(int width, int height) {
@@ -723,7 +786,10 @@ public class GameplayScreen implements Screen {
     public void resume() {}
 
     @Override
-    public void hide() {}
+    public void hide() {
+        Gdx.input.setInputProcessor(null);
+
+    }
 
     @Override
     public void dispose() {

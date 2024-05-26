@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -10,20 +11,33 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class MainMenuScreen implements Screen {
     private final MyGdxGame game;
     private SpriteBatch batch;
-    private BitmapFont font;
+    private BitmapFont font, dialogFont;
     private TextureAtlas atlas, backgroundAtlas;
     private TextureRegion boxTextureRegion, backgroundTexture;
     private Rectangle opcionesButtonBounds, cargarPartidaButtonBounds, nuevaPartidaButtonBounds;
     private Viewport viewport;
     private boolean opcionesButtonPressed, cargarPartidaButtonPressed, nuevaPartidaButtonPressed;
-    private float buttonPressDuration = 0.2f; // Duración de la iluminación en segundos
+    private boolean isOptionsDialogVisible;
+    private OptionsDialog optionsDialog;
+    private float buttonPressDuration = 0.2f;
     private float elapsedTimeOpciones, elapsedTimeCargarPartida, elapsedTimeNuevaPartida;
+
+    private Stage stage;
+    private Skin skin;
 
     public MainMenuScreen(MyGdxGame game) {
         this.game = game;
@@ -33,19 +47,69 @@ public class MainMenuScreen implements Screen {
         boxTextureRegion = atlas.findRegion("11 Border 01-0");
         backgroundTexture = backgroundAtlas.findRegion("lands_in_between");
         font = new BitmapFont();
-        font.getData().setScale(1.5f); // Ajusta el tamaño del texto para coincidir con el original
+    font.getData().setScale(1.5f);
+        dialogFont = new BitmapFont();
+        dialogFont.getData().setScale(1.0f);
         initButtons();
-        viewport = new StretchViewport(800, 480); // Ajusta según el tamaño deseado de la ventana
+        viewport = new StretchViewport(800, 480);
+
+
+        stage = new Stage(viewport, batch);
+        skin = new Skin();
+    skin.add("default-font", font);
+        skin.add("dialog-font", dialogFont);
+    skin.addRegions(atlas);
+
+    // Añadir WindowStyle al skin
+    Window.WindowStyle windowStyle = new Window.WindowStyle();
+    windowStyle.background = new TextureRegionDrawable(boxTextureRegion);
+    windowStyle.titleFont = skin.getFont("default-font");
+    windowStyle.titleFontColor = Color.WHITE;
+    skin.add("default", windowStyle);
+
+        // Añadir LabelStyle al skin
+        Label.LabelStyle labelStyle = new Label.LabelStyle();
+        labelStyle.font = skin.getFont("dialog-font");
+        labelStyle.fontColor = Color.WHITE;
+        skin.add("default", labelStyle);
+
+        // Registrar la textura para el Slider
+        TextureRegion sliderRegion = atlas.findRegion("UI_Flat_Scrollbar");
+        skin.add("UI_Flat_Scrollbar", sliderRegion);
+
+        // Añadir SliderStyle al skin
+        Slider.SliderStyle sliderStyle = new Slider.SliderStyle();
+        sliderStyle.background = new TextureRegionDrawable(sliderRegion);
+        sliderStyle.knob = new TextureRegionDrawable(sliderRegion);
+        skin.add("default-horizontal", sliderStyle);
+
+        // Añadir TextButtonStyle al skin
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.font = skin.getFont("dialog-font");
+        textButtonStyle.fontColor = Color.WHITE;
+        skin.add("default", textButtonStyle);
+
+        Gdx.input.setInputProcessor(stage);
+
+        AudioManager.getInstance().playMusic("audio/music/intro/Battle-Dawn_loop.m4a");
+        AudioManager.getInstance().setMusicVolume(0.5f);
+        AudioManager.getInstance().setSoundVolume(2f);
+
+        // Inicializar el diálogo de opciones
+        optionsDialog = new OptionsDialog("", skin);
+        optionsDialog.setSize(400, 300);  // Aumentar el tamaño del diálogo
+        optionsDialog.setPosition(viewport.getWorldWidth() - 400, 0);  // Posicionar a la derecha
+        isOptionsDialogVisible = false;
     }
 
     private void initButtons() {
-        float buttonWidth = 200; // Mantén el tamaño original
+        float buttonWidth = 200;
         float buttonHeight = 60;
-        float screenWidth = 800; // Usa el ancho del viewport
-        float screenHeight = 480; // Usa el alto del viewport
+        float screenWidth = 800;
+        float screenHeight = 480;
 
         float buttonX = (screenWidth - buttonWidth) / 2;
-        float verticalSpacing = 20; // Espacio vertical entre botones
+        float verticalSpacing = 20;
 
         float nuevaPartidaButtonY = (screenHeight + buttonHeight + verticalSpacing) / 2;
         float cargarPartidaButtonY = nuevaPartidaButtonY - (buttonHeight + verticalSpacing);
@@ -65,7 +129,6 @@ public class MainMenuScreen implements Screen {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
-        // Dibujar el fondo
         batch.draw(backgroundTexture, 0, 0, viewport.getWorldWidth(), viewport.getWorldHeight());
 
         drawButton(nuevaPartidaButtonBounds, "Nueva Partida", nuevaPartidaButtonPressed);
@@ -74,13 +137,16 @@ public class MainMenuScreen implements Screen {
 
         batch.end();
 
+        stage.act(delta);
+        stage.draw();
+
     handleInput();
-    updateButtonState(delta);  // Asegúrate de llamar esto continuamente, no solo cuando un botón es presionado
+        updateButtonState(delta);
     }
 
     private void drawButton(Rectangle bounds, String text, boolean pressed) {
         if (pressed) {
-            batch.setColor(1, 1, 1, 0.5f); // Iluminación al pulsar
+            batch.setColor(1, 1, 1, 0.5f);
         }
         batch.draw(boxTextureRegion, bounds.x, bounds.y, bounds.width, bounds.height);
         batch.setColor(1, 1, 1, 1);
@@ -98,11 +164,22 @@ private void handleInput() {
 
             if (opcionesButtonBounds.contains(touchPos.x, touchPos.y)) {
                 opcionesButtonPressed = true;
+            AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
+
+                if (isOptionsDialogVisible) {
+                    optionsDialog.remove();
+                } else {
+                stage.addActor(optionsDialog);
+                }
+                isOptionsDialogVisible = !isOptionsDialogVisible;
             } else if (cargarPartidaButtonBounds.contains(touchPos.x, touchPos.y)) {
                 cargarPartidaButtonPressed = true;
+            AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
+            // Acciones para cargar partida
             } else if (nuevaPartidaButtonBounds.contains(touchPos.x, touchPos.y)) {
                 nuevaPartidaButtonPressed = true;
-            Player.getInstance(game).reset(); // Reinicia los datos del jugador
+            AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
+                Player.getInstance(game).reset();
                 game.setScreen(new InitialScreen(game));
             }
         }
@@ -134,7 +211,7 @@ private void updateButtonState(float delta) {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(null);
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override
@@ -149,13 +226,18 @@ private void updateButtonState(float delta) {
     public void resume() {}
 
     @Override
-    public void hide() {}
+    public void hide() {
+
+    }
 
     @Override
     public void dispose() {
         batch.dispose();
         atlas.dispose();
         font.dispose();
+        dialogFont.dispose();
         backgroundAtlas.dispose();
+        stage.dispose();
+        skin.dispose();
     }
 }

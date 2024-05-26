@@ -94,7 +94,13 @@ public class Combat implements Screen {
         this.equipableItems = new EquipableItems();
         specialFont = new BitmapFont(Gdx.files.internal("skin/fonts/default.fnt"));
         specialFont.getData().setScale(2);
+        if (AudioManager.getInstance().getCurrentMusic() == null ||
+                !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/battle/Goblins_Dance_(Battle).wav")) {
+            AudioManager.getInstance().playMusic("audio/music/battle/Goblins_Dance_(Battle).wav");
+            AudioManager.getInstance().setMusicVolume(0.5f);
+            AudioManager.getInstance().setSoundVolume(2f);
 
+        }
         font = new BitmapFont();
         setupAnimations();
         initUI();
@@ -241,7 +247,7 @@ public class Combat implements Screen {
             }
         });
 
-        escapeButton = new TextButton("Escape", buttonStyle);
+/*        escapeButton = new TextButton("Escape", buttonStyle);
         escapeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -250,7 +256,7 @@ public class Combat implements Screen {
                     attemptEscape();
                 }
             }
-        });
+        });*/
 
         // Button width and spacing
         float buttonWidth = (lowerBorderArea.width - 80) / 4; // Distribute area width among buttons, leaving space
@@ -261,18 +267,18 @@ public class Combat implements Screen {
         attackButton.setSize(buttonWidth, buttonHeight);
         defendButton.setSize(buttonWidth, buttonHeight);
         useItemButton.setSize(buttonWidth, buttonHeight);
-        escapeButton.setSize(buttonWidth, buttonHeight);
+        //.setSize(buttonWidth, buttonHeight);
 
         attackButton.setPosition(lowerBorderArea.x + 10, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
         defendButton.setPosition(attackButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
         useItemButton.setPosition(defendButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
-        escapeButton.setPosition(useItemButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
+        //escapeButton.setPosition(useItemButton.getX() + buttonWidth + spacing, lowerBorderArea.y + (lowerBorderArea.height - buttonHeight) / 2);
 
         // Agregar botones al escenario
         stage.addActor(attackButton);
         stage.addActor(defendButton);
         stage.addActor(useItemButton);
-        stage.addActor(escapeButton);
+        //stage.addActor(escapeButton);
 
         // Configurar LabelStyle para criticalHitLabel y damageLabel
         LabelStyle specialLabelStyle = new LabelStyle();
@@ -351,6 +357,9 @@ public class Combat implements Screen {
         float originalX = enemyX;
         float attackMovement = 500;  // Distance to move left for the animation
 
+    // Reproducir sonido de ataque del enemigo
+    AudioManager.getInstance().playSound("audio/sound effects/Giant_Grunt3.wav");
+
         // Step 1: Move enemy to the left (simulating attack)
         Timer.schedule(new Timer.Task() {
             @Override
@@ -389,6 +398,9 @@ public class Combat implements Screen {
         if (attackAnimation != null) {
             isAttacking = true; // Iniciar animación de ataque
             stateTime = 0; // Reiniciar el tiempo de animación
+
+        // Reproducir sonido de ataque del personaje
+        AudioManager.getInstance().playSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
 
             // Realizar el ataque después de la duración de la animación
             Runnable attackRunnable = new Runnable() {
@@ -478,14 +490,14 @@ public class Combat implements Screen {
         enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;  // Center vertically
         }
 
-    private void attemptEscape() {
+/*    private void attemptEscape() {
         double escapeChance = Math.random();
         if (escapeChance <= 0.3) {
             game.setScreen(new GameplayScreen(game)); // Successful escape
         } else {
             triggerEnemyAttack(); // Failed escape, enemy attacks
         }
-    }
+    }*/
 
 private void renderPotionMenu() {
     // Background for potion menu
@@ -598,8 +610,8 @@ private void usePotion(Potion.PotionType potionType) {
         batch.draw(borderTexture, victoryMenuArea.x, victoryMenuArea.y, victoryMenuArea.width, victoryMenuArea.height);
 
         // Render victory text
-        font.draw(batch, "You've defeated the enemy!", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 40);
-        font.draw(batch, "Experience gained: 40", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 80);
+        font.draw(batch, "Has derrotado al enemigo!", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 40);
+        font.draw(batch, "Experiencia obtenida: 40", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 80);
 
         // Render rewards
         float itemX = victoryMenuArea.x + 20;
@@ -644,6 +656,8 @@ private void usePotion(Potion.PotionType potionType) {
     @Override
     public void show() {
         positionEnemy();
+        Gdx.input.setInputProcessor(stage); // Asegurarse de que el InputProcessor esté configurado
+
     }
 
     @Override
@@ -730,6 +744,13 @@ private void usePotion(Potion.PotionType potionType) {
 }
     private void endCombat() {
         gameplayScreen.endCombat();
+
+    // Detener la música de combate y reproducir la música de GameplayScreen
+    if (AudioManager.getInstance().getCurrentMusic() == null ||
+        !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/Golden Serpant Tavern (LOOP).mp3")) {
+        AudioManager.getInstance().playMusic("audio/music/Golden Serpant Tavern (LOOP).mp3");
+    }
+
         game.setScreen(gameplayScreen);
     }
 
