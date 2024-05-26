@@ -357,8 +357,7 @@ public class GameplayScreen implements Screen {
                 "ACCESORIOS (hasta 4): Ofrecen diversas mejoras.\n" +
                 "ARMADURA: Incrementa la defensa (solo puedes equipar una).\n\n" +
                 "Habilidades en combate:\n\n" +
-                "DEFEND: Recibe un 40% menos de daño en el siguiente ataque enemigo.\n" +
-                "ESCAPE: 50% de probabilidad de éxito para huir del combate.\n\n" +
+                "DEFEND: no recibes daño en el siguiente ataque enemigo.\n" +
                 "Puntos de Vida:\n\n" +
                 "Aumentan con la vitalidad.\n" +
                 "Disminuyen con ataques recibidos.\n" +
@@ -704,6 +703,77 @@ public class GameplayScreen implements Screen {
         gameTexts.add("Preparando para el primer combate.");
         gameTexts.add("Mensaje después del primer combate.");
         gameTexts.add("Mensaje previo al segundo combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("Final del juego después del último combate.");
         gameTexts.add("Final del juego después del último combate.");
     }
 

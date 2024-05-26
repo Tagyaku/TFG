@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 public class Combat implements Screen {
     private final MyGdxGame game;
-    private final GameplayScreen gameplayScreen; // Añadir esto
+    private final GameplayScreen gameplayScreen;
 
     private final Stage stage;
     private final SpriteBatch batch;
@@ -48,11 +48,11 @@ public class Combat implements Screen {
     private Rectangle victoryMenuArea;
     private final Player player;
     private Enemies enemy;
-    private Button attackButton, defendButton, useItemButton, escapeButton;
+    private Button attackButton, defendButton, useItemButton;
     private BitmapFont font;
     private boolean isPotionMenuVisible = false;
     private boolean isVictoryMenuVisible = false;
-    private boolean isPlayerDead = false; // Nueva bandera
+    private boolean isPlayerDead = false;
     private TextureRegion potion30Texture;
     private TextureRegion potion100Texture;
     private TextureRegion backgroundTexture;
@@ -66,7 +66,7 @@ public class Combat implements Screen {
     private boolean enemyMoving = false;
     private EquipableItems equipableItems;
     private Skin skin;
-    private List<TextureRegion> rewardTextures; // Almacenar recompensas
+    private List<TextureRegion> rewardTextures;
     private ImageButton potion30Button;
     private ImageButton potion100Button;
     private TextureRegion protectTexture;
@@ -94,6 +94,11 @@ public class Combat implements Screen {
         this.equipableItems = new EquipableItems();
         specialFont = new BitmapFont(Gdx.files.internal("skin/fonts/default.fnt"));
         specialFont.getData().setScale(2);
+
+    // Precargar los sonidos necesarios
+    AudioManager.getInstance().loadSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
+    AudioManager.getInstance().loadSound("audio/sound effects/Giant_Grunt3.wav");
+
         if (AudioManager.getInstance().getCurrentMusic() == null ||
                 !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/battle/Goblins_Dance_(Battle).wav")) {
             AudioManager.getInstance().playMusic("audio/music/battle/Goblins_Dance_(Battle).wav");
@@ -107,7 +112,7 @@ public class Combat implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
     private void playerReceiveDamage(int damage) {
-        if (!isDefending && !isPlayerDead) { // Verifica si el jugador no está defendiendo y no está muerto
+        if (!isDefending && !isPlayerDead) {
         player.receiveDamage(damage);
         isHurt = true;
             buttonsEnabled = false;
@@ -209,8 +214,7 @@ public class Combat implements Screen {
         // Define the victory menu area
         victoryMenuArea = new Rectangle(screenWidth / 4, screenHeight / 4, screenWidth / 2, screenHeight / 2);
 
-        // Configure button styles
-        font.getData().setScale(3); // Increase font size
+        font.getData().setScale(3);
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = font;
 
@@ -219,7 +223,7 @@ public class Combat implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (buttonsEnabled) {
-                    buttonsEnabled = false; // Disable buttons
+                    buttonsEnabled = false;
                     attackEnemy();
                 }
             }
@@ -230,7 +234,9 @@ public class Combat implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (buttonsEnabled) {
-                    buttonsEnabled = false; // Disable buttons
+                    buttonsEnabled = false;
+                    isHurt=false;
+
                     defend();
                     triggerEnemyAttack();
                 }
@@ -258,10 +264,9 @@ public class Combat implements Screen {
             }
         });*/
 
-        // Button width and spacing
-        float buttonWidth = (lowerBorderArea.width - 80) / 4; // Distribute area width among buttons, leaving space
-        float buttonHeight = 50; // Fixed height for all buttons
-        float spacing = 13; // Space between buttons
+        float buttonWidth = (lowerBorderArea.width - 80) / 4;
+        float buttonHeight = 50;
+        float spacing = 13;
 
         // Posición de los botones en horizontal
         attackButton.setSize(buttonWidth, buttonHeight);
@@ -305,14 +310,14 @@ public class Combat implements Screen {
             public void run() {
                 criticalHitLabel.setVisible(false);
             }
-        }, 0.8f); // Display for 0.5 seconds
+        }, 0.8f);
     }
     public void showDeathMessageAndReturnToMenu() {
         buttonsEnabled=false;
-        isPlayerDead = true; // Actualiza la bandera para indicar que el jugador está muerto
+        isPlayerDead = true;
 
         Label deathLabel = new Label("Has muerto", new Label.LabelStyle(specialFont, Color.RED));
-        deathLabel.setFontScale(7); // Escala del texto
+        deathLabel.setFontScale(7);
     deathLabel.setPosition(Gdx.graphics.getWidth() / 2f - deathLabel.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
         stage.addActor(deathLabel);
 
@@ -321,7 +326,7 @@ public class Combat implements Screen {
             public void run() {
                 game.setScreen(new MainMenuScreen(game));
             }
-        }, 3); // Muestra el mensaje por 3 segundos
+        }, 3);
     }
 
 
@@ -330,7 +335,6 @@ public class Combat implements Screen {
     float screenHeight = Gdx.graphics.getHeight();
 
         damageLabel.setText(damage +" DMG!");
-    // Posiciona el mensaje en el centro arriba de la pantalla
     damageLabel.setPosition((screenWidth - damageLabel.getWidth()) / 2, screenHeight - damageLabel.getHeight() - 50);
 
         damageLabel.setVisible(true);
@@ -340,7 +344,7 @@ public class Combat implements Screen {
             public void run() {
                 damageLabel.setVisible(false);
             }
-        }, 0.8f); // Display for 0.5 seconds
+        }, 0.8f);
     }
 
     private void triggerEnemyAttack() {
@@ -351,16 +355,13 @@ public class Combat implements Screen {
     }
 
     private void enemyAttack() {
-        // Asegurarse de que todos los botones están desactivados durante el ataque
         buttonsEnabled = false;
         enemyMoving = true;
         float originalX = enemyX;
-        float attackMovement = 500;  // Distance to move left for the animation
+        float attackMovement = 500;
 
-    // Reproducir sonido de ataque del enemigo
     AudioManager.getInstance().playSound("audio/sound effects/Giant_Grunt3.wav");
 
-        // Step 1: Move enemy to the left (simulating attack)
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
@@ -368,7 +369,6 @@ public class Combat implements Screen {
             }
         }, 0.3f);
 
-        // Step 2: Deal damage and reset position after a short delay
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
@@ -383,21 +383,23 @@ public class Combat implements Screen {
 
     private void defend() {
         player.defend();
-    isDefending = true;
-
-    // Trigger enemy attack after a delay to allow defend animation to show
-    Timer.schedule(new Timer.Task() {
-        @Override
-        public void run() {
-            //triggerEnemyAttack();
-        }
-    }, 1.0f); // Adjust the delay as needed
+        isDefending = true;
+        isHurt=false;
+        buttonsEnabled=false;
+        // Programar la duración de la defensa
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                isDefending = false; // Restablecer isDefending después de un breve período
+                buttonsEnabled = true;
+            }
+        }, 1.0f); // Ajusta la duración según sea necesario
     }
 
     private void attackEnemy() {
         if (attackAnimation != null) {
-            isAttacking = true; // Iniciar animación de ataque
-            stateTime = 0; // Reiniciar el tiempo de animación
+            isAttacking = true;
+            stateTime = 0;
 
         // Reproducir sonido de ataque del personaje
         AudioManager.getInstance().playSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
@@ -412,14 +414,14 @@ public class Combat implements Screen {
                     }
                     showDamage(damage);
                     enemy.receiveDamage(damage);
-                    updateEnemyStatsDisplay();  // Actualiza la información de la vida del enemigo en la UI.
+                    updateEnemyStatsDisplay();
 
                     if (!enemy.isAlive()) {
                         showVictoryDialog();
                     } else {
                         triggerEnemyAttack();
                     }
-                    isAttacking = false; // Detener la animación del ataque.
+                    isAttacking = false;
                 }
             };
 
@@ -436,22 +438,19 @@ public class Combat implements Screen {
     }
 
     private void updateEnemyStatsDisplay() {
-        // Este método actualiza el texto que muestra la salud actual del enemigo en la interfaz de usuario.
         String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
-        layout.setText(font, enemyStats);  // Pre-calcula el layout del texto para su correcta visualización.
-        // Asumiendo que tienes una forma de dibujar este texto en tu método render(), solo necesitas actualizar el texto aquí.
+        layout.setText(font, enemyStats);
     }
 
     private void animateAttack(float delta) {
         if (isAttacking) {
-            stateTime += delta; // Update the state time for the animation
+            stateTime += delta;
             TextureRegion currentFrame = attackAnimation.getKeyFrame(stateTime, false);
             int frameIndex = attackAnimation.getKeyFrameIndex(stateTime);
 
             if (attackAnimation.isAnimationFinished(stateTime)) {
-                isAttacking = false; // Stop the animation once it finishes
+                isAttacking = false;
             } else {
-                // Player's position and scale setup
                 TextureRegion playerImage = player.getPlayerTexture("Idle-3");
                 float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
                 float imageX = 10;
@@ -459,7 +458,6 @@ public class Combat implements Screen {
                 float originX = playerImage.getRegionWidth() / 2;
                 float originY = playerImage.getRegionHeight() / 2;
 
-            // Adjust position for frame 4
             if (frameIndex == 2) {
                 imageY += -100;
             }
@@ -485,19 +483,10 @@ public class Combat implements Screen {
 
     private void positionEnemy() {
         TextureRegion enemyImage = enemy.getEnemyTexture();
-        float enemyScale = 2.0f; // Set a fixed scale factor for the enemy
-        enemyX = Gdx.graphics.getWidth() - enemyImage.getRegionWidth() * enemyScale - 50;  // Position enemy on the right side with some padding
-        enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;  // Center vertically
+        float enemyScale = 2.0f;
+        enemyX = Gdx.graphics.getWidth() - enemyImage.getRegionWidth() * enemyScale - 50;
+        enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;
         }
-
-/*    private void attemptEscape() {
-        double escapeChance = Math.random();
-        if (escapeChance <= 0.3) {
-            game.setScreen(new GameplayScreen(game)); // Successful escape
-        } else {
-            triggerEnemyAttack(); // Failed escape, enemy attacks
-        }
-    }*/
 
 private void renderPotionMenu() {
     // Background for potion menu
@@ -598,7 +587,7 @@ private void usePotion(Potion.PotionType potionType) {
             public void clicked(InputEvent event, float x, float y) {
                 if (isVictoryMenuVisible && !victoryMenuArea.contains(x, Gdx.graphics.getHeight() - y)) {
                     isVictoryMenuVisible = false;
-                    endCombat(); // Finalizar el combate
+                    endCombat();
                 }
             }
         });
@@ -627,9 +616,9 @@ private void usePotion(Potion.PotionType potionType) {
         List<TextureRegion> rewardTextures = new ArrayList<>();
         Random random = new Random();
 
-    if (random.nextFloat() < 1) { // Cambiado a 1 para asegurar que se genera siempre un ítem
+        if (random.nextFloat() < 1) {
             Equipment equipment = equipableItems.createRandomItem();
-        if (equipment != null) { // Comprobar si se creó correctamente el equipo
+            if (equipment != null) {
                 playerInventory.addEquipment(equipment);
                 rewardTextures.add(equipment.getTexture());
         } else {
@@ -656,8 +645,7 @@ private void usePotion(Potion.PotionType potionType) {
     @Override
     public void show() {
         positionEnemy();
-        Gdx.input.setInputProcessor(stage); // Asegurarse de que el InputProcessor esté configurado
-
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override
@@ -666,10 +654,8 @@ private void usePotion(Potion.PotionType potionType) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        // Dibuja el fondo
         batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        // Configuración y dibujo del jugador
     TextureRegion playerImage = isDefending ? protectTexture : player.getPlayerTexture("Idle-3");
         float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
         float imageX = 10;
@@ -683,25 +669,21 @@ private void usePotion(Potion.PotionType potionType) {
                     playerScale, playerScale, rotation);
         }
 
-    if (isHurt && !isDefending) { // Renderizar animación de daño solo si no se está defendiendo
+        if (isHurt && !isDefending) {
         animateHurt(delta);
 
     }
 
         animateAttack(delta); // Manejar la animación de ataque si está activa
 
-        // Configuración y dibujo del enemigo asegurando que se muestre en el centro de la pantalla
         TextureRegion enemyImage = enemy.getEnemyTexture();
-        float enemyScale = 2.0f; // Set a fixed scale factor for the enemy
-        float enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;  // Center vertically
+        float enemyScale = 2.0f;
+        float enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;
         float enemyRotation = enemy.shouldRotate() ? 270 : 0;
         batch.draw(enemyImage, enemyX, enemyY, originX, originY, enemyImage.getRegionWidth(), enemyImage.getRegionHeight(),
                 enemyScale, enemyScale, enemyRotation);
 
-        // Dibuja el borde
         batch.draw(borderTexture, lowerBorderArea.x, lowerBorderArea.y, lowerBorderArea.width, lowerBorderArea.height);
-
-        // Muestra información del jugador y enemigo
         displayStats();
 
         if (isPotionMenuVisible) {
@@ -714,10 +696,9 @@ private void usePotion(Potion.PotionType potionType) {
 
         batch.end();
 
-        // Handle click outside potion menu to close it
         if (isPotionMenuVisible && Gdx.input.justTouched()) {
             float touchX = Gdx.input.getX();
-            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY(); // Adjust for coordinate system
+            float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
             if (!potionMenuArea.contains(touchX, touchY)) {
             closePotionMenu();
             }
@@ -726,26 +707,16 @@ private void usePotion(Potion.PotionType potionType) {
         stage.act(delta);
         stage.draw();
 
-        // Update enemy position during attack animation
         if (enemyMoving) {
             float deltaX = 500 * delta;
             enemyX -= deltaX;
         }
 
-    // Reset isDefending after showing the protection for a brief period
-    if (isDefending) {
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                isDefending = false;
-            }
-        }, 1.0f); // Adjust the duration as needed
-    }
+
 }
     private void endCombat() {
         gameplayScreen.endCombat();
 
-    // Detener la música de combate y reproducir la música de GameplayScreen
     if (AudioManager.getInstance().getCurrentMusic() == null ||
         !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/Golden Serpant Tavern (LOOP).mp3")) {
         AudioManager.getInstance().playMusic("audio/music/Golden Serpant Tavern (LOOP).mp3");

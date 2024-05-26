@@ -50,6 +50,7 @@ public class InitialScreen implements Screen {
     private List<TextureRegion> backgrounds;
     private TextureRegion currentBackground;
     private TextureAtlas backgroundsAtlas;
+    private TextureAtlas atlas;
 
     private boolean firstClickHandled = false;
 
@@ -59,7 +60,7 @@ public class InitialScreen implements Screen {
         camera = new OrthographicCamera();
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport(camera), batch);
-        SkinManager.loadResources();
+        loadResources();
         Gdx.input.setInputProcessor(stage);
 
         backgroundsAtlas = new TextureAtlas(Gdx.files.internal("images/intro_elden/Intro_BG.atlas"));
@@ -71,14 +72,18 @@ public class InitialScreen implements Screen {
         }
     }
 
+    private void loadResources() {
+        atlas = new TextureAtlas(Gdx.files.internal("images/TFG_Atlas_1.atlas"));
+    }
+
     private void initNameFieldUI() {
         BitmapFont nameFieldFont= new BitmapFont();
         nameFieldFont.getData().setScale(3f);
 
-        TextFieldStyle textFieldStyle = new TextFieldStyle();
+        TextField.TextFieldStyle textFieldStyle = new TextField.TextFieldStyle();
         textFieldStyle.font = nameFieldFont;
         textFieldStyle.fontColor = Color.WHITE;
-        textFieldStyle.background = new TextureRegionDrawable(new TextureRegion(SkinManager.getAtlas().findRegion("MenuBox2")));
+        textFieldStyle.background = new TextureRegionDrawable(new TextureRegion(atlas.findRegion("MenuBox2")));
 
         // Campo de texto
 
@@ -96,9 +101,10 @@ public class InitialScreen implements Screen {
         nameLabel = new Label("Introduzca su nombre", new Label.LabelStyle(font, Color.WHITE));
         nameLabel.setPosition(nameField.getX(), nameField.getY() - nameLabel.getHeight() - 5);
         stage.addActor(nameLabel);
-        TextButtonStyle buttonStyle = new TextButtonStyle();
-        buttonStyle.up = new TextureRegionDrawable(new TextureRegion(SkinManager.getAtlas().findRegion("Check-up")));
-        buttonStyle.down = new TextureRegionDrawable(new TextureRegion(SkinManager.getAtlas().findRegion("Check-down")));
+
+        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        buttonStyle.up = new TextureRegionDrawable(new TextureRegion(atlas.findRegion("Check-up")));
+        buttonStyle.down = new TextureRegionDrawable(new TextureRegion(atlas.findRegion("Check-down")));
         buttonStyle.font = new BitmapFont();
 
         submitButton = new TextButton("", buttonStyle);
@@ -267,6 +273,6 @@ public class InitialScreen implements Screen {
         stage.dispose();
         batch.dispose();
         backgroundsAtlas.dispose();
-        SkinManager.getAtlas().dispose();
+        atlas.dispose();
     }
 }

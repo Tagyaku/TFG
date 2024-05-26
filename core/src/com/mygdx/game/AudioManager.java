@@ -77,7 +77,12 @@ public class AudioManager {
         soundVolume = volume;
     }
 
-
+    public void loadSound(String filePath) {
+        if (!soundCache.containsKey(filePath)) {
+            Sound sound = Gdx.audio.newSound(Gdx.files.internal(filePath));
+            soundCache.put(filePath, sound);
+        }
+    }
     public Music getCurrentMusic() {
         return currentMusic;
     }
