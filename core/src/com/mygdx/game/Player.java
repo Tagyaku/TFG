@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Json;
 
 public class Player {
     private static Player instance;
@@ -20,20 +21,22 @@ public class Player {
     private Equipment weapon;
     private Equipment[] accessories = new Equipment[4];
     private Equipment armor;
-    private final TextureAtlas playerAtlas;
+    private transient TextureAtlas playerAtlas;
     private boolean isDefending = false;
     private boolean shouldRotatePlayer;
-    private final Inventory inventory;
-
-    // Stats after applying equipment bonuses
+    private Inventory inventory;
     private int vitality;
     private int strength;
     private int endurance;
     private int dexterity;
     private int luck;
-    private MyGdxGame game;
+    private int currentTextIndex;
+    private transient MyGdxGame game;
+
+    public Player() {}
+
     private Player(MyGdxGame game) {
-        this.game = game; // Asignar la referencia de game
+        this.game = game;
         this.playerName = "Default Hero";
         this.level = 1;
         this.experience = 5;
@@ -48,10 +51,33 @@ public class Player {
         this.hitPoints = getMaxHitPoints();
         setRotation();
     }
+    public String toJson() {
+        Json json = new Json();
+        return json.toJson(this);
+    }
+    public static Player fromJson(String jsonData, MyGdxGame game) {
+        Json json = new Json();
+        Player player = json.fromJson(Player.class, jsonData);
+        player.initialize(game); // Initialize transient fields
+        return player;
+    }
 
     private void setRotation() {
         if (!playerAtlas.getRegions().isEmpty()) {
             this.shouldRotatePlayer = playerAtlas.getRegions().first().rotate;
+        }
+    }
+    private void initializeEquipment() {
+        if (this.weapon != null) {
+            this.weapon.initialize(playerAtlas.findRegion(this.weapon.getTexture().name));
+        }
+        if (this.armor != null) {
+            this.armor.initialize(playerAtlas.findRegion(this.armor.getTexture().name));
+        }
+        for (int i = 0; i < this.accessories.length; i++) {
+            if (this.accessories[i] != null) {
+                this.accessories[i].initialize(playerAtlas.findRegion(this.accessories[i].getTexture().name));
+            }
         }
     }
 
@@ -60,6 +86,15 @@ public class Player {
             instance = new Player(game);
         }
         return instance;
+    }
+
+    public void initialize(MyGdxGame game) {
+        this.game = game;
+        this.playerAtlas = new TextureAtlas("images/Main_Character/main_Character.atlas");
+        initializeEquipment();
+    }
+    public TextureAtlas getPlayerAtlas() {
+        return playerAtlas;
     }
 
     public void gainExperience(int amount) {
@@ -121,8 +156,9 @@ public class Player {
         for (int i = 0; i < this.accessories.length; i++) {
             this.accessories[i] = null;
         }
-        this.inventory.clear(); // Assuming Inventory has a clear method to empty it
+        this.inventory.clear();
         updateStats();
+        this.currentTextIndex = 0;
     }
     public void unequip(Equipment item) {
         if (item == this.weapon) {
@@ -212,11 +248,11 @@ public class Player {
     }
     public void receiveDamage(int damage) {
         if (isDefending) {
-            damage *= 0.6;  // Apply 40% damage reduction
-            isDefending = false;  // Reset defending status after receiving the attack
+            damage *= 0.6;
+            isDefending = false;
         }
         int finalDamage = damage - (int) (endurance * 0.5);
-        finalDamage = Math.max(0, finalDamage);  // Ensure damage is not negative
+        finalDamage = Math.max(0, finalDamage);
         hitPoints -= finalDamage;
         checkDeath();
     }
@@ -336,5 +372,32 @@ public class Player {
     public boolean shouldRotate() {
         return shouldRotatePlayer;
     }
-}
 
+    public int getCurrentTextIndex() {
+        return currentTextIndex;
+    }
+
+    public void setCurrentTextIndex(int currentTextIndex) {
+        this.currentTextIndex = currentTextIndex;
+    }
+
+    // Método para copiar datos de otro jugador
+    public void copyFrom(Player other) {
+        this.playerName = other.playerName;
+        this.level = other.level;
+        this.experience = other.experience;
+        this.baseVitality = other.baseVitality;
+        this.baseStrength = other.baseStrength;
+        this.baseEndurance = other.baseEndurance;
+        this.baseDexterity = other.baseDexterity;
+        this.baseLuck = other.baseLuck;
+        this.hitPoints = other.hitPoints;
+        this.criticalChance = other.criticalChance;
+        this.criticalDamage = other.criticalDamage;
+        this.weapon = other.weapon;
+        this.accessories = other.accessories;
+        this.armor = other.armor;
+        this.inventory = other.inventory;
+        updateStats();
+}
+}

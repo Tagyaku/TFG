@@ -27,6 +27,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -51,7 +52,7 @@ public class GameplayScreen implements Screen {
     private int currentCombatIndex = 0;
     private int combatStartIndex = 0;
 
-    private Dialog pauseDialog, inventoryDialog, statusDialog, equipmentDialog, itemStatsDialog, helpDialog;
+    private Dialog pauseDialog, inventoryDialog, statusDialog, equipmentDialog, itemStatsDialog, helpDialog, saveDialog, loadDialog;
     private boolean isPaused = false;
     private boolean isInventoryActive = false;
     private boolean isStatusActive = false;
@@ -59,6 +60,7 @@ public class GameplayScreen implements Screen {
     private boolean isItemStatsActive = false;
     private boolean isHelpActive = false;
     private boolean isOptionsDialogVisible = false;
+    private boolean isSaveDialogActive = false;
     private OptionsDialog optionsDialog;
     private Skin skin;
     private boolean isOptionsDialogActive = false;
@@ -107,7 +109,8 @@ public class GameplayScreen implements Screen {
                     if (isDialogOpen(equipmentDialog, x, y)) clickInsideAnyDialog = true;
                     if (isDialogOpen(itemStatsDialog, x, y)) clickInsideAnyDialog = true;
             if (isDialogOpen(helpDialog, x, y)) clickInsideAnyDialog = true;
-            if (isDialogOpen(optionsDialog, x, y)) clickInsideAnyDialog = true; // Añadir esta línea
+                    if (isDialogOpen(optionsDialog, x, y)) clickInsideAnyDialog = true;
+                    if (isDialogOpen(saveDialog, x, y)) clickInsideAnyDialog = true;
 
             if (!clickInsideAnyDialog) {
                         hideAllDialogs();
@@ -332,9 +335,118 @@ public class GameplayScreen implements Screen {
                 }
             }
         });
+            saveButton.addListener(buttonClickListener);
+            saveButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    if (isSaveDialogActive) {
+                        saveDialog.remove();
+                    } else {
+                    showSaveDialog();
+                }
+                    isSaveDialogActive = !isSaveDialogActive;
+                }
+            });
         }
         stage.addActor(pauseDialog);
     }
+    private void showSaveDialog() {
+        if (saveDialog == null) {
+            saveDialog = new Dialog("Guardar Partida", skin) {
+                @Override
+                protected void result(Object object) {
+                }
+            };
+
+            addCloseButton(saveDialog);
+
+            Table contentTable = new Table(skin);
+            for (int i = 1; i <= 5; i++) {
+            TextButton saveSlotButton = new TextButton("Ranura " + i, skin);
+            final int slot = i;
+            saveSlotButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    saveGame(slot);
+                }
+            });
+            contentTable.add(saveSlotButton).row();
+        }
+
+            ScrollPane scrollPane = new ScrollPane(contentTable, skin);
+            scrollPane.setFadeScrollBars(false);
+            scrollPane.setScrollingDisabled(true, false);
+            saveDialog.getContentTable().add(scrollPane).width(800).height(400).pad(10);
+            saveDialog.pack();
+            saveDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
+    }
+        stage.addActor(saveDialog);
+    }
+
+    private void showLoadDialog() {
+        if (loadDialog == null) {
+            loadDialog = new Dialog("Cargar Partida", skin) {
+                @Override
+                protected void result(Object object) {
+                }
+            };
+
+            addCloseButton(loadDialog);
+
+            Table contentTable = new Table(skin);
+            List<SavedGame> savedGames = game.getSaveGameService().loadAllSavedGames();
+            for (SavedGame savedGame : savedGames) {
+            TextButton loadSlotButton = new TextButton("Ranura " + savedGame.getSlotNumber() + " - " + savedGame.getPlayerName() + " - Progreso: " + savedGame.getCurrentTextIndex(), skin);
+                loadSlotButton.addListener(new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        loadGame(savedGame);
+                        loadDialog.hide();
+                    }
+                });
+                contentTable.add(loadSlotButton).row();
+            }
+
+            ScrollPane scrollPane = new ScrollPane(contentTable, skin);
+            scrollPane.setFadeScrollBars(false);
+            scrollPane.setScrollingDisabled(true, false);
+            loadDialog.getContentTable().add(scrollPane).width(800).height(400).pad(10);
+            loadDialog.pack();
+            loadDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
+        }
+        stage.addActor(loadDialog);
+    }
+
+    private void saveGame(int slot) {
+        Player player = Player.getInstance(game);
+        String saveData = player.toJson();
+    SavedGame savedGame = new SavedGame(player.getPlayerName(), saveData, slot, currentTextIndex);
+        game.getSaveGameService().saveGame(savedGame);
+    }
+
+    private void loadGame(SavedGame savedGame) {
+        Player loadedPlayer = Player.fromJson(savedGame.getSaveData(), game);
+        Player.getInstance(game).copyFrom(loadedPlayer);
+        currentTextIndex = savedGame.getCurrentTextIndex();
+        updateStatusTable();
+    }
+
+    public int getCurrentTextIndex() {
+        return currentTextIndex;
+    }
+
+    public void setCurrentTextIndex(int currentTextIndex) {
+        this.currentTextIndex = currentTextIndex;
+    }
+
+    private String serializeGameData(Player player) {
+        Json json = new Json();
+        return json.toJson(player);
+    }
+
+
+
+
     private void showHelpDialog() {
     if (helpDialog == null) {
         helpDialog = new Dialog("Guía de Atributos y Equipamiento", skin) {
@@ -422,6 +534,8 @@ public class GameplayScreen implements Screen {
                     isHelpActive = false;
             } else if (dialog == optionsDialog) {
                 isOptionsDialogActive = false;
+                    } else if (dialog == saveDialog) {
+                        isSaveDialogActive = false;
                     }
                 }
             });
@@ -460,6 +574,10 @@ public class GameplayScreen implements Screen {
         helpDialog.remove();
         isHelpActive = false;
     }
+        if (saveDialog != null) {
+            saveDialog.remove();
+            isSaveDialogActive = false;
+        }
         isPaused = false;
     }
 
@@ -491,7 +609,7 @@ public class GameplayScreen implements Screen {
                             updateInventoryDialog();
                         }
                     });
-                inventoryTable.add(itemButton).size(80).pad(5); // Adjust button size
+                    inventoryTable.add(itemButton).size(80).pad(5);
 
                     currentColumn++;
                     if (currentColumn >= itemsPerRow) {
@@ -515,7 +633,7 @@ public class GameplayScreen implements Screen {
                     }
                     if (potionTexture != null) {
                         TextButton potionButton = new TextButton(quantity + "x", new TextButton.TextButtonStyle(new TextureRegionDrawable(potionTexture), null, null, font));
-                    inventoryTable.add(potionButton).size(80).pad(5); // Adjust button size
+                        inventoryTable.add(potionButton).size(80).pad(5);
 
                         currentColumn++;
                         if (currentColumn >= itemsPerRow) {
@@ -528,11 +646,9 @@ public class GameplayScreen implements Screen {
 
         ScrollPane scrollPane = new ScrollPane(inventoryTable, skin);
         scrollPane.setFadeScrollBars(true);
-        scrollPane.setScrollingDisabled(true, false); // Disable horizontal scrolling
-        inventoryDialog.getContentTable().add(scrollPane).width(900).height(400).pad(10); // Adjust size as needed
+            scrollPane.setScrollingDisabled(true, false);
+            inventoryDialog.getContentTable().add(scrollPane).width(900).height(400).pad(10);
             inventoryDialog.pack();
-
-            // Set the position of the inventory dialog
             inventoryDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
         }
         stage.addActor(inventoryDialog);
@@ -648,8 +764,8 @@ public class GameplayScreen implements Screen {
 
             ScrollPane scrollPane = new ScrollPane(equipmentTable, skin);
             scrollPane.setFadeScrollBars(false);
-        scrollPane.setScrollingDisabled(true, false); // Disable horizontal scrolling
-        equipmentDialog.getContentTable().add(scrollPane).width(800).height(400).pad(10); // Adjust size as needed
+            scrollPane.setScrollingDisabled(true, false);
+            equipmentDialog.getContentTable().add(scrollPane).width(800).height(400).pad(10);
             equipmentDialog.pack();
             equipmentDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
         }
@@ -698,83 +814,47 @@ public class GameplayScreen implements Screen {
         textFont = new BitmapFont();
         textFont.getData().setScale(2);
         gameTexts = new ArrayList<>();
-        gameTexts.add("Primer mensaje que aparecerá en el juego.");
-        gameTexts.add("Segundo mensaje, continúa la historia.");
-        gameTexts.add("Preparando para el primer combate.");
-        gameTexts.add("Mensaje después del primer combate.");
-        gameTexts.add("Mensaje previo al segundo combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
-        gameTexts.add("Final del juego después del último combate.");
+        gameTexts.add("...");
+        gameTexts.add("En una era olvidada, el reino de Eldoria ha caído en la oscuridad. Un antiguo mal ha despertado, envolviendo las tierras en sombras.\n");
+        gameTexts.add("Se dice que un héroe, elegido por el destino, puede restaurar la luz perdida. Este héroe debe atravesar Eldenwood, un bosque antiguo lleno de peligros y secretos.\n");
+        gameTexts.add("Te adentras en Eldenwood, con solo tu coraje y una espada a tu lado. La misión es clara: encontrar el corazón del mal y destruirlo.\n");
+        gameTexts.add("Un rugido feroz rompe el silencio. Desde la espesura surge una bestia con ojos brillantes, lista para atacarte.");
+        gameTexts.add("Un lobo gigante, cubierto de cicatrices, con colmillos afilados y una mirada de odio ancestral.\n");
+        gameTexts.add("El lobo cae al suelo, su último aliento se mezcla con el viento. Eldenwood parece aceptar tu fuerza, aunque nuevos peligros te aguardan.\n");
+        gameTexts.add("Caminas más profundo en el bosque, donde los árboles se hacen más altos y las sombras más largas. Cada paso te acerca a tu destino.");
+        gameTexts.add("El sonido de criaturas desconocidas resuena a tu alrededor, y los susurros del bosque te advierten de un peligro inminente.\n");
+        gameTexts.add("Llegas a un claro oscuro, donde el suelo está cubierto de hojas muertas. Un olor nauseabundo emana de un estanque cercano, en el cual algo se mueve.\n");
+        gameTexts.add("Del estanque surge una figura grotesca, cubierta de lodo y hojas podridas. Sus ojos brillan con malevolencia.\n");
+        gameTexts.add("Un gruñido profundo emana de la criatura, prometiendo dolor y sufrimiento.\n");
+        gameTexts.add("Un ghoul del pantano, su piel verde y resbaladiza, con zarpas afiladas y una boca llena de dientes irregulares y podridos");
+        gameTexts.add("La criatura se desintegra en el lodo, dejando tras de sí un silencio inquietante. El bosque se abre un poco más, permitiéndote continuar.\n");
+        gameTexts.add("Sigues avanzando, sintiendo el peso de la misión sobre tus hombros. El aire se vuelve más fresco, indicando la proximidad de una montaña.\n");
+        gameTexts.add("A lo lejos, distingues la silueta de una montaña. A su base, una cueva oscura te espera, prometiendo nuevos desafíos.\n");
+        gameTexts.add("La entrada de la cueva es vasta y oscura, un abismo que parece devorar la luz del día. Un guardián inmenso se encuentra vigilando la entrada.\n");
+        gameTexts.add("El guardián, una estatua viviente de piedra, se activa al sentir tu presencia. Sus ojos brillan con una luz roja y amenazante.");
+        gameTexts.add("Un rugido sordo y profundo emana del guardián, preparando su ataque.\n");
+        gameTexts.add("Un gólem de piedra, inmenso y robusto, con runas brillantes grabadas en su cuerpo y un mazo de granito que maneja con facilidad.\n");
+        gameTexts.add("El gólem se desmorona en una pila de escombros, sus runas apagándose lentamente. La entrada de la cueva está despejada, lista para ser explorada.\n");
+        gameTexts.add("Das un paso adelante y entras en la cueva, donde la oscuridad es total y el aire frío. La sensación de peligro aumenta a cada paso.\n");
+        gameTexts.add("El interior de la cueva es laberíntico y lleno de ecos de tiempos antiguos. Tus pasos reverberan en las paredes de piedra.\n");
+        gameTexts.add("Caminas por pasadizos estrechos y vastas cavernas, cada una más oscura y silenciosa que la anterior.\n");
+        gameTexts.add("Al llegar a una cámara amplia, una cascada subterránea cae desde el techo, iluminada por un extraño resplandor azul. La belleza de la escena es inquietante.\n");
+        gameTexts.add("De detrás de la cascada emerge una figura espectral, sus ojos brillando con un fulgor sobrenatural.\n");
+        gameTexts.add("Un alarido etéreo llena la cámara, mientras la figura avanza hacia ti con una velocidad inhumana.\n");
+        gameTexts.add("Un espectro guardián, una figura fantasmal envuelta en sombras, con ojos brillantes y garras afiladas.\n");
+        gameTexts.add("El espectro se disipa en una niebla fría, dejando atrás una sensación de vacío. La cueva sigue extendiéndose, llamándote hacia lo desconocido.");
+        gameTexts.add("Sigues adelante, atravesando túneles serpenteantes y cámaras ocultas. El silencio es tu único compañero en esta oscuridad abrumadora.\n");
+        gameTexts.add("Después de horas de caminata, un rayo de luz natural se filtra desde la distancia, prometiendo una salida de la cueva.\n");
+        gameTexts.add("Emerges de la cueva para encontrarte en otro lado del bosque. Ante ti, un vasto valle se despliega, con las ruinas de un antiguo torreón erguido majestuoso en el centro.");
+        gameTexts.add("El aire es fresco y limpio, y los restos de estructuras antiguas se dispersan por el paisaje, insinuando una grandeza perdida hace mucho tiempo.\n");
+        gameTexts.add("Te diriges hacia el torreón, sintiendo una atracción inexplicable. El camino es empinado y lleno de escombros, pero la determinación te impulsa.\n");
+        gameTexts.add("En la entrada del torreón, una figura imponente se alza. Un caballero oscuro, cubierto de una armadura negra, su presencia emana poder y peligro.\n");
+        gameTexts.add("El caballero oscuro desenfunda su espada, y un rugido bajo resuena desde su casco, desafiándote a un duelo mortal.\n");
+        gameTexts.add("Un caballero oscuro, imponente y ágil, con una espada enorme y armadura negra que refleja la luz con un brillo siniestro.\n");
+        gameTexts.add("El caballero oscuro cae, su armadura desmoronándose. Las puertas del torreón se abren lentamente, invitándote a explorar las profundidades de su oscuridad.\n");
+        gameTexts.add("Cruzas el umbral del torreón, donde la penumbra y la historia se entrelazan. Corredores interminables y salas abandonadas se extienden ante ti, prometiendo nuevos desafíos y secretos ocultos.");
+        gameTexts.add("Final del juego después del último combate.");
+
     }
 
     private void handleInput() {
@@ -817,8 +897,6 @@ public class GameplayScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        //stage.setDebugAll(true);
-
         updateStatusTable();
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

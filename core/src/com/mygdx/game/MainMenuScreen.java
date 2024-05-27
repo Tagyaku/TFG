@@ -11,16 +11,24 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.utils.Json;
+
+import java.util.List;
 
 public class MainMenuScreen implements Screen {
     private final MyGdxGame game;
@@ -31,8 +39,9 @@ public class MainMenuScreen implements Screen {
     private Rectangle opcionesButtonBounds, cargarPartidaButtonBounds, nuevaPartidaButtonBounds;
     private Viewport viewport;
     private boolean opcionesButtonPressed, cargarPartidaButtonPressed, nuevaPartidaButtonPressed;
-    private boolean isOptionsDialogVisible;
+    private boolean isOptionsDialogVisible, isLoadDialogVisible;
     private OptionsDialog optionsDialog;
+    private Dialog loadDialog;
     private float buttonPressDuration = 0.2f;
     private float elapsedTimeOpciones, elapsedTimeCargarPartida, elapsedTimeNuevaPartida;
 
@@ -100,6 +109,12 @@ public class MainMenuScreen implements Screen {
         optionsDialog.setSize(400, 300);  // Aumentar el tamaño del diálogo
         optionsDialog.setPosition(viewport.getWorldWidth() - 400, 0);  // Posicionar a la derecha
         isOptionsDialogVisible = false;
+
+        // Inicializar el diálogo de carga
+        loadDialog = new Dialog("Cargar Partida", skin);
+        loadDialog.setSize(400, 300);  // Ajustar el tamaño del diálogo
+        loadDialog.setPosition(0, 0);  // Posicionar a la izquierda
+        isLoadDialogVisible = false;
     }
 
     private void initButtons() {
@@ -175,7 +190,14 @@ private void handleInput() {
             } else if (cargarPartidaButtonBounds.contains(touchPos.x, touchPos.y)) {
                 cargarPartidaButtonPressed = true;
             AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
-            // Acciones para cargar partida
+
+                if (isLoadDialogVisible) {
+                    loadDialog.remove();
+                } else {
+                showLoadDialog();
+                    stage.addActor(loadDialog);
+                }
+                isLoadDialogVisible = !isLoadDialogVisible;
             } else if (nuevaPartidaButtonBounds.contains(touchPos.x, touchPos.y)) {
                 nuevaPartidaButtonPressed = true;
             AudioManager.getInstance().playSound("audio/sound effects/confirm_style_5_001.wav");
@@ -207,6 +229,40 @@ private void updateButtonState(float delta) {
                     elapsedTimeNuevaPartida = 0;
                 }
         }
+    }
+
+    private void showLoadDialog() {
+        Table contentTable = loadDialog.getContentTable();
+        contentTable.clear(); // Clear the table to avoid duplicating buttons
+        List<SavedGame> savedGames = game.getSaveGameService().loadAllSavedGames();
+        for (SavedGame savedGame : savedGames) {
+            TextButton loadSlotButton = new TextButton(savedGame.getPlayerName() + " - " + "Progreso: " + getProgress(savedGame), skin);
+            loadSlotButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    loadGame(savedGame);
+                    loadDialog.hide();
+                }
+            });
+            contentTable.add(loadSlotButton).row();
+        }
+    }
+
+    private int getProgress(SavedGame savedGame) {
+        return savedGame.getCurrentTextIndex(); // Use the current text index as a measure of progress
+    }
+
+    private void loadGame(SavedGame savedGame) {
+        Player player = Player.getInstance(game);
+        deserializeGameData(savedGame.getSaveData(), player);
+    player.initialize(game); // Initialize the player with the game reference and atlas
+        game.setScreen(new GameplayScreen(game));
+    }
+
+    private void deserializeGameData(String saveData, Player player) {
+        Json json = new Json();
+        Player loadedPlayer = json.fromJson(Player.class, saveData);
+        player.copyFrom(loadedPlayer);
     }
 
     @Override

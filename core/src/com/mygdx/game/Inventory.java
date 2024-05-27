@@ -77,4 +77,10 @@ public class Inventory {
         Integer quantity = potions.get(type);
         return quantity != null && quantity > 0;
     }
+
+    // Método para copiar datos de otro inventario
+    public void copyFrom(Inventory other) {
+        this.equipment = new ArrayList<>(other.equipment);
+        this.potions = new HashMap<>(other.potions);
+    }
 }

@@ -1,14 +1,17 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 
-public class Equipment {
+public class Equipment implements Json.Serializable {
     public enum Type {
         WEAPON, ARMOR, ACCESSORY
     }
 
     private String name;
-    private TextureRegion texture;
+    private transient AtlasRegion texture;  // Usar AtlasRegion para obtener el nombre de la textura
     private Type type;
     private int vitalityBonus;
     private int strengthBonus;
@@ -16,7 +19,12 @@ public class Equipment {
     private int dexterityBonus;
     private int luckBonus;
 
-    public Equipment(String name, TextureRegion texture, Type type,
+    // Constructor sin argumentos necesario para la deserialización
+    public Equipment() {
+        // Este constructor debe existir pero no necesita hacer nada
+    }
+
+    public Equipment(String name, AtlasRegion texture, Type type,
                      int vitalityBonus, int strengthBonus, int enduranceBonus,
                      int dexterityBonus, int luckBonus) {
         this.name = name;
@@ -29,12 +37,17 @@ public class Equipment {
         this.luckBonus = luckBonus;
     }
 
+    // Método de inicialización para asignar texturas después de la deserialización
+    public void initialize(AtlasRegion texture) {
+        this.texture = texture;
+    }
+
     // Getters y setters
     public String getName() {
         return name;
     }
 
-    public TextureRegion getTexture() {
+    public AtlasRegion getTexture() {
         return texture;
     }
 
@@ -73,5 +86,43 @@ public class Equipment {
                 ", dexterityBonus=" + dexterityBonus +
                 ", luckBonus=" + luckBonus +
                 '}';
+    }
+
+    @Override
+    public void write(Json json) {
+        json.writeValue("name", name);
+        json.writeValue("type", type);
+        json.writeValue("vitalityBonus", vitalityBonus);
+        json.writeValue("strengthBonus", strengthBonus);
+        json.writeValue("enduranceBonus", enduranceBonus);
+        json.writeValue("dexterityBonus", dexterityBonus);
+        json.writeValue("luckBonus", luckBonus);
+        // Guardar el nombre de la región de la textura
+        if (texture != null) {
+            json.writeValue("textureName", texture.name);
+        } else {
+            json.writeValue("textureName", (Object) null);
+        }
+    }
+
+    @Override
+    public void read(Json json, JsonValue jsonData) {
+        name = json.readValue("name", String.class, jsonData);
+        type = json.readValue("type", Type.class, jsonData);
+        vitalityBonus = json.readValue("vitalityBonus", int.class, jsonData);
+        if (vitalityBonus == 0) vitalityBonus = 0;
+        strengthBonus = json.readValue("strengthBonus", int.class, jsonData);
+        if (strengthBonus == 0) strengthBonus = 0;
+        enduranceBonus = json.readValue("enduranceBonus", int.class, jsonData);
+        if (enduranceBonus == 0) enduranceBonus = 0;
+        dexterityBonus = json.readValue("dexterityBonus", int.class, jsonData);
+        if (dexterityBonus == 0) dexterityBonus = 0;
+        luckBonus = json.readValue("luckBonus", int.class, jsonData);
+        if (luckBonus == 0) luckBonus = 0;
+        // Leer el nombre de la región de la textura
+        String textureName = json.readValue("textureName", String.class, jsonData);
+        if (textureName != null) {
+            texture = (AtlasRegion) Player.getInstance(null).getPlayerAtlas().findRegion(textureName);
+        }
     }
 }

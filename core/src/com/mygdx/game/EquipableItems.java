@@ -43,7 +43,7 @@ public class EquipableItems {
         int dexterity = MathUtils.random(0, 10);
         int luck = MathUtils.random(0, 10);
 
-    return new Equipment(baseName, texture, type, vitality, strength, endurance, dexterity, luck);
+    return new Equipment(baseName, (TextureAtlas.AtlasRegion) texture, type, vitality, strength, endurance, dexterity, luck);
     }
 
     private String generateRegionName(String baseName) {

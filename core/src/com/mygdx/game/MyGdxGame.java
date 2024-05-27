@@ -5,15 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class MyGdxGame extends Game {
-
-
-	/*IFirebase firebaseinterface;
-	public MyGdxGame(IFirebase firebaseinterface) {
-		this.firebaseinterface = firebaseinterface;
-	}*/
-	public MyGdxGame() {
-	}
+	private SaveGameService saveGameService;
 	private OrthographicCamera camera; // Referencia a la cámara del juego
+
+    public MyGdxGame(SaveGameService saveGameService) {
+        this.saveGameService = saveGameService;
+    }
 
 	@Override
 	public void create () {
@@ -30,4 +27,8 @@ public class MyGdxGame extends Game {
 	public OrthographicCamera getCamera() {
 		return camera;
 	}
+
+    public SaveGameService getSaveGameService() {
+        return saveGameService;
+    }
 }
