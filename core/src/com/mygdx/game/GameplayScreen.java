@@ -37,7 +37,7 @@ import java.util.List;
 public class GameplayScreen implements Screen {
     private MyGdxGame game;
     private SpriteBatch batch;
-    private TextureAtlas atlas, guiAtlas, bgAtlas, itemAtlas;
+    private TextureAtlas atlas, guiAtlas, bgAtlas, itemAtlas, cavernAtlas;
     private TextureRegion borderTexture, boxTexture, slideBarTexture;
     TextureRegion currentBackground;
     private Rectangle lowerBorderArea, pauseButtonArea;
@@ -48,7 +48,7 @@ public class GameplayScreen implements Screen {
     private List<String> gameTexts;
     private int currentTextIndex = 0;
     private boolean isInCombat = false;
-    private int[] combatPoints = {2, 5}; // Puntos donde ocurren los combates
+    private int[] combatPoints = {4, 9, 17, 27, 32}; // Puntos donde ocurren los combates
     private int currentCombatIndex = 0;
     private int combatStartIndex = 0;
 
@@ -72,12 +72,13 @@ public class GameplayScreen implements Screen {
         this.guiAtlas = new TextureAtlas("images/GUI/GUI.atlas");
         this.bgAtlas = new TextureAtlas("images/Forest/Forest.atlas");
         this.itemAtlas = new TextureAtlas("images/items/items.atlas");
+        this.cavernAtlas = new TextureAtlas("images/cavern/cavern_BG.atlas");
         this.borderTexture = atlas.findRegion("MenuBox2");
         this.boxTexture = guiAtlas.findRegion("11 Border 01-0");
         this.slideBarTexture=guiAtlas.findRegion("UI_Flat_Scrollbar");
 
         // Inicializar el fondo actual basado en el índice del combate actual
-        this.currentBackground = bgAtlas.findRegion("bg_f", currentCombatIndex + 1);
+        this.currentBackground = bgAtlas.findRegion("bg", currentCombatIndex + 1);
 
         this.stage = new Stage(new ScreenViewport(), batch);
         this.font = new BitmapFont();
@@ -582,8 +583,6 @@ public class GameplayScreen implements Screen {
     }
 
     private void showInventoryDialog() {
-        Player player = Player.getInstance(game);
-
         if (inventoryDialog == null) {
             inventoryDialog = new Dialog("Inventario", skin) {
                 @Override
@@ -592,6 +591,7 @@ public class GameplayScreen implements Screen {
             };
 
             addCloseButton(inventoryDialog);
+    }
 
             Table inventoryTable = new Table(skin);
             Inventory playerInventory = Player.getInstance(game).getInventory();
@@ -605,7 +605,7 @@ public class GameplayScreen implements Screen {
                     itemButton.addListener(new ClickListener() {
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            player.equip(item);
+                    Player.getInstance(game).equip(item);
                             updateInventoryDialog();
                         }
                     });
@@ -647,10 +647,11 @@ public class GameplayScreen implements Screen {
         ScrollPane scrollPane = new ScrollPane(inventoryTable, skin);
         scrollPane.setFadeScrollBars(true);
             scrollPane.setScrollingDisabled(true, false);
+    inventoryDialog.getContentTable().clear();
             inventoryDialog.getContentTable().add(scrollPane).width(900).height(400).pad(10);
             inventoryDialog.pack();
             inventoryDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
-        }
+
         stage.addActor(inventoryDialog);
     }
 
@@ -709,6 +710,7 @@ public class GameplayScreen implements Screen {
             };
 
             addCloseButton(equipmentDialog);
+    }
 
             Table equipmentTable = new Table(skin);
             Inventory playerInventory = Player.getInstance(game).getInventory();
@@ -765,10 +767,11 @@ public class GameplayScreen implements Screen {
             ScrollPane scrollPane = new ScrollPane(equipmentTable, skin);
             scrollPane.setFadeScrollBars(false);
             scrollPane.setScrollingDisabled(true, false);
+    equipmentDialog.getContentTable().clear();
             equipmentDialog.getContentTable().add(scrollPane).width(800).height(400).pad(10);
             equipmentDialog.pack();
             equipmentDialog.setPosition(pauseDialog.getX() + pauseDialog.getWidth() + 10, pauseDialog.getY());
-        }
+
         stage.addActor(equipmentDialog);
     }
 
@@ -872,9 +875,14 @@ public class GameplayScreen implements Screen {
                     combatStartIndex = currentTextIndex;
                     startCombat();
                 } else {
+                    // Actualizar fondo al entrar en la cueva (punto específico en el texto)
+                    if (currentTextIndex == 20) {
+                        currentBackground = cavernAtlas.findRegion("bg", 1);
+                } else {
                     if (currentCombatIndex < combatPoints.length && currentTextIndex > combatPoints[currentCombatIndex]) {
                         currentCombatIndex++;
-                        currentBackground = bgAtlas.findRegion("bg_f", currentCombatIndex + 1); // Actualizar fondo
+                            currentBackground = bgAtlas.findRegion("bg", currentCombatIndex + 1); // Actualizar fondo
+                        }
                     }
                 }
             }
@@ -891,7 +899,7 @@ public class GameplayScreen implements Screen {
         isInCombat = false;
         currentTextIndex = combatStartIndex + 1;
         currentCombatIndex++;
-        currentBackground = bgAtlas.findRegion("bg_f", currentCombatIndex + 1); // Actualizar fondo
+        currentBackground = bgAtlas.findRegion("bg", currentCombatIndex + 1); // Actualizar fondo
 
     }
 
@@ -914,6 +922,7 @@ public class GameplayScreen implements Screen {
         stage.act(delta);
         stage.draw();
         handleInput();
+        //stage.setDebugAll(true);
     }
 
     @Override

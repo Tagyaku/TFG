@@ -69,17 +69,32 @@ public class Player {
     }
     private void initializeEquipment() {
         if (this.weapon != null) {
-            this.weapon.initialize(playerAtlas.findRegion(this.weapon.getTexture().name));
+            TextureRegion weaponTexture = playerAtlas.findRegion(this.weapon.getTexture().name);
+            if (weaponTexture != null) {
+            this.weapon.initialize(playerAtlas);
+            } else {
+                Gdx.app.error("Player", "Weapon texture not found: " + this.weapon.getTexture().name);
+            }
         }
         if (this.armor != null) {
-            this.armor.initialize(playerAtlas.findRegion(this.armor.getTexture().name));
+            TextureRegion armorTexture = playerAtlas.findRegion(this.armor.getTexture().name);
+            if (armorTexture != null) {
+            this.armor.initialize(playerAtlas);
+            } else {
+                Gdx.app.error("Player", "Armor texture not found: " + this.armor.getTexture().name);
+            }
         }
         for (int i = 0; i < this.accessories.length; i++) {
             if (this.accessories[i] != null) {
-                this.accessories[i].initialize(playerAtlas.findRegion(this.accessories[i].getTexture().name));
+                TextureRegion accessoryTexture = playerAtlas.findRegion(this.accessories[i].getTexture().name);
+                if (accessoryTexture != null) {
+                this.accessories[i].initialize(playerAtlas);
+                } else {
+                    Gdx.app.error("Player", "Accessory texture not found: " + this.accessories[i].getTexture().name);
+                }
+                }
             }
         }
-    }
 
     public static synchronized Player getInstance(MyGdxGame game) {
         if (instance == null) {
@@ -91,6 +106,9 @@ public class Player {
     public void initialize(MyGdxGame game) {
         this.game = game;
         this.playerAtlas = new TextureAtlas("images/Main_Character/main_Character.atlas");
+    if (playerAtlas.getRegions().isEmpty()) {
+        Gdx.app.error("Player", "Player atlas is empty or not loaded correctly");
+    }
         initializeEquipment();
     }
     public TextureAtlas getPlayerAtlas() {

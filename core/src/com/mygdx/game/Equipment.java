@@ -1,7 +1,9 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -18,6 +20,7 @@ public class Equipment implements Json.Serializable {
     private int enduranceBonus;
     private int dexterityBonus;
     private int luckBonus;
+    private transient String textureName; // Almacenar el nombre de la textura temporalmente
 
     // Constructor sin argumentos necesario para la deserialización
     public Equipment() {
@@ -38,8 +41,14 @@ public class Equipment implements Json.Serializable {
     }
 
     // Método de inicialización para asignar texturas después de la deserialización
-    public void initialize(AtlasRegion texture) {
-        this.texture = texture;
+    public void initialize(TextureAtlas atlas) {
+        if (this.textureName != null) {
+            this.texture = atlas.findRegion(this.textureName);
+            if (this.texture == null) {
+                Gdx.app.error("Equipment", "Texture region not found: " + this.textureName);
+            }
+            this.textureName = null; // Limpiar el nombre de la textura después de usarlo
+        }
     }
 
     // Getters y setters
@@ -120,9 +129,6 @@ public class Equipment implements Json.Serializable {
         luckBonus = json.readValue("luckBonus", int.class, jsonData);
         if (luckBonus == 0) luckBonus = 0;
         // Leer el nombre de la región de la textura
-        String textureName = json.readValue("textureName", String.class, jsonData);
-        if (textureName != null) {
-            texture = (AtlasRegion) Player.getInstance(null).getPlayerAtlas().findRegion(textureName);
-        }
+        textureName = json.readValue("textureName", String.class, jsonData);
     }
 }

@@ -22,6 +22,9 @@ android {
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
     }
     buildTypes {
         release {
@@ -31,11 +34,10 @@ android {
     }
 }
 
-// Define paths fuera de las clausuras de la tarea
-def armeabiV7aDir = layout.projectDirectory.dir("libs/armeabi-v7a/")
-def arm64V8aDir = layout.projectDirectory.dir("libs/arm64-v8a/")
-def x86_64Dir = layout.projectDirectory.dir("libs/x86_64/")
-def x86Dir = layout.projectDirectory.dir("libs/x86/")
+def armeabiV7aDir = file("libs/armeabi-v7a/")
+def arm64V8aDir = file("libs/arm64-v8a/")
+def x86_64Dir = file("libs/x86_64/")
+def x86Dir = file("libs/x86/")
 
 tasks.register('copyAndroidNatives', Copy) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -78,4 +80,11 @@ tasks.register('run', Exec) {
     commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.mygdx.game/com.mygdx.game.AndroidLauncher'
 }
 
-eclipse.project.name = appName + "-android"
+dependencies {
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+    implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    implementation "com.badlogicgames.gdx-controllers:gdx-controllers-android:$gdxControllersVersion"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+}
