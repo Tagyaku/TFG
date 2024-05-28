@@ -22,7 +22,8 @@ public class SavedGameDAO {
         values.put("player_name", savedGame.getPlayerName());
         values.put("save_data", savedGame.getSaveData());
         values.put("slot_number", savedGame.getSlotNumber());
-        values.put("current_text_index", savedGame.getCurrentTextIndex()); // Ajuste aquí
+        values.put("current_text_index", savedGame.getCurrentTextIndex());
+        values.put("current_combat_index", savedGame.getCurrentCombatIndex()); // Nuevo campo
         return database.insertWithOnConflict("SavedGames", null, values, SQLiteDatabase.CONFLICT_REPLACE);
     }
 
@@ -35,7 +36,8 @@ public class SavedGameDAO {
                         cursor.getString(cursor.getColumnIndexOrThrow("player_name")),
                         cursor.getString(cursor.getColumnIndexOrThrow("save_data")),
                         cursor.getInt(cursor.getColumnIndexOrThrow("slot_number")),
-                        cursor.getInt(cursor.getColumnIndexOrThrow("current_text_index")) // Ajuste aquí
+                        cursor.getInt(cursor.getColumnIndexOrThrow("current_text_index")),
+                        cursor.getInt(cursor.getColumnIndexOrThrow("current_combat_index")) // Nuevo campo
                 );
                 savedGames.add(savedGame);
             } while (cursor.moveToNext());

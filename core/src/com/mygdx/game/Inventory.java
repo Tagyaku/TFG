@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,12 +26,14 @@ public class Inventory {
             currentQuantity = 0;
         }
         potions.put(type, currentQuantity + quantity);
+    Gdx.app.log("Inventory", "Added PotionType: " + type + " New Quantity: " + (currentQuantity + quantity));
     }
 
     public int getPotionQuantity(Potion.PotionType type) {
         Integer quantity = potions.get(type);
-        return quantity != null ? quantity : 0;
+        Gdx.app.log("Inventory", "PotionType: " + type + " Quantity: " + quantity);return quantity != null ? quantity : 0;
     }
+
     public void clear() {
         equipment.clear();
         potions.clear();

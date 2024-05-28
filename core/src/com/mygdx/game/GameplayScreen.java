@@ -46,10 +46,10 @@ public class GameplayScreen implements Screen {
     private BitmapFont font;
     private BitmapFont textFont;
     private List<String> gameTexts;
-    private int currentTextIndex = 0;
+    private int currentTextIndex;
     private boolean isInCombat = false;
     private int[] combatPoints = {4, 9, 17, 27, 32}; // Puntos donde ocurren los combates
-    private int currentCombatIndex = 0;
+    private int currentCombatIndex;
     private int combatStartIndex = 0;
 
     private Dialog pauseDialog, inventoryDialog, statusDialog, equipmentDialog, itemStatsDialog, helpDialog, saveDialog, loadDialog;
@@ -65,8 +65,10 @@ public class GameplayScreen implements Screen {
     private Skin skin;
     private boolean isOptionsDialogActive = false;
 
-    public GameplayScreen(MyGdxGame game) {
+    public GameplayScreen(MyGdxGame game, int startIndex, int combatIndex) {
         this.game = game;
+        this.currentTextIndex = startIndex;  // Set the starting text index
+        this.currentCombatIndex = combatIndex; // Set the starting combat index
         this.batch = new SpriteBatch();
         this.atlas = new TextureAtlas("images/TFG_Atlas_1.atlas");
         this.guiAtlas = new TextureAtlas("images/GUI/GUI.atlas");
@@ -421,7 +423,7 @@ public class GameplayScreen implements Screen {
     private void saveGame(int slot) {
         Player player = Player.getInstance(game);
         String saveData = player.toJson();
-    SavedGame savedGame = new SavedGame(player.getPlayerName(), saveData, slot, currentTextIndex);
+    SavedGame savedGame = new SavedGame(player.getPlayerName(), saveData, slot, currentTextIndex, currentCombatIndex);
         game.getSaveGameService().saveGame(savedGame);
     }
 
@@ -429,6 +431,12 @@ public class GameplayScreen implements Screen {
         Player loadedPlayer = Player.fromJson(savedGame.getSaveData(), game);
         Player.getInstance(game).copyFrom(loadedPlayer);
         currentTextIndex = savedGame.getCurrentTextIndex();
+        currentCombatIndex = savedGame.getCurrentCombatIndex();
+    for (Equipment equipment : Player.getInstance(game).getInventory().getEquipment()) {
+        equipment.initialize(itemAtlas); // Usa el atlas adecuado
+    }
+        //layer.getInstance(game).getInventory().initializePotions(itemAtlas);
+
         updateStatusTable();
     }
 
@@ -596,9 +604,15 @@ public class GameplayScreen implements Screen {
             Table inventoryTable = new Table(skin);
             Inventory playerInventory = Player.getInstance(game).getInventory();
 
+    if (playerInventory != null) {
             int itemsPerRow = 9;
             int currentColumn = 0;
             for (Equipment item : playerInventory.getEquipment()) {
+            // Cargar textura si no está cargada
+            if (item.getTexture() == null && item.getName() != null) {
+                item.setTexture(itemAtlas.findRegion(item.getName())); // Usa el atlas adecuado
+            }
+
                 TextureRegion itemTexture = item.getTexture();
                 if (itemTexture != null) {
                     TextButton itemButton = new TextButton("", new TextButton.TextButtonStyle(new TextureRegionDrawable(itemTexture), null, null, font));
@@ -643,6 +657,7 @@ public class GameplayScreen implements Screen {
                     }
                 }
             }
+    }
 
         ScrollPane scrollPane = new ScrollPane(inventoryTable, skin);
         scrollPane.setFadeScrollBars(true);
@@ -877,7 +892,7 @@ public class GameplayScreen implements Screen {
                 } else {
                     // Actualizar fondo al entrar en la cueva (punto específico en el texto)
                     if (currentTextIndex == 20) {
-                        currentBackground = cavernAtlas.findRegion("bg", 1);
+                      currentBackground = cavernAtlas.findRegion("bg", 1);
                 } else {
                     if (currentCombatIndex < combatPoints.length && currentTextIndex > combatPoints[currentCombatIndex]) {
                         currentCombatIndex++;

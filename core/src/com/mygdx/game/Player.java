@@ -69,29 +69,14 @@ public class Player {
     }
     private void initializeEquipment() {
         if (this.weapon != null) {
-            TextureRegion weaponTexture = playerAtlas.findRegion(this.weapon.getTexture().name);
-            if (weaponTexture != null) {
             this.weapon.initialize(playerAtlas);
-            } else {
-                Gdx.app.error("Player", "Weapon texture not found: " + this.weapon.getTexture().name);
-            }
         }
         if (this.armor != null) {
-            TextureRegion armorTexture = playerAtlas.findRegion(this.armor.getTexture().name);
-            if (armorTexture != null) {
             this.armor.initialize(playerAtlas);
-            } else {
-                Gdx.app.error("Player", "Armor texture not found: " + this.armor.getTexture().name);
-            }
         }
         for (int i = 0; i < this.accessories.length; i++) {
             if (this.accessories[i] != null) {
-                TextureRegion accessoryTexture = playerAtlas.findRegion(this.accessories[i].getTexture().name);
-                if (accessoryTexture != null) {
                 this.accessories[i].initialize(playerAtlas);
-                } else {
-                    Gdx.app.error("Player", "Accessory texture not found: " + this.accessories[i].getTexture().name);
-                }
                 }
             }
         }
@@ -415,7 +400,8 @@ public class Player {
         this.weapon = other.weapon;
         this.accessories = other.accessories;
         this.armor = other.armor;
-        this.inventory = other.inventory;
+        this.inventory.copyFrom(other.inventory); // Copy inventory
         updateStats();
+        initializeEquipment(); // Asegurarse de que las texturas de los equipos estén inicializadas
 }
 }

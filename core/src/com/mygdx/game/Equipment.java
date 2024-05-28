@@ -3,7 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -13,6 +12,8 @@ public class Equipment implements Json.Serializable {
     }
 
     private String name;
+
+
     private transient AtlasRegion texture;  // Usar AtlasRegion para obtener el nombre de la textura
     private Type type;
     private int vitalityBonus;
@@ -58,6 +59,9 @@ public class Equipment implements Json.Serializable {
 
     public AtlasRegion getTexture() {
         return texture;
+    }
+    public void setTexture(AtlasRegion texture) {
+        this.texture = texture;
     }
 
     public Type getType() {
@@ -118,16 +122,16 @@ public class Equipment implements Json.Serializable {
     public void read(Json json, JsonValue jsonData) {
         name = json.readValue("name", String.class, jsonData);
         type = json.readValue("type", Type.class, jsonData);
-        vitalityBonus = json.readValue("vitalityBonus", int.class, jsonData);
         if (vitalityBonus == 0) vitalityBonus = 0;
-        strengthBonus = json.readValue("strengthBonus", int.class, jsonData);
+        vitalityBonus = json.readValue("vitalityBonus", int.class, jsonData);
         if (strengthBonus == 0) strengthBonus = 0;
-        enduranceBonus = json.readValue("enduranceBonus", int.class, jsonData);
+        strengthBonus = json.readValue("strengthBonus", int.class, jsonData);
         if (enduranceBonus == 0) enduranceBonus = 0;
-        dexterityBonus = json.readValue("dexterityBonus", int.class, jsonData);
+        enduranceBonus = json.readValue("enduranceBonus", int.class, jsonData);
         if (dexterityBonus == 0) dexterityBonus = 0;
-        luckBonus = json.readValue("luckBonus", int.class, jsonData);
+        dexterityBonus = json.readValue("dexterityBonus", int.class, jsonData);
         if (luckBonus == 0) luckBonus = 0;
+        luckBonus = json.readValue("luckBonus", int.class, jsonData);
         // Leer el nombre de la región de la textura
         textureName = json.readValue("textureName", String.class, jsonData);
     }

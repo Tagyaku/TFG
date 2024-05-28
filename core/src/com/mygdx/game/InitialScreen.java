@@ -158,7 +158,7 @@ public class InitialScreen implements Screen {
                     lastTouchTime = currentTime;
                     currentTextIndex++;
                     if (currentTextIndex >= gameTexts.size()) {
-                        game.setScreen(new GameplayScreen(game));
+                        game.setScreen(new GameplayScreen(game, 0, 0));
                         return;
                     }
 

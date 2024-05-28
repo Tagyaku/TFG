@@ -255,8 +255,10 @@ private void updateButtonState(float delta) {
     private void loadGame(SavedGame savedGame) {
         Player player = Player.getInstance(game);
         deserializeGameData(savedGame.getSaveData(), player);
-    player.initialize(game); // Initialize the player with the game reference and atlas
-        game.setScreen(new GameplayScreen(game));
+        player.initialize(game); // Initialize the player with the game reference and atlas
+
+    // Pass the current text index and combat index to the GameplayScreen
+    game.setScreen(new GameplayScreen(game, savedGame.getCurrentTextIndex(), savedGame.getCurrentCombatIndex()));
     }
 
     private void deserializeGameData(String saveData, Player player) {
