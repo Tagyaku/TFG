@@ -58,7 +58,9 @@ public class Player {
     public static Player fromJson(String jsonData, MyGdxGame game) {
         Json json = new Json();
         Player player = json.fromJson(Player.class, jsonData);
-        player.initialize(game); // Initialize transient fields
+    player.initialize(game); // Inicializar campos transitorios
+    player.getInventory().initializePotions(); // Inicializar el HashMap de potions
+    player.getInventory().normalizePotions(); // Normalizar el HashMap de potions
         return player;
     }
 

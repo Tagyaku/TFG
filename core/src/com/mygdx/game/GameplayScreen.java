@@ -435,7 +435,7 @@ public class GameplayScreen implements Screen {
     for (Equipment equipment : Player.getInstance(game).getInventory().getEquipment()) {
         equipment.initialize(itemAtlas); // Usa el atlas adecuado
     }
-        //layer.getInstance(game).getInventory().initializePotions(itemAtlas);
+        Player.getInstance(game).getInventory().initializePotions();
 
         updateStatusTable();
     }
@@ -635,6 +635,7 @@ public class GameplayScreen implements Screen {
 
             for (Potion.PotionType potionType : Potion.PotionType.values()) {
                 int quantity = playerInventory.getPotionQuantity(potionType);
+            Gdx.app.log("InventoryDialog", "PotionType: " + potionType + " Quantity: " + quantity);
                 if (quantity > 0) {
                     TextureRegion potionTexture = null;
                     switch (potionType) {
