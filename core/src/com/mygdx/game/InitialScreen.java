@@ -232,19 +232,20 @@ public class InitialScreen implements Screen {
         gameTexts.add("En otro tiempo, el poderoso Anillo de Elden se alzaba entero e invicto, una luz en los Territorios Intermedios. Pero ahora, yace hecho añicos, roto por las manos del destino.");
 
         backgrounds.add(backgroundsAtlas.findRegion("marika_shatered_EldenRing"));
-        gameTexts.add("En la estela de este cataclismo, reina el caos supremo. La Reina Marika, soberana eterna, ha desaparecido en las sombras, dejando atrás un reino tambaleante al borde de la perdición.");
+        gameTexts.add("En la estela de este cataclismo, reina el caos supremo. La Reina Amigdala, soberana eterna, ha desaparecido en las sombras, dejando atrás un reino tambaleante al borde de la perdición.");
         backgrounds.add(backgroundsAtlas.findRegion("marika"));
-        gameTexts.add("La Noche de los Cuchillos Negros se cobró al valiente Godwyn el Dorado, un presagio de días aún más oscuros por venir." );
-        backgrounds.add(backgroundsAtlas.findRegion("godwyn"));
         gameTexts.add("En el caos posterior, los vástagos de Marika, semidioses nacidos de la divinidad y la mortalidad, aferran los fragmentos del anillo roto. Pero su codicia por el poder solo acelera la caída hacia la locura, desencadenando una guerra que no deja vencedores ni señores para reclamar dominio.");
         backgrounds.add(backgroundsAtlas.findRegion("mogh"));
-        gameTexts.add("Mientras el velo del destino se deshilacha, un llamado resuena a través de las tierras envueltas en la niebla, convocando a los Sinluz, aquellos descartados y olvidados, pero aún atados por el hilo del destino.");
+        gameTexts.add("La Noche de los Cuchillos Negros se cobró al valiente Judeau el Dorado, vástago de la reina, un presagio de días aún más oscuros por venir." );
+        backgrounds.add(backgroundsAtlas.findRegion("godwyn"));
+
+        gameTexts.add("Mientras el velo del destino se deshilacha, un llamado resuena a través de las tierras envueltas en la niebla, los no muertos fuisteis convocados , aquellos descartados y olvidados, pero aún atados por el hilo del destino.");
         backgrounds.add(backgroundsAtlas.findRegion("Horah_loux"));
         gameTexts.add("Entre las brumas de los Territorios Intermedios, la oscuridad se cierne como un manto, un recordatorio constante de los peligros que acechan en cada sombra. Criaturas de pesadilla acechan en las profundidades de antiguas mazmorras, susurrando de tiempos olvidados y secretos oscuros.");
 
         backgrounds.add(backgroundsAtlas.findRegion("lands_in_between"));
         gameTexts.add("En este mundo  donde la luz apenas se atreve a penetrar las sombras, los corazones de los valientes aún arden con la esperanza de restaurar la gloria perdida y enfrentar el destino que les aguarda.");
-        gameTexts.add("En el vasto lienzo de los Territorios Intermedios, un enigma se materializa entre las sombras. "+playerName+" un joven cuyo nombre apenas susurra el viento, emerge como un reflejo de la desgracia que yace en el corazón de estas tierras fracturadas.");
+        gameTexts.add("En el vasto lienzo de los Territorios Intermedios, un enigma se materializa entre las sombras. "+playerName+" un no muerto cuyo nombre apenas susurra el viento, emerge como un reflejo de la desgracia que yace en el corazón de estas tierras fracturadas.");
         gameTexts.add("Cuando el eco de la mazmorra resuena en su alma, "+playerName+" ve en ello una llamada, un destino entrelazado con las cicatrices del Anillo de Elden. La búsqueda de redención y significado lo impulsa hacia lo desconocido, hacia las profundidades donde los fragmentos del pasado yacen ocultos entre las sombras");
 
         if (!backgrounds.isEmpty()) {

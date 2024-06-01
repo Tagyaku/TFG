@@ -265,7 +265,13 @@ private void updateButtonState(float delta) {
         Json json = new Json();
         Player loadedPlayer = json.fromJson(Player.class, saveData);
         player.copyFrom(loadedPlayer);
+        player.initialize(game); // Initialize the player with the game reference and atlas
+
+        // Inicializar y normalizar después de deserializar
+        player.getInventory().initializePotions();
+        player.getInventory().normalizePotions();
     }
+
 
     @Override
     public void show() {

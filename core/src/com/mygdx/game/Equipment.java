@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
-public class Equipment implements Json.Serializable {
+public class Equipment /*implements *//*Json.Serializable*//* */{
     public enum Type {
         WEAPON, ARMOR, ACCESSORY
     }
@@ -101,7 +101,7 @@ public class Equipment implements Json.Serializable {
                 '}';
     }
 
-    @Override
+/*    @Override
     public void write(Json json) {
         json.writeValue("name", name);
         json.writeValue("type", type);
@@ -134,5 +134,5 @@ public class Equipment implements Json.Serializable {
         luckBonus = json.readValue("luckBonus", int.class, jsonData);
         // Leer el nombre de la región de la textura
         textureName = json.readValue("textureName", String.class, jsonData);
-    }
+    }*/
 }

@@ -76,7 +76,7 @@ public class Combat implements Screen {
     private Label criticalHitLabel;
     private Label damageLabel;
     private BitmapFont specialFont;
-    public Combat(MyGdxGame game, GameplayScreen gameplayScreen) {
+    public Combat(MyGdxGame game, GameplayScreen gameplayScreen, int contCombat) {
         this.layout = new GlyphLayout();
         this.game = game;
         this.gameplayScreen = gameplayScreen;
@@ -90,14 +90,14 @@ public class Combat implements Screen {
         this.potion30Texture = itemAtlas.findRegion("potion30");
         this.potion100Texture = itemAtlas.findRegion("potion100");
         this.player = Player.getInstance(game);
-        this.enemy = new Enemies(game, this);
+        this.enemy = new Enemies(game, this, contCombat);
         this.equipableItems = new EquipableItems();
         specialFont = new BitmapFont(Gdx.files.internal("skin/fonts/default.fnt"));
         specialFont.getData().setScale(2);
 
-    // Precargar los sonidos necesarios
-    AudioManager.getInstance().loadSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
-    AudioManager.getInstance().loadSound("audio/sound effects/Giant_Grunt3.wav");
+        // Precargar los sonidos necesarios
+        AudioManager.getInstance().loadSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
+        AudioManager.getInstance().loadSound("audio/sound effects/Giant_Grunt3.wav");
 
         if (AudioManager.getInstance().getCurrentMusic() == null ||
                 !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/battle/Goblins_Dance_(Battle).wav")) {
@@ -110,24 +110,24 @@ public class Combat implements Screen {
         setupAnimations();
         initUI();
         Gdx.input.setInputProcessor(stage);
-    }
+   }
     private void playerReceiveDamage(int damage) {
         if (!isDefending && !isPlayerDead) {
-        player.receiveDamage(damage);
-        isHurt = true;
+            player.receiveDamage(damage);
+            isHurt = true;
             buttonsEnabled = false;
             stateTime = 0;
 
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                isHurt = false;
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+                    isHurt = false;
                     if (!isPlayerDead) {
                         buttonsEnabled = true;
                     }
-            }
-        }, hurtAnimation.getAnimationDuration());
-    }
+                }
+            }, hurtAnimation.getAnimationDuration());
+        }
         if (player.getHitPoints() <= 0) {
             isPlayerDead = true;
             buttonsEnabled=false;
@@ -155,48 +155,48 @@ public class Combat implements Screen {
                     originX, originY, currentFrame.getRegionWidth(), currentFrame.getRegionHeight(),
                     playerScale, playerScale, 270);
         }
-}
+    }
 
     private void setupAnimations() {
         TextureAtlas playerAtlas = new TextureAtlas(Gdx.files.internal("images/Main_Character/main_Character.atlas"));
 
-    // Manually add each frame to the attack animation
-    Array<TextureRegion> attackFrames = new Array<>();
-    attackFrames.add(playerAtlas.findRegion("Attack 1-0"));
-    attackFrames.add(playerAtlas.findRegion("Attack 1-1"));
-    attackFrames.add(playerAtlas.findRegion("Attack 1-2"));
-    attackFrames.add(playerAtlas.findRegion("Attack 1-3"));
-    attackFrames.add(playerAtlas.findRegion("Attack 1-4"));
+        // Manually add each frame to the attack animation
+        Array<TextureRegion> attackFrames = new Array<>();
+        attackFrames.add(playerAtlas.findRegion("Attack 1-0"));
+        attackFrames.add(playerAtlas.findRegion("Attack 1-1"));
+        attackFrames.add(playerAtlas.findRegion("Attack 1-2"));
+        attackFrames.add(playerAtlas.findRegion("Attack 1-3"));
+        attackFrames.add(playerAtlas.findRegion("Attack 1-4"));
 
         // Check if any frames are missing to avoid NullPointerException
-    for (TextureRegion frame : attackFrames) {
+        for (TextureRegion frame : attackFrames) {
             if (frame == null) {
-            System.out.println("One or more attack animation frames are missing!");
+                System.out.println("One or more attack animation frames are missing!");
                 return;
             }
         }
 
-    // Load the protect texture
-    protectTexture = playerAtlas.findRegion("Protect");
+        // Load the protect texture
+        protectTexture = playerAtlas.findRegion("Protect");
 
-    // Create the attack animation with the frames array
-    attackAnimation = new Animation<>(0.1f, attackFrames, Animation.PlayMode.NORMAL);
+        // Create the attack animation with the frames array
+        attackAnimation = new Animation<>(0.1f, attackFrames, Animation.PlayMode.NORMAL);
 
-    // Manually add each frame to the hurt animation
-    Array<TextureRegion> hurtFrames = new Array<>();
-    hurtFrames.add(playerAtlas.findRegion("Hurt-0"));
-    hurtFrames.add(playerAtlas.findRegion("Hurt-1"));
+        // Manually add each frame to the hurt animation
+        Array<TextureRegion> hurtFrames = new Array<>();
+        hurtFrames.add(playerAtlas.findRegion("Hurt-0"));
+        hurtFrames.add(playerAtlas.findRegion("Hurt-1"));
 
-    // Check if any frames are missing to avoid NullPointerException
-    for (TextureRegion frame : hurtFrames) {
-        if (frame == null) {
-            System.out.println("One or more hurt animation frames are missing!");
-            return;
+        // Check if any frames are missing to avoid NullPointerException
+        for (TextureRegion frame : hurtFrames) {
+            if (frame == null) {
+                System.out.println("One or more hurt animation frames are missing!");
+                return;
+            }
         }
-    }
 
-    // Create the hurt animation with the frames array
-    hurtAnimation = new Animation<>(0.2f, hurtFrames, Animation.PlayMode.NORMAL);
+        // Create the hurt animation with the frames array
+        hurtAnimation = new Animation<>(0.2f, hurtFrames, Animation.PlayMode.NORMAL);
     }
 
     private void initUI() {
@@ -298,11 +298,11 @@ public class Combat implements Screen {
         stage.addActor(damageLabel);
     }
     private void showCriticalHit() {
-    float screenWidth = Gdx.graphics.getWidth();
-    float screenHeight = Gdx.graphics.getHeight();
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
 
-    // Posiciona el mensaje en el centro de la pantalla
-    criticalHitLabel.setPosition((screenWidth - criticalHitLabel.getWidth()) / 2, (screenHeight - criticalHitLabel.getHeight()) / 2);
+        // Posiciona el mensaje en el centro de la pantalla
+        criticalHitLabel.setPosition((screenWidth - criticalHitLabel.getWidth()) / 2, (screenHeight - criticalHitLabel.getHeight()) / 2);
         criticalHitLabel.setVisible(true);
 
         Timer.schedule(new Timer.Task() {
@@ -318,7 +318,7 @@ public class Combat implements Screen {
 
         Label deathLabel = new Label("Has muerto", new Label.LabelStyle(specialFont, Color.RED));
         deathLabel.setFontScale(7);
-    deathLabel.setPosition(Gdx.graphics.getWidth() / 2f - deathLabel.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
+        deathLabel.setPosition(Gdx.graphics.getWidth() / 2f - deathLabel.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
         stage.addActor(deathLabel);
 
         Timer.schedule(new Timer.Task() {
@@ -331,11 +331,11 @@ public class Combat implements Screen {
 
 
     private void showDamage(int damage) {
-    float screenWidth = Gdx.graphics.getWidth();
-    float screenHeight = Gdx.graphics.getHeight();
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
 
         damageLabel.setText(damage +" DMG!");
-    damageLabel.setPosition((screenWidth - damageLabel.getWidth()) / 2, screenHeight - damageLabel.getHeight() - 50);
+        damageLabel.setPosition((screenWidth - damageLabel.getWidth()) / 2, screenHeight - damageLabel.getHeight() - 50);
 
         damageLabel.setVisible(true);
 
@@ -350,8 +350,8 @@ public class Combat implements Screen {
     private void triggerEnemyAttack() {
         if (!isPlayerDead) {
             enemyAttacking = true;
-        enemyAttack();
-    }
+            enemyAttack();
+        }
     }
 
     private void enemyAttack() {
@@ -360,7 +360,7 @@ public class Combat implements Screen {
         float originalX = enemyX;
         float attackMovement = 500;
 
-    AudioManager.getInstance().playSound("audio/sound effects/Giant_Grunt3.wav");
+        AudioManager.getInstance().playSound("audio/sound effects/Giant_Grunt3.wav");
 
         Timer.schedule(new Timer.Task() {
             @Override
@@ -401,8 +401,8 @@ public class Combat implements Screen {
             isAttacking = true;
             stateTime = 0;
 
-        // Reproducir sonido de ataque del personaje
-        AudioManager.getInstance().playSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
+            // Reproducir sonido de ataque del personaje
+            AudioManager.getInstance().playSound("audio/sound effects/SFX_Whoosh_Sword_01.mp3");
 
             // Realizar el ataque después de la duración de la animación
             Runnable attackRunnable = new Runnable() {
@@ -458,17 +458,17 @@ public class Combat implements Screen {
                 float originX = playerImage.getRegionWidth() / 2;
                 float originY = playerImage.getRegionHeight() / 2;
 
-            if (frameIndex == 2) {
-                imageY += -100;
-            }
-            if (frameIndex == 3) {
-                imageX += 200; // Adjust the value to move frame 4 to the right
-                imageY += -100;
-            }
-            if (frameIndex == 4) {
-                imageX += 200; // Adjust the value to move frame 4 to the right
-                imageY += -100;
-            }
+                if (frameIndex == 2) {
+                    imageY += -100;
+                }
+                if (frameIndex == 3) {
+                    imageX += 200; // Adjust the value to move frame 4 to the right
+                    imageY += -100;
+                }
+                if (frameIndex == 4) {
+                    imageX += 200; // Adjust the value to move frame 4 to the right
+                    imageY += -100;
+                }
 
                 // Conditionally rotate based on the frame index
                 float rotation = (frameIndex == 0 || frameIndex == 1) ? 270 : 0;  // Rotate only the first two frames
@@ -486,100 +486,102 @@ public class Combat implements Screen {
         float enemyScale = 2.0f;
         enemyX = Gdx.graphics.getWidth() - enemyImage.getRegionWidth() * enemyScale - 50;
         enemyY = (Gdx.graphics.getHeight() - enemyImage.getRegionHeight() * enemyScale) / 2;
+    }
+
+    private void renderPotionMenu() {
+        // Background for potion menu
+        batch.draw(borderTexture, potionMenuArea.x, potionMenuArea.y, potionMenuArea.width, potionMenuArea.height);
+
+        if (potion30Button == null) {
+            // Crear y configurar el botón de la poción 30
+            ImageButton.ImageButtonStyle potion30ButtonStyle = new ImageButton.ImageButtonStyle();
+            potion30ButtonStyle.imageUp = new TextureRegionDrawable(potion30Texture);
+
+            potion30Button = new ImageButton(potion30ButtonStyle);
+            potion30Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 300);
+            potion30Button.setSize(200, 200);
+
+            potion30Button.getImage().setFillParent(true);
+            potion30Button.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    usePotion(Potion.PotionType.HEAL_30);
+                }
+            });
+
+            stage.addActor(potion30Button);
         }
 
-private void renderPotionMenu() {
-    // Background for potion menu
-    batch.draw(borderTexture, potionMenuArea.x, potionMenuArea.y, potionMenuArea.width, potionMenuArea.height);
+        if (potion100Button == null) {
+            // Crear y configurar el botón de la poción 100
+            ImageButton.ImageButtonStyle potion100ButtonStyle = new ImageButton.ImageButtonStyle();
+            potion100ButtonStyle.imageUp = new TextureRegionDrawable(potion100Texture);
 
-    if (potion30Button == null) {
-        // Crear y configurar el botón de la poción 30
-        ImageButton.ImageButtonStyle potion30ButtonStyle = new ImageButton.ImageButtonStyle();
-        potion30ButtonStyle.imageUp = new TextureRegionDrawable(potion30Texture);
+            potion100Button = new ImageButton(potion100ButtonStyle);
+            potion100Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 500);
+            potion100Button.setSize(200, 200);
 
-        potion30Button = new ImageButton(potion30ButtonStyle);
-        potion30Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 300);
-        potion30Button.setSize(200, 200);
+            potion100Button.getImage().setFillParent(true);
+            potion100Button.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    usePotion(Potion.PotionType.HEAL_100);
+                }
+            });
 
-    potion30Button.getImage().setFillParent(true);
-    potion30Button.addListener(new ClickListener() {
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-            usePotion(Potion.PotionType.HEAL_30);
+            stage.addActor(potion100Button);
         }
-    });
 
-        stage.addActor(potion30Button);
+        // Renderizar botones y cantidad de pociones
+        font.draw(batch, "Potion 30: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_30), potionMenuArea.x + 250, potionMenuArea.y + potionMenuArea.height - 80);
+        font.draw(batch, "Potion 100: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_100), potionMenuArea.x + 300, potionMenuArea.y + potionMenuArea.height - 300);
     }
 
-    if (potion100Button == null) {
-        // Crear y configurar el botón de la poción 100
-        ImageButton.ImageButtonStyle potion100ButtonStyle = new ImageButton.ImageButtonStyle();
-        potion100ButtonStyle.imageUp = new TextureRegionDrawable(potion100Texture);
-
-        potion100Button = new ImageButton(potion100ButtonStyle);
-    potion100Button.setPosition(potionMenuArea.x , potionMenuArea.y + potionMenuArea.height - 500);
-        potion100Button.setSize(200, 200);
-
-    potion100Button.getImage().setFillParent(true);
-    potion100Button.addListener(new ClickListener() {
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-            usePotion(Potion.PotionType.HEAL_100);
+    private void usePotion(Potion.PotionType potionType) {
+        float healAmount = 0;
+        switch (potionType) {
+            case HEAL_30:
+                healAmount = player.getMaxHitPoints() * 0.3f; // Usa 'f' para asegurar que sea tratado como float
+                break;
+            case HEAL_100:
+                healAmount = player.getMaxHitPoints(); // Mantén el tipo de dato consistente
+                break;
         }
-    });
 
-    stage.addActor(potion100Button);
+        if (player.getInventory().usePotion(potionType)) {
+            player.heal((int)healAmount);
+            closePotionMenu();
+            triggerEnemyAttack();
+        }
     }
 
-    // Renderizar botones y cantidad de pociones
-    font.draw(batch, "Potion 30: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_30), potionMenuArea.x + 250, potionMenuArea.y + potionMenuArea.height - 80);
-    font.draw(batch, "Potion 100: " + player.getInventory().getPotionQuantity(Potion.PotionType.HEAL_100), potionMenuArea.x + 300, potionMenuArea.y + potionMenuArea.height - 300);
-}
-
-private void usePotion(Potion.PotionType potionType) {
-    int healAmount = 0;
-    switch (potionType) {
-        case HEAL_30:
-            healAmount = 30;
-            break;
-        case HEAL_100:
-            healAmount = 100;
-            break;
-    }
-
-    if (player.getInventory().usePotion(potionType)) {
-        player.heal(healAmount);
-        closePotionMenu();
-        triggerEnemyAttack();
-    }
-}
     private void closePotionMenu() {
         isPotionMenuVisible = false;
-    if (potion30Button != null) {
-        potion30Button.remove();
-        potion30Button = null;
-            }
-    if (potion100Button != null) {
-        potion100Button.remove();
-        potion100Button = null;
+        if (potion30Button != null) {
+            potion30Button.remove();
+            potion30Button = null;
+        }
+        if (potion100Button != null) {
+            potion100Button.remove();
+            potion100Button = null;
         }
         if (!isPlayerDead) {
-        buttonsEnabled = true;
-    }
+            buttonsEnabled = true;
+        }
     }
 
- @SuppressWarnings("SuspiciousIndentation")
- void showVictoryDialog() {
-    if (rewardTextures == null) {
-        // Incrementar experiencia del jugador
-        int experienceGained = 40;
-        player.gainExperience(experienceGained);
+    @SuppressWarnings("SuspiciousIndentation")
+    void showVictoryDialog() {
+        if (rewardTextures == null) {
+            // Incrementar experiencia del jugador
+            int experienceGained = 100;
+            player.gainExperience(experienceGained);
 
-        // Generar recompensas una sola vez
-        rewardTextures = generateRewards();
-    }
-    isVictoryMenuVisible = true;
+            // Generar recompensas una sola vez
+            rewardTextures = generateRewards();
+
+        }
+        isVictoryMenuVisible = true;
 
         // Añadir listener para detectar clics fuera del menú de victoria y cerrar
         stage.addListener(new ClickListener() {
@@ -600,31 +602,38 @@ private void usePotion(Potion.PotionType potionType) {
 
         // Render victory text
         font.draw(batch, "Has derrotado al enemigo!", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 40);
-        font.draw(batch, "Experiencia obtenida: 40", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 80);
+        font.draw(batch, "Experiencia obtenida: 100", victoryMenuArea.x + 20, victoryMenuArea.y + victoryMenuArea.height - 80);
 
         // Render rewards
         float itemX = victoryMenuArea.x + 20;
         float itemY = victoryMenuArea.y + victoryMenuArea.height - 220;
         for (TextureRegion texture : rewardTextures) {
             batch.draw(texture, itemX, itemY, 90, 90);
-            itemX += 130;
+        itemX += 110; // Ajusta la separación horizontal
+        if (itemX > victoryMenuArea.x + victoryMenuArea.width - 110) { // Ajusta el límite para el cambio de fila
+            itemX = victoryMenuArea.x + 20;
+            itemY -= 110; // Ajusta la separación vertical
         }
     }
+}
 
     private List<TextureRegion> generateRewards() {
         Inventory playerInventory = player.getInventory();
         List<TextureRegion> rewardTextures = new ArrayList<>();
         Random random = new Random();
 
-        if (random.nextFloat() < 1) {
+    // Generar equipamientos con un 50% de probabilidad
+    for (int i = 0; i < 6; i++) { // Ajusta el número de intentos para generar equipamientos
+        if (random.nextFloat() < 0.5) {
             Equipment equipment = equipableItems.createRandomItem();
             if (equipment != null) {
                 playerInventory.addEquipment(equipment);
                 rewardTextures.add(equipment.getTexture());
-        } else {
-            System.out.println("No se generó ningún ítem equipable.");
+            } else {
+                System.out.println("No se generó ningún ítem equipable.");
             }
         }
+    }
 
         Potion.PotionType[] potionTypes = Potion.PotionType.values();
         for (Potion.PotionType potionType : potionTypes) {
@@ -656,23 +665,23 @@ private void usePotion(Potion.PotionType potionType) {
         batch.begin();
         batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-    TextureRegion playerImage = isDefending ? protectTexture : player.getPlayerTexture("Idle-3");
+        TextureRegion playerImage = isDefending ? protectTexture : player.getPlayerTexture("Idle-3");
         float playerScale = (Gdx.graphics.getHeight() - 20) / playerImage.getRegionWidth();
         float imageX = 10;
         float imageY = 10;
         float originX = playerImage.getRegionWidth() / 2;
         float originY = playerImage.getRegionHeight() / 2;
         float rotation = player.shouldRotate() ? 270 : 0;
-    if (!isAttacking && !isHurt) {
+        if (!isAttacking && !isHurt) {
             batch.draw(playerImage, imageX + originX * playerScale - originX, imageY + originY * playerScale - originY,
                     originX, originY, playerImage.getRegionWidth(), playerImage.getRegionHeight(),
                     playerScale, playerScale, rotation);
         }
 
         if (isHurt && !isDefending) {
-        animateHurt(delta);
+            animateHurt(delta);
 
-    }
+        }
 
         animateAttack(delta); // Manejar la animación de ataque si está activa
 
@@ -700,7 +709,7 @@ private void usePotion(Potion.PotionType potionType) {
             float touchX = Gdx.input.getX();
             float touchY = Gdx.graphics.getHeight() - Gdx.input.getY();
             if (!potionMenuArea.contains(touchX, touchY)) {
-            closePotionMenu();
+                closePotionMenu();
             }
         }
 
@@ -713,14 +722,14 @@ private void usePotion(Potion.PotionType potionType) {
         }
 
 
-}
+    }
     private void endCombat() {
         gameplayScreen.endCombat();
 
-    if (AudioManager.getInstance().getCurrentMusic() == null ||
-        !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/Golden Serpant Tavern (LOOP).mp3")) {
-        AudioManager.getInstance().playMusic("audio/music/Golden Serpant Tavern (LOOP).mp3");
-    }
+        if (AudioManager.getInstance().getCurrentMusic() == null ||
+                !AudioManager.getInstance().getCurrentMusicFilePath().equals("audio/music/Golden Serpant Tavern (LOOP).mp3")) {
+            AudioManager.getInstance().playMusic("audio/music/Golden Serpant Tavern (LOOP).mp3");
+        }
 
         game.setScreen(gameplayScreen);
     }
@@ -728,14 +737,14 @@ private void usePotion(Potion.PotionType potionType) {
 
     private void displayStats() {
         if (font != null) {
-        String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints() + "/"+ player.getMaxHitPoints();
-        String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
+            String playerStats = player.getPlayerName() + " HP= " + player.getHitPoints() + "/"+ player.getMaxHitPoints();
+            String enemyStats = enemy.getTextureName() + " HP= " + enemy.getHealth() + "/" + enemy.getMaxHealth();
             float statsY = lowerBorderArea.y + lowerBorderArea.height - 20;
-        font.draw(batch, playerStats, lowerBorderArea.x + 30, statsY);
-        layout.setText(font, enemyStats);
+            font.draw(batch, playerStats, lowerBorderArea.x + 30, statsY);
+            layout.setText(font, enemyStats);
             float enemyStatsX = lowerBorderArea.x + lowerBorderArea.width - layout.width - 30;
-        font.draw(batch, enemyStats, enemyStatsX, statsY);
-    }
+            font.draw(batch, enemyStats, enemyStatsX, statsY);
+        }
     }
 
     @Override

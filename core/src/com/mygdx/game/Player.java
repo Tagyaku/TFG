@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Json;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private static Player instance;
     private String playerName;
@@ -61,6 +64,8 @@ public class Player {
     player.initialize(game); // Inicializar campos transitorios
     player.getInventory().initializePotions(); // Inicializar el HashMap de potions
     player.getInventory().normalizePotions(); // Normalizar el HashMap de potions
+    player.cleanAccessories(); // Limpiar accesorios nulos
+    player.initializeEquipment(); // Inicializar equipos
         return player;
     }
 
@@ -83,6 +88,15 @@ public class Player {
             }
         }
 
+    private void cleanAccessories() {
+        List<Equipment> nonNullAccessories = new ArrayList<>();
+        for (Equipment accessory : accessories) {
+            if (accessory != null) {
+                nonNullAccessories.add(accessory);
+            }
+        }
+        accessories = nonNullAccessories.toArray(new Equipment[0]);
+    }
     public static synchronized Player getInstance(MyGdxGame game) {
         if (instance == null) {
             instance = new Player(game);
@@ -371,6 +385,9 @@ public class Player {
     }
 
     public Inventory getInventory() {
+        if (inventory == null) {
+            inventory = new Inventory();
+        }
         return inventory;
     }
 
